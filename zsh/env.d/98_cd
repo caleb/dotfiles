@@ -7,3 +7,16 @@ alias dh='dirs -v'
 
 # cd for the lazy
 setopt auto_cd
+
+#
+# This gets executed every time the user changes directory
+#
+function chpwd {
+  # if we're in a terminal that does tabs and titlebars
+  # set them to the user@host and the current directory
+  case $TERM in (*xterm*|ansi)
+    settab "%n@%m: %~"
+    settitle "%n@%m: %~"
+    ;;
+  esac
+}
