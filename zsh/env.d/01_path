@@ -1,0 +1,10 @@
+# /usr/local
+path=(/usr/local/bin /usr/local/sbin $path)
+manpath=(/usr/local/share/man $manpath)
+
+# MacPorts
+path=(/opt/local/bin $path)
+manpath=(/opt/local/man $manpath)
+
+# ~/bin overrides everything
+path=(~/bin $path)

@@ -1,6 +1,7 @@
-. ~/.zsh/config
-. ~/.zsh/aliases
-. ~/.zsh/completion
+# Load our other configuration files
+for f in ~/.zsh/rc.d/??_*; do
+  source $f
+done
 
-# use .localrc for settings specific to one system
-[[ -f ~/.localrc ]] && .  ~/.localrc
+## use .zsh/rc.local for settings specific to one system
+[[ -f ~/.zsh/rc.local ]] && .  ~/.zsh/rc.local
