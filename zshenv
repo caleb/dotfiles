@@ -7,5 +7,5 @@ for f in ~/.zsh/env.d/??_*; do
   source $f
 done
 
-## use .zsh/env.local for settings specific to one system
-[[ -f ~/.zsh/env.local ]] && .  ~/.zsh/env.local
+## use .zshenv.local for settings specific to one system
+[[ -f ~/.zshenv.local ]] && .  ~/.zshenv.local
