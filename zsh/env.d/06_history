@@ -12,5 +12,5 @@ setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share 
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
 
-# Grep the history with 'h'
-h () { history 0 | grep $1 }
+# Grep the history with 'hist'
+hist () { history 0 | grep $1 }
