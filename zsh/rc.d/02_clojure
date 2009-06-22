@@ -1,0 +1,1 @@
+alias clj="rlwrap clj"
