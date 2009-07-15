@@ -1,7 +1,11 @@
 setopt prompt_subst
 
-if [[ -n $(run_from_ssh) ]]; then
-  PROMPT='%{$reset_color%}%n@%m:%3~$(git-prompt)%# '
-else
-  PROMPT='%{$reset_color%}%3~$(git-prompt)%# '
+# Use a git prompt if git is in our path
+if [[ -x `which git` ]]; then
+  if [[ -n $(run_from_ssh) ]]; then
+    PROMPT='%{$reset_color%}%n@%m:%3~$(git-prompt)%# '
+  else
+    PROMPT='%{$reset_color%}%3~$(git-prompt)%# '
+  fi
 fi
+
