@@ -8,4 +8,4 @@ for f in ~/.zsh/env.d/??_*; do
 done
 
 ## use .zshenv.local for settings specific to one system
-[[ -f ~/.zshenv.local ]] && .  ~/.zshenv.local
+[[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
