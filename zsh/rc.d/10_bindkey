@@ -16,6 +16,3 @@ bindkey "${key[End]}" end-of-line
 
 # use incremental search
 bindkey ^R history-incremental-search-backward
-
-# expand history
-# export HISTSIZE=250

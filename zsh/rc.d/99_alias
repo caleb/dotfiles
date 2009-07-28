@@ -18,4 +18,3 @@ alias pi="sudo port -v install"
 #alias xmldelete="curl -X DELETE -H 'Accept: application/xml'"
 #alias d1="ssh bliles@dev01.it"
 #alias cb="cap -s user=bliles"
-

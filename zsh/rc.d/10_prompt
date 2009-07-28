@@ -10,4 +10,3 @@ if [[ -x `which git` ]]; then
 else
   PROMPT='%{$reset_color%}%n@%m:%3~%# '
 fi
-

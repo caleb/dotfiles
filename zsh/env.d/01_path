@@ -6,8 +6,12 @@ path=(/usr/local/bin /usr/local/sbin $path)
 manpath=(/usr/local/share/man $manpath)
 
 # MacPorts
-path=(/opt/local/bin $path)
-manpath=(/opt/local/share/man $manpath)
+if [[ -d /opt/local/bin ]]; then
+  path=(/opt/local/bin $path)
+  manpath=(/opt/local/share/man $manpath)
+fi
 
 # ~/bin overrides everything
-path=(~/bin $path)
+if [[ -d ~/bin ]]; then
+  path=(~/bin $path)
+fi
