@@ -11,6 +11,9 @@ if [[ -x `which git` ]]; then
   alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
   alias gup="git fetch origin master && git rebase origin/master"
 
+  # the recommended zstyle from _git() included with zsh
+  zstyle ':completion::*:git-{name-rev,add,rm}:*' ignore-line true
+
   function git-branch-name () {
     git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
   }
@@ -60,9 +63,11 @@ if [[ -x `which git` ]]; then
   }
   
   # Seems to be the best OS X jump-to-github alias from http://tinyurl.com/2mtncf
-  function github-go () {
-    open $(github-url)
-  }
+  if [[ -x `which open` ]]; then
+    function github-go () {
+      open $(github-url)
+    }
+  fi
   
   function nhgk () {
     nohup gitk --all &
