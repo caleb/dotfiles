@@ -4,6 +4,7 @@
 :backtrace: false
 :verbose: true
 :benchmark: false
-:sources: 
+:sources:
+- http://gemcutter.org
 - http://gems.rubyforge.org/
 - http://gems.github.com
