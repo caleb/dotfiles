@@ -1,14 +1,9 @@
-# we need to export the MANPATH variable so our changes are seen outside this script
-export MANPATH
-
 # /usr/local
 path=(/usr/local/bin /usr/local/sbin $path)
-manpath=(/usr/local/share/man $manpath)
 
 # MacPorts
 if [[ -d /opt/local/bin ]]; then
   path=(/opt/local/bin $path)
-  manpath=(/opt/local/share/man $manpath)
 fi
 
 # ~/bin overrides everything
