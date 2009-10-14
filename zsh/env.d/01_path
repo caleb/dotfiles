@@ -1,8 +1,8 @@
 # /usr/local - add bin and sbin if the path doesn't already contain them
-if [[ ! $path =~ '/usr/local/sbin' ]]; then
+if [[ -z ${(M)path:#"/usr/local/sbin"} ]]; then
   path=(/usr/local/sbin $path)
 fi
-if [[ ! $path =~ '/usr/local/bin' ]]; then
+if [[ -z ${(M)path:#"/usr/local/bin"} ]]; then
   path=(/usr/local/bin $path)
 fi
 
