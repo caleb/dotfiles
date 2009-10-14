@@ -1,12 +1,15 @@
-# /usr/local
-path=(/usr/local/bin /usr/local/sbin $path)
-
-# MacPorts
-if [[ -d /opt/local/bin ]]; then
-  path=(/opt/local/bin $path)
+# /usr/local - add bin and sbin if the path doesn't already contain them
+if [[ ! $path =~ '/usr/local/sbin' ]]; then
+  path=(/usr/local/sbin $path)
+fi
+if [[ ! $path =~ '/usr/local/bin' ]]; then
+  path=(/usr/local/bin $path)
 fi
 
 # ~/bin overrides everything
-if [[ -d ~/bin ]]; then
+if [[ -d ~/bin && ! $path =~ "$HOME/bin" ]]; then
   path=(~/bin $path)
 fi
+
+# remove duplicate entries
+typeset -U path
