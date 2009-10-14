@@ -1,5 +1,5 @@
 # Define our colors for the system we're using
-if [[ -x `which gls` || `ls --version` =~ "GNU" ]]; then
+if [[ -x `which gls` || `ls --version 2&>/dev/null` =~ "GNU" ]]; then
   # no            NORMAL, NORM            Global default, although everything should be something
   # fi            FILE                    Normal file
   # di            DIR                     Directory
@@ -143,7 +143,7 @@ if [[ -x `which gls` ]]; then
   alias la="gls -A -F --color"
 
 # If we're on a linux system, gnuls is the default
-elif [[ `ls --version` =~ "GNU" ]]; then
+elif [[ `ls --version 2&>/dev/null` =~ "GNU" ]]; then
   alias ls='ls -h -F --color=auto'
   alias l="ls -lAh -F --color"
   alias ll="ls -l -F --color"
