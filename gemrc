@@ -6,5 +6,4 @@
 :benchmark: false
 :sources:
 - http://gemcutter.org
-- http://gems.rubyforge.org/
-- http://gems.github.com
+- http://gems.rubyforge.org
