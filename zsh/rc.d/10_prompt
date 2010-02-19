@@ -1,12 +1,46 @@
 setopt prompt_subst
 
-# Use a git prompt if git is in our path
-if [[ -x `which git` ]]; then
-  if [[ -n $(run_from_ssh) ]]; then
-    PROMPT='%{$reset_color%}%n@%m:%3~$(git-prompt)%# '
+function add-space-to-prompt {
+  echo ${1} | grep -o -q -E -e '^[ ]+$'
+  if [[ ${1} == "" || $? == 0 ]]; then; echo ""; return; fi
+
+  echo " ${1}"
+}
+
+# rvm
+function rvm-prompt-proxy {
+  if [[ -x ~/.rvm/bin/rvm-prompt ]]; then
+    p="%{$fg[magenta]%}$(~/.rvm/bin/rvm-prompt i v)%{$reset_color%}"
+    echo "$(add-space-to-prompt ${p})"
   else
-    PROMPT='%{$reset_color%}%3~$(git-prompt)%# '
+    echo ""
   fi
-else
-  PROMPT='%{$reset_color%}%n@%m:%3~%# '
-fi
+}
+
+function git-prompt-proxy {
+  if [[ -x `which git` ]]; then
+    p="$(git-prompt)"
+    echo "$(add-space-to-prompt ${p})"
+  else
+    echo ""
+  fi
+}
+
+function host-proxy {
+  if [[ -n $(run_from_ssh) ]]; then
+    echo "%n@%m:"
+  else
+    echo ""
+  fi
+}
+
+function repo-type-prompt-proxy {
+  git branch >/dev/null 2>/dev/null && echo '±' && return
+  hg root >/dev/null 2>/dev/null && echo '☿' && return
+
+  echo '○'
+}
+
+PROMPT='%{$reset_color%}
+$(host-proxy)%3~$(git-prompt-proxy)$(rvm-prompt-proxy)
+$(repo-type-prompt-proxy) %# '
