@@ -41,6 +41,10 @@ function repo-type-prompt-proxy {
   echo '○'
 }
 
+function pwd-prompt-proxy {
+  echo "%{$fg[cyan]%}%3~%{$reset_color%}"
+}
+
 PROMPT='%{$reset_color%}
-$(host-proxy)%3~$(git-prompt-proxy)$(rvm-prompt-proxy)
+$(host-proxy)$(pwd-prompt-proxy)$(git-prompt-proxy)$(rvm-prompt-proxy)
 $(repo-type-prompt-proxy) %# '
