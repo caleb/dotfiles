@@ -30,7 +30,7 @@ if [[ -x `which git` ]]; then
   }
   function git-need-to-push() {
     if pushtime=$(echo $1 | grep 'Your branch is ahead' 2> /dev/null); then
-      echo "↑ "
+      echo "↑"
     fi
   }
   function git-prompt() {
@@ -39,9 +39,12 @@ if [[ -x `which git` ]]; then
     dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)'; echo $?)
     if [[ $branch != "" ]]; then
       dirty_color=$fg[green]
-      push_status=$(git-need-to-push $gstatus 2> /dev/null)
-      # if the status is just a space, set it to a blank string so we don't end up with extra spaces
-      if [[ $push_status == " " ]]; then; push_status=""; fi
+      push_status=" $(git-need-to-push $gstatus 2> /dev/null)"
+
+      # if the status is just spaces, set it to a blank string so we don't
+      # end up with extra spaces in the prompt
+      if [[ $push_status =~ '^[ ]+$' ]]; then; push_status=""; fi
+
       if [[ $dirty = 1 ]] { dirty_color=$fg[red] }
       [[ $branch != "" ]] && echo "%{$dirty_color%}$branch%{$reset_color%}$push_status"
     fi

@@ -4,14 +4,24 @@ function add-space-to-prompt {
   echo ${1} | grep -o -q -E -e '^[ ]+$'
   if [[ ${1} == "" || $? == 0 ]]; then; echo ""; return; fi
 
-  echo " ${1}"
+  # trim any existing whitespace from the beginning/end
+  p=$(echo ${1} | sed -E -e 's/^[ ]+//g')
+
+  echo " ${p}"
 }
 
 # rvm
 function rvm-prompt-proxy {
   if [[ -x ~/.rvm/bin/rvm-prompt ]]; then
-    p="%{$fg[magenta]%}$(~/.rvm/bin/rvm-prompt i v)%{$reset_color%}"
-    echo "$(add-space-to-prompt ${p})"
+    p=$(~/.rvm/bin/rvm-prompt i v)
+
+    # if we do indeed have a prompt, output it, else output nothing
+    if [[ ${p} =~ '^[ ]*$' ]]; then
+      echo ""
+    else
+      p="%{$fg[magenta]%}${p}%{$reset_color%}"
+      echo "$(add-space-to-prompt ${p})"
+    fi
   else
     echo ""
   fi
