@@ -1,6 +1,6 @@
 [user]
-  name = Caleb Land
-  email = caleb.land@gmail.com
+  name = {{name}}
+  email = {{email}}
 [alias]
   co = checkout
   track = !git-track
@@ -10,7 +10,7 @@
   branch = auto
   pager = yes
 [core]
-  excludesfile = /Users/caleb/.gitignore
+  excludesfile = /Users/{{username}}/.gitignore
   editor = mate -w
 [apply]
   whitespace = fix
@@ -19,7 +19,7 @@
 [merge]
   tool = opendiff
 [github]
-  user = caleb
-  token = abcdefghijklmnopqrstuvwxyzABCDEF
+  user = {{github_username}}
+  token = {{github_token}}
 [push]
   default = tracking
