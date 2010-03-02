@@ -1,0 +1,25 @@
+[user]
+  name = Caleb Land
+  email = caleb.land@gmail.com
+[alias]
+  co = checkout
+  track = !git-track
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  pager = yes
+[core]
+  excludesfile = /Users/caleb/.gitignore
+  editor = mate -w
+[apply]
+  whitespace = fix
+[diff]
+  rename = copy
+[merge]
+  tool = opendiff
+[github]
+  user = caleb
+  token = abcdefghijklmnopqrstuvwxyzABCDEF
+[push]
+  default = tracking
