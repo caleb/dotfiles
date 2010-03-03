@@ -1,4 +1,19 @@
-if [[ -x `which ggrep` ]]; then
-  alias rgrep=`which grep`
-  alias grep='ggrep --color'
+export GREP_OPTIONS='--color=auto' 
+
+grep --version | grep -q GNU
+
+# if we're not using GNU grep, look for one
+if [[ $? != 0 ]]; then
+  # look for a ggrep program
+  if [[ -x `which ggrep` ]]; then
+    alias rgrep=`which grep`
+    alias grep='ggrep'
+  else
+    # look for /usr/local/bin/grep
+    /usr/local/bin/grep --version | grep -q GNU
+    if [[ $? == 0 ]]; then
+      alias rgrep=`which grep`
+      alias grep='/usr/local/bin/grep'
+    fi
+  fi
 fi
