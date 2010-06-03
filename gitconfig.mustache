@@ -16,6 +16,7 @@
   whitespace = fix
 [diff]
   rename = copy
+  tool = Kaleidoscope
 [merge]
   tool = opendiff
 [github]
@@ -23,3 +24,7 @@
   token = {{github_token}}
 [push]
   default = tracking
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+  prompt = false
