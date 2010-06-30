@@ -13,7 +13,7 @@ function add-space-to-prompt {
 # rvm
 function rvm-prompt-proxy {
   if [[ -x ~/.rvm/bin/rvm-prompt ]]; then
-    p=$(~/.rvm/bin/rvm-prompt i v)
+    p=$(~/.rvm/bin/rvm-prompt)
 
     # if we do indeed have a prompt, output it, else output nothing
     if [[ ${p} =~ '^[ ]*$' ]]; then
