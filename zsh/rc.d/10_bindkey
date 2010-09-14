@@ -15,4 +15,4 @@ bindkey "${key[Home]}" beginning-of-line
 bindkey "${key[End]}" end-of-line
 
 # use incremental search
-bindkey ^R history-incremental-search-backward
+bindkey '^R' history-incremental-search-backward
