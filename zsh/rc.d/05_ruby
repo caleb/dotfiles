@@ -2,7 +2,7 @@ if [[ -x `which irb` ]]; then
   alias irb='irb --readline -r irb/completion'
 fi
 
-export RUBYOPT="KU rjcode"
+export RUBYOPT=""
 
 # if gem is installed, set our RUBYOPT to include it
 if [[ -x `which gem` ]]; then
