@@ -1,2 +1,4 @@
-settings.yml
+.bundle/
 gitconfig
+settings.yml
+vendor/
