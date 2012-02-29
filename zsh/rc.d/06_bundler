@@ -1,0 +1,3 @@
+if [[ -x `which bundle` ]]; then
+  alias be="bundle exec"
+fi

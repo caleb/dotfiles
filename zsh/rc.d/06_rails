@@ -1,15 +1,15 @@
 if [[ -x `which rails` ]]; then
-  alias ss="[ -e script/server ] && script/server || rails server"
-  alias sc="[ -e script/console ] && script/console || rails console"
-  alias sg="[ -e script/generate ] && script/generate model || rails generate model"
+  alias rs="bundle exec rails server"
+  alias rc="bundle exec rails console"
+  alias rg="bundle exec rails generate model"
   alias a='autotest -rails'
   alias tlog='tail -f log/development.log'
   alias migrate='rake db:migrate db:test:clone'
   alias rst='touch tmp/restart.txt'
 
   # Generate aliases
-  alias model="[ -e script/generate ] && script/generate model || rails generate model"
-  alias controller="[ -e script/generate ] && script/generate controller || rails generate controller"
-  alias migration="[ -e script/generate ] && script/generate migration || rails generate migration"
-  alias scaffold="[ -e script/generate ] && script/generate scaffold || rails generate scaffold"
+  alias model="bundle exec rails generate model"
+  alias controller="bundle exec rails generate controller"
+  alias migration="bundle exec rails generate migration"
+  alias scaffold="bundle exec rails generate scaffold"
 fi
