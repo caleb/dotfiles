@@ -9,11 +9,13 @@ if [[ $? != 0 ]]; then
     alias rgrep=`which grep`
     alias grep='ggrep'
   else
-    # look for /usr/local/bin/grep
-    /usr/local/bin/grep --version | grep -q GNU
-    if [[ $? == 0 ]]; then
-      alias rgrep=`which grep`
-      alias grep='/usr/local/bin/grep'
+    if [[ -f /usr/local/bin/grep ]]; then
+      # look for /usr/local/bin/grep
+      /usr/local/bin/grep --version | grep -q GNU
+      if [[ $? == 0 ]]; then
+        alias rgrep=`which grep`
+        alias grep='/usr/local/bin/grep'
+      fi
     fi
   fi
 fi
