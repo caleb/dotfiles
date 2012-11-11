@@ -10,8 +10,8 @@ function add-space-to-prompt {
   echo " ${p}"
 }
 
-# rvm
-function rvm-prompt-proxy {
+# ruby (rvm/rbenv)
+function ruby-prompt-proxy {
   if [[ -x ~/.rvm/bin/rvm-prompt ]]; then
     p=$(~/.rvm/bin/rvm-prompt)
 
@@ -22,6 +22,10 @@ function rvm-prompt-proxy {
       p="%{$fg[magenta]%}${p}%{$reset_color%}"
       echo "$(add-space-to-prompt ${p})"
     fi
+  elif [[ ! -z "$(which rbenv)" ]]; then
+    p="$(rbenv version)"
+    p="%{$fg[magenta]%}${p}%{$reset_color%}"
+    echo "$(add-space-to-prompt ${p})"
   else
     echo ""
   fi
@@ -56,5 +60,5 @@ function pwd-prompt-proxy {
 }
 
 PROMPT='%{$reset_color%}
-$(host-proxy)$(pwd-prompt-proxy)$(git-prompt-proxy)$(rvm-prompt-proxy)
+$(host-proxy)$(pwd-prompt-proxy)$(git-prompt-proxy)$(ruby-prompt-proxy)
 $(repo-type-prompt-proxy) %# '

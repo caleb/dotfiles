@@ -1,0 +1,15 @@
+#install or update rbenv
+DIR="$(pwd)"
+
+if [[ -d "$HOME/.rbenv" ]]; then
+  cd $HOME/.rbenv
+  git pull
+  cd $HOME/.rbenv/plugins/ruby-build
+  git pull
+else
+  cd "${HOME}"
+  git clone git://github.com/sstephenson/rbenv.git .rbenv
+  git clone git://github.com/sstephenson/ruby-build.git "${HOME}/.rbenv/plugins/ruby-build"
+fi
+
+cd "${DIR}"
