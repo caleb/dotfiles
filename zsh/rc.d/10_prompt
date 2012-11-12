@@ -23,7 +23,7 @@ function ruby-prompt-proxy {
       echo "$(add-space-to-prompt ${p})"
     fi
   elif [[ ! -z "$(which rbenv)" ]]; then
-    p="$(rbenv version)"
+    p="$(rbenv version | cut -d ' ' -f 1)"
     p="%{$fg[magenta]%}${p}%{$reset_color%}"
     echo "$(add-space-to-prompt ${p})"
   else
