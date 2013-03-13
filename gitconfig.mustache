@@ -2,6 +2,7 @@
   name = {{name}}
   email = {{email}}
 [alias]
+  ci = commit -v
   co = checkout
   track = !git-track
 [color]
@@ -19,12 +20,18 @@
   rename = copy
   tool = Kaleidoscope
 [merge]
-  tool = opendiff
+  tool = Kaleidoscope
 [github]
   user = {{github_username}}
 [push]
   default = tracking
 [difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
   prompt = false
+[mergetool]
+  keepBackup = true
+  prompt = false
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
