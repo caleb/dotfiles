@@ -3,7 +3,7 @@ require 'mustache'
 require 'yaml'
 
 SKIP_FILES = [
-  'settings.yml', 'settings.yml.sample'
+  'settings.yml', 'settings.yml.sample', 'Gemfile', 'Gemfile.lock'
 ]
 
 # set this to true to do a dry run
