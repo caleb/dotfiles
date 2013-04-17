@@ -43,7 +43,8 @@ if [[ -x `which git` ]]; then
 
       # if the status is just spaces, set it to a blank string so we don't
       # end up with extra spaces in the prompt
-      if [[ $push_status =~ '^[ ]+$' ]]; then; push_status=""; fi
+	  $(echo -n $push_status | grep -E -q '^[ ]+$' 2> /dev/null)
+      if [[ $? = 0 ]]; then; push_status=""; fi
 
       if [[ $dirty = 1 ]] { dirty_color=$fg[red] }
       [[ $branch != "" ]] && echo "%{$dirty_color%}$branch%{$reset_color%}$push_status"
