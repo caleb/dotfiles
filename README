@@ -6,6 +6,7 @@ These are config files to set up a system the way I like it.
 Installation
 
   git clone git://github.com/caleb/dotfiles ~/.dotfiles
+  git submodule init && git submodule update
   cd ~/.dotfiles
   rake install
   # edit ~/.gitconfig and personalize it
