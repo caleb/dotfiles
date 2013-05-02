@@ -54,7 +54,7 @@ function git-prompt-proxy {
     ZSH_THEME_GIT_PROMPT_DIRTY=$OLD_ZSH_THEME_GIT_PROMPT_DIRTY
     ZSH_THEME_GIT_PROMPT_CLEAN=$OLD_ZSH_THEME_GIT_PROMPT_CLEAN
 
-    echo "$(git_prompt_info)$(git_prompt_ahead)"
+    echo "$(git_prompt_info)$(git_remote_status)"
   else
     echo ""
   fi
@@ -88,7 +88,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN_BRANCH_COLOR="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_DIRTY_BRANCH_COLOR="%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_AHEAD=" %{$reset_color%}↑"
+ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE=" %{$reset_color%}↑"
+ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE=" %{$reset_color%}↓"
 
 PROMPT='%{$reset_color%}
 $(host-proxy)$(pwd-prompt-proxy)$(git-prompt-proxy)$(ruby-prompt-proxy)
