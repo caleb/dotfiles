@@ -1,4 +1,0 @@
-if [[ -d "$HOME/.rbenv/bin" && -z "${(M)path:#"$HOME/.rvm/bin"}" ]]; then
-  path=($HOME/.rbenv/bin $path)
-  eval "$(rbenv init -)"
-fi

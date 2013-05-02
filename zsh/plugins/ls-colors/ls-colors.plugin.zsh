@@ -129,30 +129,3 @@ if [[ `uname` == "Darwin" || `uname` == "FreeBSD" ]]; then
   LSCOLORS=${(j::)LSCOLORS}
   export LSCOLORS
 fi
-
-#
-# Set up aliases
-#
-
-# If we're on a system where gls is defined, prefer that
-if [[ -x `which gls` ]]; then
-  alias rls="`which ls` -F -G"
-  alias ls='gls -h -F --color=auto'
-  alias l="gls -lAh -F --color"
-  alias ll="gls -l -F --color"
-  alias la="gls -A -F --color"
-
-# If we're on a linux system, gnuls is the default
-elif [[ `ls --version 2&>/dev/null` =~ "GNU" ]]; then
-  alias ls='ls -h -F --color=auto'
-  alias l="ls -lAh -F --color"
-  alias ll="ls -l -F --color"
-  alias la="ls -A -F --color"
-
-# If we're on another system (probably Mac OS X or FreeBSD) WITHOUT gls, assume BSD ls
-else
-  alias ls="ls -F -G"
-  alias l="ls -lAh -F -G"
-  alias ll="ls -l -F -G"
-  alias la="ls -A -F -G"
-fi
