@@ -55,7 +55,7 @@ CASE_SENSITIVE="${CASE_SENSITIVE:-false}"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=($plugins pythonbrew brew bundler capistrano clojure colored-man gem git gnu-utils history
-                  history-substring-search ls-colors npm osx osx-pdf-man pasted-tabs-dont-complete
+                  history-substring-search ls-colors npm-fast osx osx-pdf-man pasted-tabs-dont-complete
                   rails3 rbenv ruby spotlight terminalapp textmate title vagrant)
 
 source $ZSH/oh-my-zsh.sh
