@@ -20,6 +20,10 @@ can do so with the following command:
 
   chsh -s /bin/zsh
 
+_or_ if you're using homebrew's newer zsh package
+
+  chsh -s /usr/local/bin/zsh
+
 
 Features
 
