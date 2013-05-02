@@ -54,12 +54,9 @@ CASE_SENSITIVE="${CASE_SENSITIVE:-false}"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=($plugins brew bundler capistrano clojure colored-man gem git history
+plugins=($plugins brew bundler capistrano clojure colored-man gem git gnu-utils-alias history
                   history-substring-search ls-colors npm-fast osx osx-pdf-man pasted-tabs-dont-complete
                   pythonbrew rails3 rbenv ruby spotlight terminalapp textmate title vagrant)
-
-# Add gnu-utils to the end since calling zsh's hash -r or rehash will break the overriding functionality of gnu-utils
-plugins=($plugins gnu-utils)
 
 source $ZSH/oh-my-zsh.sh
 
