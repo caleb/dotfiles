@@ -88,7 +88,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN_BRANCH_COLOR="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_DIRTY_BRANCH_COLOR="%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_AHEAD=" %{$fg[green]%}↑"
+ZSH_THEME_GIT_PROMPT_AHEAD=" %{$reset_color%}↑"
 
 PROMPT='%{$reset_color%}
 $(host-proxy)$(pwd-prompt-proxy)$(git-prompt-proxy)$(ruby-prompt-proxy)
