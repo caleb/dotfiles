@@ -6,7 +6,7 @@ done
 ## use .oh-my-zsh.local to tweak the Oh My ZSH settings
 [[ -f ~/.oh-my-zsh.local ]] && . ~/.oh-my-zsh.local
 
-ZSH_CUSTOM=$HOME/.zsh
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.zsh}"
 
 #
 # Start oh-my-zsh
@@ -19,7 +19,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="caleb"
+ZSH_THEME="${ZSH_THEME:-caleb}"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
