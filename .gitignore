@@ -2,3 +2,6 @@
 gitconfig
 settings.yml
 vendor/
+zprezto/*.zwc
+zprezto/*.zwc.old
+zprezto/modules/*/cache.zsh
