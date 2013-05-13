@@ -76,7 +76,8 @@ function prompt_caleb_setup {
   zstyle ':prezto:module:ruby:info:version' format ' %F{magenta}%v%f'
 
   # Define prompts.
-  PROMPT='%F{cyan}${_prompt_caleb_pwd}${git_info:+${(e)git_info[prompt-branch]}}${git_info[prompt-status]}${ruby_info:+${(e)ruby_info[version]}}
+  PROMPT='
+%F{cyan}${_prompt_caleb_pwd}${git_info:+${(e)git_info[prompt-branch]}}${git_info[prompt-status]}${ruby_info:+${(e)ruby_info[version]}}%f%b
 %# '
 
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
