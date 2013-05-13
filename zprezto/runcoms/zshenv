@@ -2,15 +2,8 @@
 # Defines environment variables.
 #
 # Authors:
-#   Caleb Land <caleb@land.fm>
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
-
-#
-# Functions
-#
-
-fpath=(~/.zsh/functions $fpath)
-autoload -U ~/.zsh/functions/*(:t)
 
 #
 # Browser
@@ -24,14 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='vi'
-if [[ -x `which mate` && ! -n $(run_from_ssh) ]]; then
-  EDITOR='mate -w'
-elif [[ -x `which vim` ]]; then
-  EDITOR='vim'
-fi
-
-export VISUAL=$EDITOR
+export EDITOR='nano'
+export VISUAL='nano'
 export PAGER='less'
 
 #
@@ -59,14 +46,6 @@ path=(
   $path
 )
 
-# ~/bin overrides everything
-if [[ -d ~/bin ]]; then
-  path=(~/bin $path)
-fi
-
-# remove duplicate entries
-typeset -U path
-
 #
 # Less
 #
@@ -92,10 +71,3 @@ if [[ -d "$TMPDIR" ]]; then
   fi
 fi
 
-# Load our other configuration files
-find ~/.zsh/env.d -name \?\?_\* | while read f; do
-  source "${f}"
-done
-
-## use .zshenv.local for settings specific to one system
-[[ -f ~/.zshenv.local ]] && . ~/.zshenv.local
