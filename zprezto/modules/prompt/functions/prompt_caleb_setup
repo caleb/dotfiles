@@ -55,6 +55,10 @@ function prompt_caleb_git_status_wrap {
   var="${var#"${var%%[![:space:]]*}"}"   # remove leading whitespace characters
   var="${var%"${var##*[![:space:]]}"}"   # remove trailing whitespace characters
 
+  if [[ ! -z "${var}" ]]; then
+    var=" ${var}"
+  fi
+
   echo -n "$var"
 }
 
@@ -90,7 +94,7 @@ function prompt_caleb_setup {
   zstyle ':prezto:module:git:info:untracked' format '%%B%F{white}◼%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
     'prompt-branch' ' %D%C$(coalesce "%b" "%p" "%c")%s%f%%b' \
-    'prompt-status' ' $(prompt_caleb_git_status_wrap "%A%B%S%a%d%m%r%U%u")'
+    'prompt-status' '$(prompt_caleb_git_status_wrap "%A%B%S%a%d%m%r%U%u")'
 
   # Set ruby-info parameters.
   zstyle ':prezto:module:ruby:info:version' format ' %F{magenta}%v%f'
