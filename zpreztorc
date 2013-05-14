@@ -29,6 +29,8 @@ zstyle ':prezto:load' pmodule \
   'terminal' \
   'ruby' \
   'rails' \
+  'node' \
+  'npm' \
   'git' \
   'directory' \
   'history-substring-search' \
