@@ -22,12 +22,22 @@ function prompt_caleb_pwd {
   fi
 }
 
+function prompt_caleb_repo_type {
+  git branch >/dev/null 2>/dev/null && _prompt_caleb_repo_type='±' && return
+  hg root >/dev/null 2>/dev/null && _prompt_caleb_repo_type='☿' && return
+
+  _prompt_caleb_repo_type='○'
+}
+
 function prompt_caleb_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
   # Format PWD.
   prompt_caleb_pwd
+
+  # Repo Type
+  prompt_caleb_repo_type
 
   # Get Git repository information.
   if (( $+functions[git-info] )); then
@@ -55,21 +65,21 @@ function prompt_caleb_setup {
   zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{red}❯%F{yellow}❯%F{green}❯%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{red}♺%f'
   zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
-  zstyle ':prezto:module:git:info:action' format ':%%B%F{yellow}%s%f%%b'
+  zstyle ':prezto:module:git:info:action' format '%%B%F{yellow}%s%f%%b'
   zstyle ':prezto:module:git:info:added' format ' %%B%F{green}✚%f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{yellow}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{yellow}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format ':%F{green}%b%f'
-  zstyle ':prezto:module:git:info:commit' format ':%F{green}%.7c%f'
+  zstyle ':prezto:module:git:info:branch' format '%F{green}%b%f'
+  zstyle ':prezto:module:git:info:commit' format '%F{green}%.7c%f'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{red}✖%f%%b'
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{blue}✱%f%%b'
-  zstyle ':prezto:module:git:info:position' format ':%F{red}%p%f'
+  zstyle ':prezto:module:git:info:position' format '%F{red}%p%f'
   zstyle ':prezto:module:git:info:renamed' format ' %%B%F{magenta}➜%f%%b'
   zstyle ':prezto:module:git:info:stashed' format ' %%B%F{cyan}✭%f%%b'
   zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{yellow}═%f%%b'
   zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}◼%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
-    'prompt-branch' ' %F{blue}git%f$(coalesce "%b" "%p" "%c")%s' \
+    'prompt-branch' ' $(coalesce "%b" "%p" "%c")%s' \
     'prompt-status' '%A%B%S%a%d%m%r%U%u'
 
   # Set ruby-info parameters.
@@ -78,7 +88,7 @@ function prompt_caleb_setup {
   # Define prompts.
   PROMPT='
 %F{cyan}${_prompt_caleb_pwd}${git_info:+${(e)git_info[prompt-branch]}}${git_info[prompt-status]}${ruby_info:+${(e)ruby_info[version]}}%f%b
-%# '
+${_prompt_caleb_repo_type} %# '
 
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
