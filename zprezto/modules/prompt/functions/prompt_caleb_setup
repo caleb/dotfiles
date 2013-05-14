@@ -101,7 +101,7 @@ function prompt_caleb_setup {
 
   # Define prompts.
   PROMPT='
-%F{cyan}${_prompt_caleb_pwd}${git_info:+${(e)git_info[prompt-branch]}}${git_info:+${(e)git_info[prompt-status]}}${ruby_info:+${(e)ruby_info[version]}}%f%b
+%F{cyan}${_prompt_caleb_pwd}%f${git_info:+${(e)git_info[prompt-branch]}}${git_info:+${(e)git_info[prompt-status]}}${ruby_info:+${(e)ruby_info[version]}}%f%b
 ${_prompt_caleb_repo_type} %# '
 
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
