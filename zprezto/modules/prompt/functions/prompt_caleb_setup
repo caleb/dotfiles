@@ -29,9 +29,20 @@ function prompt_caleb_repo_type {
   _prompt_caleb_repo_type='○'
 }
 
+function prompt_caleb_host {
+  if [[ `run_from_ssh` == "YES" ]]; then
+    _prompt_caleb_host='%M '
+  else
+    _prompt_caleb_host=''
+  fi    
+}
+
 function prompt_caleb_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
+
+  # Hostname
+  prompt_caleb_host
 
   # Format PWD.
   prompt_caleb_pwd
@@ -101,8 +112,8 @@ function prompt_caleb_setup {
 
   # Define prompts.
   PROMPT='
-%F{cyan}${_prompt_caleb_pwd}%f${git_info:+${(e)git_info[prompt-branch]}}${git_info:+${(e)git_info[prompt-status]}}${ruby_info:+${(e)ruby_info[version]}}%f%b
-${_prompt_caleb_repo_type} %# '
+%F{cyan}${(e)_prompt_caleb_pwd}%f${git_info:+${(e)git_info[prompt-branch]}}${git_info:+${(e)git_info[prompt-status]}}${ruby_info:+${(e)ruby_info[version]}}%f%b
+%F{magenta}${_prompt_caleb_host}%f${_prompt_caleb_repo_type} %# '
 
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
