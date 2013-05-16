@@ -5,7 +5,7 @@
 #   Caleb Land <caleb@land.fm>
 #
 if (( ! $+commands[npm] )); then
-  exit 1
+  return 1
 fi
 
 local _npm_bin_path
