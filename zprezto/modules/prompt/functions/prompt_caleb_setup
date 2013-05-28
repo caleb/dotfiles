@@ -88,6 +88,13 @@ function prompt_caleb_setup {
   zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{red}❯%F{yellow}❯%F{green}❯%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{red}♺%f'
   zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
+
+  # set the indexed format styles to be not-blank so that our dirty/clean styles work
+  # correctly. the git module only sets the dirty state based on if there are files that are
+  # indexed/unindexed/untracked and these are only calculated when the formats for them are non-blank
+  zstyle ':prezto:module:git:info:indexed' format ' '  
+  zstyle ':prezto:module:git:info:unindexed' format ' '  
+
   zstyle ':prezto:module:git:info:dirty' format '%%B%F{red}'
   zstyle ':prezto:module:git:info:clean' format '%B%F{green}'
   zstyle ':prezto:module:git:info:action' format '%%B%F{yellow}%s%f%%b'
