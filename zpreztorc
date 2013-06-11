@@ -29,6 +29,7 @@ zstyle ':prezto:load' pmodule \
   'terminal' \
   'ruby' \
   'rails' \
+  'pyenv' \
   'node' \
   'npm' \
   'git' \
