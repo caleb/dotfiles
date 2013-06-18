@@ -111,7 +111,7 @@ function prompt_caleb_setup {
   zstyle ':prezto:module:git:info:unmerged' format '%%B%F{yellow}⌥%f%%b'
   zstyle ':prezto:module:git:info:untracked' format '%%B%F{white}◼%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
-    'prompt-branch' ' %D%C$(coalesce "%b" "%p" "%c")%s%f%%b' \
+    'prompt-branch' ' %D%C$(coalesce "%b" "%p" "%c")$(prompt_caleb_git_status_wrap "%s")%f%%b' \
     'prompt-status' '$(prompt_caleb_git_status_wrap "%A%B%S%a%d%m%r%U%u")'
 
   # Set ruby-info parameters.
