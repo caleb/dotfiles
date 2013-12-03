@@ -9,10 +9,12 @@
 # Load manually installed pyenv into the shell session.
 if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
   path=("$HOME/.pyenv/bin" $path)
+  remove-pyenv-shims-path
   eval "$(pyenv init -)"
 
 # Load package manager installed pyenv into the shell session.
 elif (( $+commands[pyenv] )); then
+  remove-pyenv-shims-path
   eval "$(pyenv init -)"
 
 # Prepend PEP 370 per user site packages directory, which defaults to

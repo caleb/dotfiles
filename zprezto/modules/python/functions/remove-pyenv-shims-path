@@ -1,0 +1,13 @@
+# remove the shims directory from the path so that it gets re-added to the beginning
+# if the shims directory is already in the path, then pyenv init does not add it again
+# the trouble is when starting sub-shells (like from tmux) path_helper gets executed
+# from /etc/zshenv which prepends the standard paths before our shims path, and if
+# pyenv init doesn't prepend the shims directory to the path, then we end up with
+# a path that has the system ruby executables before our shims path
+if (( $+commands[pyenv] )); then
+  pyenv_path="${commands[pyenv]}"
+  pyenv_home="$(dirname $(dirname "${pyenv_path}"))"
+  pyenv_shims_path="${pyenv_home}/shims"
+
+  path=("${(@)path:#"${pyenv_shims_path}"}")
+fi
