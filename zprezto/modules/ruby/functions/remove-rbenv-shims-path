@@ -5,9 +5,9 @@
 # rbenv init doesn't prepend the shims directory to the path, then we end up with
 # a path that has the system ruby executables before our shims path
 if (( $+commands[rbenv] )); then
-  rbenv_path="${commands[rbenv]}"
-  rbenv_home="$(dirname $(dirname "${rbenv_path}"))"
-  rbenv_shims_path="${rbenv_home}/shims"
+  local rbenv_path="${commands[rbenv]}"
+  local rbenv_home="$(dirname $(dirname "${rbenv_path}"))"
+  local rbenv_shims_path="${rbenv_home}/shims"
 
   path=("${(@)path:#"${rbenv_shims_path}"}")
 fi

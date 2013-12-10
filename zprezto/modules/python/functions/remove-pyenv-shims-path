@@ -5,9 +5,9 @@
 # pyenv init doesn't prepend the shims directory to the path, then we end up with
 # a path that has the system ruby executables before our shims path
 if (( $+commands[pyenv] )); then
-  pyenv_path="${commands[pyenv]}"
-  pyenv_home="$(dirname $(dirname "${pyenv_path}"))"
-  pyenv_shims_path="${pyenv_home}/shims"
+  local pyenv_path="${commands[pyenv]}"
+  local pyenv_home="$(dirname $(dirname "${pyenv_path}"))"
+  local pyenv_shims_path="${pyenv_home}/shims"
 
   path=("${(@)path:#"${pyenv_shims_path}"}")
 fi
