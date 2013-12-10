@@ -1,47 +1,15 @@
 require 'rake'
 require 'mustache'
+require 'highline/import'
 require 'yaml'
 
 SKIP_FILES = [
-  'settings.yml', 'settings.yml.sample', 'Gemfile', 'Gemfile.lock'
+  'settings.yml', 'Gemfile', 'Gemfile.lock', 'vendor',
+  'LICENSE', 'README', 'Rakefile', '*.mustache'
 ]
 
 # set this to true to do a dry run
 DRY = ENV['DRY'] || false
-
-desc "install the dot files into user's home directory"
-task :install do
-  unless File.exist?('settings.yml')
-    puts "Rename settings.yml.sample => settings.yml and fill it out"
-    exit 1
-  end
-
-  replace_all = false
-  Dir['*'].each do |file|
-    next if %w[Rakefile README LICENSE].include? file
-    
-    if File.exist?(File.join(ENV['HOME'], ".#{file}"))
-      if replace_all
-        replace_file(file)
-      else
-        print "overwrite ~/.#{file}? [ynaq] "
-        case $stdin.gets.chomp
-        when 'a'
-          replace_all = true
-          replace_file(file)
-        when 'y'
-          replace_file(file)
-        when 'q'
-          exit
-        else
-          puts "skipping ~/.#{file}"
-        end
-      end
-    else
-      place_file(file)
-    end
-  end
-end
 
 def settings
   return @settings if @settings
@@ -56,39 +24,43 @@ def settings
   @settings
 end
 
-# This decides what to do with a given file
-def place_file file
-  return if SKIP_FILES.include? file
-
-  if file =~ /\.mustache$/
-    create_file_from_template file
-  else
-    link_file file
+desc "sets up the rcrc environment"
+task :setup do
+  dotfile_dir = File.dirname __FILE__
+  rcrc_file = File.join ENV['HOME'], '.rcrc'
+  File.open rcrc_file, 'w+', 0644 do |f|
+    f.write <<-EOF
+EXCLUDES="#{SKIP_FILES.join(' ')}"
+DOTFILES_DIRS="#{dotfile_dir}"
+    EOF
   end
-end
 
-# This method removes the old file, and places a new one
-def replace_file file
-  system %Q{rm "$HOME/.#{file}"}
-  place_file(file)
-end
+  settings_file = File.expand_path('../settings.yml', __FILE__)
 
-# This method runs the program through 
-def create_file_from_template file
-  file_without_mustache = file.gsub(/\.mustache/, '')
-  contents = Mustache.render(open(file).read, settings)
+  if File.exist? settings_file
+    puts "Edit the settings file #{settings_file} to edit configuration values"
+  else
+    git_full_name   = ask "#{HighLine.color("Git Full Name", HighLine::BOLD)}  "
+    git_email       = ask "#{HighLine.color("Git Email Address", HighLine::BOLD)}  "
+    github_username = ask "#{HighLine.color("GitHub username", HighLine::BOLD)}  "
 
-  home_file = "#{ENV['HOME']}/.#{file_without_mustache}"
-
-  puts "Writing #{home_file}"
-  unless DRY
-    File.open(home_file, 'w') do |w|
-      w.write(contents)
+    File.open settings_file, 'w+', 0644 do |f|
+      f.write <<-EOF
+---
+git_full_name: #{git_full_name}
+git_email: #{git_email}
+github_username: #{github_username}
+      EOF
     end
   end
-end
 
-def link_file file
-  puts "linking ~/.#{file}"
-  system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"} unless DRY
+  Dir.chdir File.dirname(__FILE__) do
+    Dir['*.mustache'].each do |file|
+      output_file = file.gsub /\.mustache$/, ''
+      rendered = Mustache.render(open(file).read, settings)
+      File.open output_file, 'w+' do |f|
+        f << rendered
+      end
+    end
+  end
 end
