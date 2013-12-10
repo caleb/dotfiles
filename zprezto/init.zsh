@@ -25,7 +25,7 @@ unset min_zsh_version
 function pmodload {
   local -a pmodules
   local pmodule
-  local pfunction_glob='^([_.]*|prompt_*_setup|README*)(.N:t)'
+  local pfunction_glob='^([_.]*|prompt_*_setup|README*)(-.N:t)(@N:t)'
 
   # $argv is overridden in the anonymous function.
   pmodules=("$argv[@]")
@@ -41,6 +41,7 @@ function pmodload {
 
     # Load Prezto functions.
     for pfunction in ${ZDOTDIR:-$HOME}/.zprezto/modules/${^pmodules}/functions/$~pfunction_glob; do
+      echo "loading ${pfunction}" >> ~/Desktop/loading.txt
       autoload -Uz "$pfunction"
     done
   }

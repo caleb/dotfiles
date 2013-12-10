@@ -93,9 +93,11 @@ if [[ -d "$TMPDIR" ]]; then
 fi
 
 # Load our other configuration files
-find ~/.zsh/env.d -name \?\?_\* | while read f; do
-  source "${f}"
-done
+if [[ -d ~/.zsh/env.d ]]; then
+  find ~/.zsh/env.d -name \?\?_\* | while read f; do
+    source "${f}"
+  done
+fi
 
 ## use .zshenv.local for settings specific to one system
 [[ -f ~/.zshenv.local ]] && . ~/.zshenv.local

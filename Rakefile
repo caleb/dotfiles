@@ -58,7 +58,6 @@ rcm_excludes: #{rcm_excludes}
     f.write <<-EOF
 EXCLUDES="#{skip_files.join(' ')}"
 DOTFILES_DIRS="#{dotfile_dir}"
-COPY_ALWAYS="zprezto/modules/*/functions/*"
     EOF
   end
 
