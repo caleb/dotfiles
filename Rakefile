@@ -27,24 +27,15 @@ end
 desc "sets up the rcrc environment"
 task :setup do
   dotfile_dir = File.dirname __FILE__
-  rcrc_file = File.join ENV['HOME'], '.rcrc'
-
-  File.open rcrc_file, 'w+', 0644 do |f|
-    f.write <<-EOF
-EXCLUDES="#{SKIP_FILES.join(' ')}"
-DOTFILES_DIRS="#{dotfile_dir}"
-COPY_ALWAYS="zprezto/modules/*/functions/*"
-    EOF
-  end
-
-  settings_file = File.expand_path('../settings.yml', __FILE__)
+  settings_file = File.expand_path 'settings.yml', dotfile_dir
 
   if File.exist? settings_file
     puts "Edit the settings file #{settings_file} to edit configuration values"
   else
-    git_full_name   = ask "#{HighLine.color("Git Full Name", HighLine::BOLD)}  "
-    git_email       = ask "#{HighLine.color("Git Email Address", HighLine::BOLD)}  "
-    github_username = ask "#{HighLine.color("GitHub username", HighLine::BOLD)}  "
+    git_full_name   = ask "#{HighLine.color("Full name used for git", HighLine::BOLD)}: "
+    git_email       = ask "#{HighLine.color("Email address used for git", HighLine::BOLD)}: "
+    github_username = ask "#{HighLine.color("GitHub username", HighLine::BOLD)}: "
+    rcm_excludes    = ask "#{HighLine.color("dotfiles/globs to exclude from your home directory separated by spaces (e.x. vim*)", HighLine::BOLD)}: "
 
     File.open settings_file, 'w+', 0644 do |f|
       f.write <<-EOF
@@ -52,8 +43,23 @@ COPY_ALWAYS="zprezto/modules/*/functions/*"
 git_full_name: #{git_full_name}
 git_email: #{git_email}
 github_username: #{github_username}
+rcm_excludes: #{rcm_excludes}
       EOF
+
+      # force a re-read of the configuration file
+      @settings = nil
     end
+  end
+
+  rcrc_file = File.join ENV['HOME'], '.rcrc'
+  skip_files = SKIP_FILES + (settings[:rcm_excludes].nil? ? [] : settings[:rcm_excludes].split(/\s+/))
+
+  File.open rcrc_file, 'w+', 0644 do |f|
+    f.write <<-EOF
+EXCLUDES="#{skip_files.join(' ')}"
+DOTFILES_DIRS="#{dotfile_dir}"
+COPY_ALWAYS="zprezto/modules/*/functions/*"
+    EOF
   end
 
   Dir.chdir File.dirname(__FILE__) do
