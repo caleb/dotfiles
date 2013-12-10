@@ -5,7 +5,7 @@ require 'yaml'
 
 SKIP_FILES = [
   'settings.yml', 'Gemfile', 'Gemfile.lock', 'vendor',
-  'LICENSE', 'README', 'Rakefile', '*.mustache'
+  'LICENSE', 'README.md', 'Rakefile', '*.mustache'
 ]
 
 # set this to true to do a dry run
