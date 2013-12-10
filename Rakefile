@@ -28,10 +28,12 @@ desc "sets up the rcrc environment"
 task :setup do
   dotfile_dir = File.dirname __FILE__
   rcrc_file = File.join ENV['HOME'], '.rcrc'
+
   File.open rcrc_file, 'w+', 0644 do |f|
     f.write <<-EOF
 EXCLUDES="#{SKIP_FILES.join(' ')}"
 DOTFILES_DIRS="#{dotfile_dir}"
+COPY_ALWAYS="zprezto/modules/*/functions/*"
     EOF
   end
 
