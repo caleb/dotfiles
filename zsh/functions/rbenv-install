@@ -39,6 +39,7 @@ bundler
 awesome_print
 highline
 rails
+zeus
 EOF
 
 
