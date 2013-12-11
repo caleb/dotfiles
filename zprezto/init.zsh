@@ -41,7 +41,6 @@ function pmodload {
 
     # Load Prezto functions.
     for pfunction in ${ZDOTDIR:-$HOME}/.zprezto/modules/${^pmodules}/functions/$~pfunction_glob; do
-      echo "loading ${pfunction}" >> ~/Desktop/loading.txt
       autoload -Uz "$pfunction"
     done
   }
