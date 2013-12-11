@@ -59,3 +59,7 @@ if (( $+commands[bundle] )); then
     && print vendor/cache  >>! .gitignore'
 fi
 
+# Zeus
+if (( $+commands[zeus] )); then
+  alias z='zeus'
+fi
