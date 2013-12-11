@@ -6,9 +6,11 @@
 #
 
 # Load our other configuration files
-find ~/.zsh/rc.d -name \?\?_\* | while read f; do
-  source "${f}"
-done
+if [[ -d ~/.zsh/rc.d ]]; then
+  find ~/.zsh/rc.d -name \?\?_\* | while read f; do
+    source "${f}"
+  done
+fi
 
 # Load local modifications to the zpreztorc file
 [[ -f $HOME/.zpreztorc.before.local ]] && source $HOME/.zpreztorc.before.local
