@@ -25,6 +25,8 @@ Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
 Bundle 'Railscasts-Theme-GUIand256color'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 Bundle 'vibrantink'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
