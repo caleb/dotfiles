@@ -27,6 +27,7 @@ Bundle 'Railscasts-Theme-GUIand256color'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'rking/ag.vim'
 Bundle 'vibrantink'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
