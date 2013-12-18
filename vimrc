@@ -121,6 +121,9 @@ nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 
+" Close a buffer without closing the window it's in
+nnoremap <Leader>w :bp<bar>sp<bar>bn<bar>bd<CR>
+
 " Dash.app integration
 nmap <silent> <leader>d <Plug>DashSearch
 
