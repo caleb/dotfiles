@@ -25,10 +25,10 @@ fi
 #
 
 export EDITOR='vi'
-if [[ -x `which mate` && ! -n $(run_from_ssh) ]]; then
-  EDITOR='mate -w'
-elif [[ -x `which vim` ]]; then
+if [[ -x `which vim` ]]; then
   EDITOR='vim'
+elif [[ -x `which mate` && ! -n $(run_from_ssh) ]]; then
+  EDITOR='mate -w'
 fi
 
 export VISUAL=$EDITOR
