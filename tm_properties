@@ -1,0 +1,32 @@
+# fontName = "Source Code Pro"
+fontName = "Menlo"
+fontSize = 14
+
+# General settings.
+showInvisibles      = true
+spellChecking       = true
+
+[ text ]
+softWrap            = false
+wrapColumn          = 80
+softTabs            = true
+tabSize             = 2
+
+[ text.plain ]
+softWrap            = true
+wrapColumn          = "Use Window Frame"
+softTabs            = false
+tabSize             = 4
+
+[ source ]
+softWrap            = false
+wrapColumn          = "Use Window Frame"
+softTabs            = true
+tabSize             = 2
+
+[ source.plist ]
+softTabs            = false
+tabSize             = 4
+
+[ source.tm-properties ]
+spellChecking       = false
