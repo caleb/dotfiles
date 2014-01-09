@@ -78,6 +78,10 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" Let the airline plugin automatically populate `g:airline_symbols` dictionary
+" with the powerline symbols
+let g:airline_powerline_fonts = 1
+
 " Color scheme
 colorscheme railscasts
 highlight NonText guibg=#060606
