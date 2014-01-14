@@ -41,6 +41,7 @@ highline
 rails
 zeus
 pry
+gem-ctags
 EOF
 
 
