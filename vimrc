@@ -14,8 +14,7 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
 " Only show the current line in the current window
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+set cursorline
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
