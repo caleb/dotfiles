@@ -7,6 +7,8 @@ set guioptions-=T
 " Use console dialogs
 set guioptions+=c
 
+set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+
 " Local config
 if filereadable($HOME . "/.gvimrc.local")
   source ~/.gvimrc.local
