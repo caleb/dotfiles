@@ -13,7 +13,11 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
-set mouse=a       " Enable mouse support
+set mouse+=a       " Enable mouse support
+if &term =~ '^screen'
+  " tmux knows the extended mouse mode
+  set ttymouse=xterm2
+endif
 
 " Only show the current line in the current window
 set cursorline
