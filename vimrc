@@ -140,6 +140,9 @@ nnoremap <Leader>q :Bdelete<CR>
 " Dash.app integration
 nmap <silent> <leader>d <Plug>DashSearch
 
+" Map leader+p to CtrlPBuffer
+nnoremap <Leader>p :CtrlPBuffer<CR>
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
