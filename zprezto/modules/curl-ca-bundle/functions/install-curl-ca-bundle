@@ -1,0 +1,12 @@
+if (( $+commands[brew] )); then
+  local curl_ca_prefix="$(brew --prefix curl-ca-bundle)"
+
+  if [[ ! -d "${curl_ca_prefix}" ]]; then
+    brew install curl-ca-bundle
+    export SSL_CERT_FILE="$(brew --prefix curl-ca-bundle)/share/ca-bundle.crt"
+
+    echo
+    echo
+    echo "The SSL_CERT_FILE environment variable has been set for you"
+  fi
+fi
