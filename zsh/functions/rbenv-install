@@ -33,13 +33,20 @@ else
   git clone git://github.com/sstephenson/rbenv-default-gems.git "${HOME}/.rbenv/plugins/rbenv-default-gems"
 fi
 
+if [[ -d "${HOME}/.rbenv/plugins/rbenv-binstubs" ]]; then
+  cd $HOME/.rbenv/plugins/rbenv-binstubs
+  git pull
+else
+  cd "${HOME}"
+  git clone git://github.com/ianheggie/rbenv-binstubs.git "${HOME}/.rbenv/plugins/rbenv-binstubs"
+fi
+
 # Install a nice set of default gems on every ruby install
 cat >! ~/.rbenv/default-gems <<EOF
 bundler
 awesome_print
 highline
 rails
-zeus
 pry
 gem-ripper-tags
 EOF
