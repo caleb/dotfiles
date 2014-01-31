@@ -18,7 +18,7 @@
   ui = auto
 [core]
   autocrlf = input
-  editor = mate -w
+  editor = vim
   excludesfile = ~/.gitignore
   ignorecase = false
 [apply]
