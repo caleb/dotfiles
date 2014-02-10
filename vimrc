@@ -87,6 +87,8 @@ endif
 " with the powerline symbols
 let g:airline_powerline_fonts = 1
 
+let g:airline_section_z = airline#section#create(['%3p%%'.g:airline_symbols.space, 'linenr', ':%3v '])
+
 " Color scheme
 colorscheme railscasts
 highlight NonText guibg=#060606
