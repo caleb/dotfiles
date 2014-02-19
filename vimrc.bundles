@@ -41,6 +41,7 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/CursorLineCurrentWindow'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'godlygeek/tabular'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local

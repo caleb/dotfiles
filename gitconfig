@@ -45,3 +45,6 @@
   path = ~/.gitconfig.local
 [commit]
   template = ~/.gitmessage
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
