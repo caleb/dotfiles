@@ -5,6 +5,7 @@ vendor/
 zprezto/*.zwc
 zprezto/*.zwc.old
 zprezto/modules/*/cache.zsh
+\#*\#
 *.[ao]
 *.bak
 *.vagrant*
