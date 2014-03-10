@@ -59,6 +59,7 @@
  'ag
  'coffee-mode
  'color-theme-sanityinc-tomorrow
+ 'evil
  'expand-region
  'dash
  'dart-mode
