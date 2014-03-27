@@ -1,4 +1,6 @@
-set nocompatible
+if &compatible
+  set nocompatible
+end
 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -28,7 +30,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
 Bundle 'tpope/vim-abolish'
 Bundle 'moll/vim-bbye'
-Bundle 'tsaleh/vim-matchit'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
 Bundle 'Railscasts-Theme-GUIand256color'
