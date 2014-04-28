@@ -24,7 +24,6 @@ zstyle ':prezto:load' pmodule \
   'rails' \
   'python' \
   'homebrew' \
-  'curl-ca-bundle' \
   'node' \
   'npm' \
   'git' \
