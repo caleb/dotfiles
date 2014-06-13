@@ -10,6 +10,8 @@
   pr = !hub pull-request
   st = status
   up = !git fetch origin && git rebase origin/master
+  recent = for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads
+  name = rev-parse --abbrev-ref HEAD
 [color]
   branch = auto
   diff = auto
