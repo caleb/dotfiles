@@ -9,6 +9,8 @@ set guioptions+=c
 
 set guifont=Meslo\ LG\ S\ for\ Powerline:h14
 
+colorscheme monokai
+
 " Local config
 if filereadable($HOME . "/.gvimrc.local")
   source ~/.gvimrc.local
