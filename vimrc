@@ -89,9 +89,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_section_z = airline#section#create(['%3p%%'.g:airline_symbols.space, 'linenr', ':%3v '])
 
 " Color scheme
-let g:molokai_original = 0
-let g:rehash256 = 1
-colorscheme molokai
+colorscheme monokai
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
