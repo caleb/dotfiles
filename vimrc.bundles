@@ -46,6 +46,7 @@ Bundle 'vim-scripts/CursorLineCurrentWindow'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'godlygeek/tabular'
 Bundle 'Gundo'
+Bundle 'mustache/vim-mustache-handlebars'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
