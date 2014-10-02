@@ -98,6 +98,9 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 set number
 set numberwidth=5
 
+" Make sure diffs are split vertically, not horizontally
+set diffopt+=vertical
+
 " Snippets are activated by Shift+Tab
 let g:snippetsEmu_key = "<S-Tab>"
 
