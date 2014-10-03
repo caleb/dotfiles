@@ -49,6 +49,27 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'godlygeek/tabular'
 Bundle 'Gundo'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'vim-scripts/camelcasemotion.git'
+Bundle 'gregsexton/gitv'
+Bundle 'tpope/vim-git'
+
+" Text Objects
+Bundle "austintaylor/vim-indentobject"
+Bundle "bootleq/vim-textobj-rubysymbol"
+Bundle "coderifous/textobj-word-column.vim"
+Bundle "kana/vim-textobj-datetime"
+Bundle "kana/vim-textobj-entire"
+Bundle "kana/vim-textobj-function"
+Bundle "kana/vim-textobj-user"
+Bundle "lucapette/vim-textobj-underscore"
+Bundle "nathanaelkane/vim-indent-guides"
+Bundle "nelstrom/vim-textobj-rubyblock"
+Bundle "thinca/vim-textobj-function-javascript"
+Bundle "vim-scripts/argtextobj.vim"
+
+" Elixir and Erlang
+Bundle "elixir-lang/vim-elixir"
+Bundle "hcs42/vim-erlang"
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
