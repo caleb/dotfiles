@@ -52,6 +52,7 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'vim-scripts/camelcasemotion.git'
 Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-git'
+Bundle 'Lokaltog/vim-easymotion'
 
 " Text Objects
 Bundle "austintaylor/vim-indentobject"
