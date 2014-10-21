@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+[ $+commands[boot2docker] -eq 1 ] || exit 1
+
+for line in "${(f)$(boot2docker up 2> /dev/null | grep "export DOCKER_")}"; do
+  eval $line
+done
