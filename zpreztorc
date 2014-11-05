@@ -51,6 +51,11 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:go' workspace "${HOME}/Projects/go"
 
 #
+# Chruby
+#
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
+#
 # Editor
 #
 
