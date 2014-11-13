@@ -7,7 +7,7 @@ set guioptions-=T
 " Use console dialogs
 set guioptions+=c
 
-set guifont=Meslo\ LG\ S\ for\ Powerline:h14
+set guifont=Meslo\ LG\ S\ for\ Powerline:h13
 
 colorscheme monokai
 
