@@ -31,6 +31,10 @@ elif (( $+commands[chruby-exec] )); then
   if zstyle -t ':prezto:module:ruby:chruby' auto-switch; then
     source "${commands[chruby-exec]:h:h}/share/chruby/auto.sh"
 
+    # Workaround for postmodern/chruby#191
+    precmd_functions+=("chruby_auto")
+    preexec_functions=(${preexec_functions:#"chruby_auto"})
+
     # If a default Ruby is set, switch to it.
     chruby_auto
   fi
