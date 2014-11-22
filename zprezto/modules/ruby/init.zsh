@@ -31,9 +31,18 @@ elif (( $+commands[chruby-exec] )); then
   if zstyle -t ':prezto:module:ruby:chruby' auto-switch; then
     source "${commands[chruby-exec]:h:h}/share/chruby/auto.sh"
 
-    # Workaround for postmodern/chruby#191
-    precmd_functions+=("chruby_auto")
-    preexec_functions=(${preexec_functions:#"chruby_auto"})
+    # Workaround for postmodern/chruby#191 in interactive mode
+    #
+    # precmd_functions are executed before the prompt is printed, whereas
+    # preexec_functions are executed before a command is executed.
+    # chruby_auto uses preexec_functions which causes the prompt to be
+    # displayed incorrectly when first `cd`ing to a directory with a
+    # .ruby-version file (the correct ruby version is selected when a
+    # command is executed, but just after `cd`ing the ruby isnt' changed)
+    if [[ $PS1 ]]; then
+      precmd_functions+=("chruby_auto")
+      preexec_functions=${preexec_functions:#"chruby_auto"}
+    fi
 
     # If a default Ruby is set, switch to it.
     chruby_auto
