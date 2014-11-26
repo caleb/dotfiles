@@ -1,1 +1,2 @@
-(sp-pair "'" nil :unless '(sp-point-after-word-p))  ;; don't pair apostrophes
+;; don't pair Rust lifetimes or apostrophes
+(sp-pair "'" nil :unless '(sp-point-after-word-p))

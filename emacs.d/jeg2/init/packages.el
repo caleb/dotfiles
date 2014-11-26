@@ -17,9 +17,16 @@
   "Install a package by name unless it is already installed."
   (or (package-installed-p name) (jeg2/package-refresh-and-install name)))
 
+(defun jeg2/package-details-for (name)
+  "Safely pull out package details across Emacs versions."
+  (let ((v (cdr (assoc name package-archive-contents))))
+    (and v (if (consp v)
+               (car v) ; for Emacs 24.4+
+             v))))
+
 (defun jeg2/package-version-for (package)
   "Get the version of a loaded package."
-  (package-desc-vers (cdr (assoc package package-alist))))
+  (package-desc-vers (jeg2/package-details-for package)))
 
 (defun jeg2/package-delete-by-name (package)
   "Remove a package by name."
@@ -39,7 +46,7 @@
 
 (defun jeg2/package-requirements (package)
   "List of recursive dependencies for a package."
-  (let ((package-info (cdr (assoc package package-alist))))
+  (let ((package-info (jeg2/package-details-for package)))
      (cond ((null package-info) (list package))
            (t
             (jeg2/flatten
@@ -59,7 +66,6 @@
  'ag
  'coffee-mode
  'color-theme-sanityinc-tomorrow
- 'evil
  'expand-region
  'dash
  'dart-mode
@@ -67,7 +73,6 @@
  'haml-mode
  'idomenu
  'inf-ruby
- 'less-css-mode
  'magit
  'markdown-mode
  'multiple-cursors
@@ -75,6 +80,7 @@
  'rainbow-mode
  'rhtml-mode
  'ruby-compilation
+ 'rust-mode
  'scss-mode
  'smartparens
  'undo-tree
@@ -86,3 +92,4 @@
 
 ;; vendored packages
 (jeg2/load-init-file "jeg2/vendor/rcodetools")
+(jeg2/load-init-file "jeg2/vendor/scad-mode")
