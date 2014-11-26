@@ -5,7 +5,7 @@
           (attributes (cdr path-and-attributes)))
       (cond ((string-prefix-p "." (file-name-nondirectory path))
              nil)  ; skip invisible directories
-            ((car attributes)
+            ((eq (car attributes) t) ; explicity test for directory
              (jeg2/delete-out-of-date-bytecode path))
             ((string-match "\\.elc\\'" path)
              (let ((el-file (substring path 0 -1)))

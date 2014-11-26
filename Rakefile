@@ -4,7 +4,7 @@ require 'highline/import'
 require 'yaml'
 
 SKIP_FILES = [
-  'settings.yml', 'Gemfile', 'Gemfile.lock', 'vendor',
+  'settings.yml', 'Gemfile', 'Gemfile.lock', '.:vendor',
   'LICENSE', 'README.md', 'Rakefile', '*.mustache',
   'Brewfile', '#*#'
 ]
