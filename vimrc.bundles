@@ -67,6 +67,7 @@ Bundle "nathanaelkane/vim-indent-guides"
 Bundle "nelstrom/vim-textobj-rubyblock"
 Bundle "thinca/vim-textobj-function-javascript"
 Bundle "vim-scripts/argtextobj.vim"
+Bundle "pangloss/vim-javascript"
 
 " Elixir and Erlang
 Bundle "elixir-lang/vim-elixir"
