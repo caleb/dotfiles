@@ -53,6 +53,7 @@ Bundle 'vim-scripts/camelcasemotion.git'
 Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-git'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle "pangloss/vim-javascript"
 
 " Text Objects
 Bundle "austintaylor/vim-indentobject"
@@ -67,7 +68,6 @@ Bundle "nathanaelkane/vim-indent-guides"
 Bundle "nelstrom/vim-textobj-rubyblock"
 Bundle "thinca/vim-textobj-function-javascript"
 Bundle "vim-scripts/argtextobj.vim"
-Bundle "pangloss/vim-javascript"
 
 " Elixir and Erlang
 Bundle "elixir-lang/vim-elixir"
