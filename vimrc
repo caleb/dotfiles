@@ -143,6 +143,9 @@ nmap s <Plug>(easymotion-s)
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
 
+" Rainbow parens
+let g:rainbow_active = 1
+
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)

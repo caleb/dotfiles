@@ -9,6 +9,8 @@ call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+Bundle 'tpope/vim-sensible'
+
 " Define bundles via Github repos
 Bundle 'caleb/netrw'
 Bundle 'croaky/vim-colors-github'
@@ -19,8 +21,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rhubarb'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
@@ -33,6 +36,10 @@ Bundle 'moll/vim-bbye'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
+
+" highlight pairs of parenthesis in different colors
+Bundle 'luochen1990/rainbow'
+
 Bundle 'Railscasts-Theme-GUIand256color'
 Bundle 'caleb/vim-monokai'
 Bundle 'kristijanhusak/vim-multiple-cursors'
