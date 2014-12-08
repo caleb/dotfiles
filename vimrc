@@ -196,7 +196,8 @@ let g:syntastic_check_on_open=1
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " Configure folding for javascript mode
-autocmd BufRead,BufNewFile *.js,*.js.jsx,*.js.es6.jsx setlocal foldmethod=syntax
+autocmd BufRead,BufNewFile *.browserify setlocal syntax=javascript
+autocmd BufRead,BufNewFile *.js,*.jsx,*.es6 setlocal foldmethod=syntax
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
