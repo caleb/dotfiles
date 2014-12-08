@@ -90,7 +90,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_section_z = airline#section#create(['%3p%%'.g:airline_symbols.space, 'linenr', ':%3v '])
 
 " Color scheme
-colorscheme monokai
+colorscheme gruvbox "monokai
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
@@ -196,8 +196,11 @@ let g:syntastic_check_on_open=1
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " Configure folding for javascript mode
-autocmd BufRead,BufNewFile *.browserify setlocal syntax=javascript
-autocmd BufRead,BufNewFile *.js,*.jsx,*.es6 setlocal foldmethod=syntax
+autocmd BufRead,BufNewFile *.browserify setlocal ft=javascript
+autocmd FileType javascript setlocal foldmethod=syntax
+
+" Fix Rainbow Parenthesis... removed "skipwhite" from the end
+autocmd FileType javascript syntax region  jsFuncArgs contained matchgroup=jsFuncParens start='(' end=')' contains=jsFuncArgCommas,jsFuncArgRest nextgroup=jsFuncBlock keepend skipempty
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
