@@ -62,7 +62,7 @@ Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-git'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle "pangloss/vim-javascript"
-Bundle "jelera/vim-javascript-syntax"
+"Bundle "jelera/vim-javascript-syntax"
 
 " Text Objects
 Bundle "austintaylor/vim-indentobject"

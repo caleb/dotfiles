@@ -196,11 +196,19 @@ let g:syntastic_check_on_open=1
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " Configure folding for javascript mode
+let g:javascript_conceal = 1
+let g:javascript_conceal_function   = "ƒ"
+let g:javascript_conceal_null       = "ø"
+let g:javascript_conceal_this       = "@"
+let g:javascript_conceal_return     = "⇚"
+let g:javascript_conceal_undefined  = "¿"
+let g:javascript_conceal_NaN        = "ℕ"
+let g:javascript_conceal_prototype  = "¶"
 autocmd BufRead,BufNewFile *.browserify setlocal ft=javascript
 autocmd FileType javascript setlocal foldmethod=syntax
-
-" Fix Rainbow Parenthesis... removed "skipwhite" from the end
-autocmd FileType javascript syntax region  jsFuncArgs contained matchgroup=jsFuncParens start='(' end=')' contains=jsFuncArgCommas,jsFuncArgRest nextgroup=jsFuncBlock keepend skipempty
+" Clearing the jsFuncBlock style makes rainbow parenthesis work inside
+" javascript functions
+autocmd FileType javascript syntax clear jsFuncBlock
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
