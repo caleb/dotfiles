@@ -17,6 +17,10 @@ elif (( $+commands[brew] )) && [[ -d "$(brew --prefix nvm 2>/dev/null)" ]]; then
     mkdir -p "${NVM_DIR}"
   fi
   source $(brew --prefix nvm)/nvm.sh
+
+  if [[ -f "${HOME}/.node-version" ]]; then
+    nvm use `cat "${HOME}/.node-version"` > /dev/null
+  fi
 fi
 
 # Return if requirements are not found.
