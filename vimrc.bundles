@@ -37,6 +37,8 @@ Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
 
+Bundle 'scrooloose/nerdtree'
+
 " highlight pairs of parenthesis in different colors
 Bundle 'luochen1990/rainbow'
 
@@ -62,7 +64,7 @@ Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-git'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle "pangloss/vim-javascript"
-"Bundle "jelera/vim-javascript-syntax"
+Bundle "jelera/vim-javascript-syntax"
 
 " Text Objects
 Bundle "austintaylor/vim-indentobject"
