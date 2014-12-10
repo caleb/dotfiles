@@ -12,7 +12,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-sensible'
 
 " Define bundles via Github repos
-Bundle 'eiginn/netrw'
+Bundle 'caleb/netrw'
 Bundle 'decho'
 Bundle 'croaky/vim-colors-github'
 Bundle 'danro/rename.vim'

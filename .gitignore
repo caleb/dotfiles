@@ -1,10 +1,10 @@
-.bundle/
-gitconfig.local
-settings.yml
-vendor/
-zprezto/*.zwc
-zprezto/*.zwc.old
-zprezto/modules/*/cache.zsh
+/.bundle
+/gitconfig.local
+/settings.yml
+/vendor
+/zprezto/*.zwc
+/zprezto/*.zwc.old
+/zprezto/modules/*/cache.zsh
 \#*\#
 *.[ao]
 *.bak

@@ -147,9 +147,6 @@ let g:EasyMotion_smartcase = 1
 " Rainbow parens
 let g:rainbow_active = 1
 
-" netrw
-let g:netrw_keepdir       = 1
-
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
