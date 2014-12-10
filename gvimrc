@@ -9,7 +9,7 @@ set guioptions+=c
 
 set guifont=Meslo\ LG\ S\ for\ Powerline:h13
 
-colorscheme gruvbox "monokai
+colorscheme gruvbox
 
 " Local config
 if filereadable($HOME . "/.gvimrc.local")

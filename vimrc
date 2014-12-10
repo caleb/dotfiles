@@ -91,7 +91,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_section_z = airline#section#create(['%3p%%'.g:airline_symbols.space, 'linenr', ':%3v '])
 
 " Color scheme
-colorscheme gruvbox "monokai
+colorscheme gruvbox
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
@@ -146,6 +146,12 @@ let g:EasyMotion_smartcase = 1
 
 " Rainbow parens
 let g:rainbow_active = 1
+
+" netrw
+let g:netrw_keepdir       = 1
+
+" NERDTree
+let g:NERDTreeMapUpdir = "-"
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
