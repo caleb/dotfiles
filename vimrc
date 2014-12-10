@@ -150,9 +150,6 @@ let g:rainbow_active = 1
 " netrw
 let g:netrw_keepdir       = 1
 
-" NERDTree
-let g:NERDTreeMapUpdir = "-"
-
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
