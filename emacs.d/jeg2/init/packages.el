@@ -65,6 +65,11 @@
 (jeg2/package-install-and-remove-to-match-list
  'ag
  'evil
+ 'evil-surround
+ 'evil-nerd-commenter
+ 'evil-matchit
+ 'evil-args
+ 'evil-jumper
  'coffee-mode
  'color-theme-sanityinc-tomorrow
  'expand-region
