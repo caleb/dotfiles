@@ -12,7 +12,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-sensible'
 
 " Define bundles via Github repos
-Bundle 'caleb/netrw'
+Bundle 'eiginn/netrw'
 Bundle 'croaky/vim-colors-github'
 Bundle 'danro/rename.vim'
 Bundle 'kchmck/vim-coffee-script'
@@ -37,7 +37,7 @@ Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'vim-scripts/tComment'
 
-"Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdtree'
 
 " highlight pairs of parenthesis in different colors
 Bundle 'luochen1990/rainbow'
