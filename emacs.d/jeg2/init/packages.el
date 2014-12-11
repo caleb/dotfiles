@@ -64,21 +64,23 @@
 
 (jeg2/package-install-and-remove-to-match-list
  'ag
- 'evil
- 'evil-surround
- 'evil-nerd-commenter
- 'evil-matchit
- 'evil-args
- 'evil-jumper
  'coffee-mode
  'color-theme-sanityinc-tomorrow
- 'expand-region
- 'dash
  'dart-mode
+ 'dash
+ 'evil
+ 'evil-args
+ 'evil-jumper
+ 'evil-matchit
+ 'evil-nerd-commenter
+ 'evil-surround
+ 'expand-region
  'fill-column-indicator
  'haml-mode
  'idomenu
  'inf-ruby
+ 'js2-mode
+ 'js2-refactor
  'magit
  'markdown-mode
  'multiple-cursors
@@ -87,6 +89,7 @@
  'rhtml-mode
  'ruby-compilation
  'rust-mode
+ 's
  'scss-mode
  'smartparens
  'undo-tree

@@ -28,4 +28,4 @@
 (local-set-key (kbd "C-c v s") 'jeg2/toggle-program-spelling)
 
 ;; command shortcuts
-(local-set-key (kbd "C-c e") 'jeg2/close-statement)
+(local-set-key (kbd "C-c ;") 'jeg2/close-statement)

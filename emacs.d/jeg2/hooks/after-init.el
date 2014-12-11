@@ -46,7 +46,7 @@
 
 (global-set-key (kbd "C-x r e") 'mc/edit-lines)
 
-(global-set-key (kbd "C-c ;") 'jeg2/insert-header-comment)
+(global-set-key (kbd "C-c #") 'jeg2/insert-header-comment)
 
 (global-set-key (kbd "C-c r")   'replace-string)
 (global-set-key (kbd "C-c R")   'replace-regexp)

@@ -18,6 +18,6 @@
 
 ;; command shortcuts
 (local-set-key (kbd "C-c =") 'jeg2/align=)
-(local-set-key (kbd "C-c e") 'jeg2/close-statement)
+(local-set-key (kbd "C-c ;") 'jeg2/close-statement)
 
 (local-set-key (kbd "C-c o p") 'jeg2/scad-preview)
