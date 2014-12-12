@@ -6,7 +6,7 @@
 (setq fill-column personal-wrap-limit)
 (longlines-mode)
 
-(local-set-key (kbd "C-c v w") 'personal/toggle-wrap)
+(local-set-key (kbd "C-l b w") 'personal/toggle-wrap)
 
 ;; show junk whitespace
 (whitespace-mode)
@@ -18,8 +18,8 @@
   (sp-local-pair "`" "`"))
 
 ;; command shortcuts
-(local-set-key (kbd "C-c `")   'personal/insert-fenced-code-block)
-(local-set-key (kbd "C-c o p") 'personal/markdown-preview)
+(local-set-key (kbd "C-l `")   'personal/insert-fenced-code-block)
+(local-set-key (kbd "C-l o p") 'personal/markdown-preview)
 
 ;; limit the spell checking activated by text-mode
 (setq flyspell-generic-check-word-predicate 'personal/markdown-mode-flyspell-verify)

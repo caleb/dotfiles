@@ -3,7 +3,7 @@
 (setq fci-rule-column personal-wrap-limit)
 (fci-mode)
 
-(local-set-key (kbd "C-c v w") 'fci-mode)
+(local-set-key (kbd "C-l b w") 'fci-mode)
 
 ;; show junk whitespace
 (whitespace-mode)
@@ -28,20 +28,20 @@
 ;; do some spell checking (requires:  brew install aspell --lang=en)
 (flyspell-prog-mode)
 
-(local-set-key (kbd "C-c v s") 'personal/toggle-program-spelling)
+(local-set-key (kbd "C-l b s") 'personal/toggle-program-spelling)
 
 ;; command shortcuts
 (local-set-key (kbd "C-M-n") 'personal/other-window-next-line)
 (local-set-key (kbd "C-M-p") 'personal/other-window-previous-line)
 
-(local-set-key (kbd "C-c =") 'personal/align=)
+(local-set-key (kbd "C-l =") 'personal/align=)
 
-(local-set-key (kbd "C-c t s") 'personal/toggle-string-type)
+(local-set-key (kbd "C-l t s") 'personal/toggle-string-type)
 
-(local-set-key (kbd "C-c t t") 'personal/toggle-ruby-test)
-(local-set-key (kbd "C-c t b") 'personal/toggle-ruby-block-type)
-(local-set-key (kbd "C-c t r") 'personal/toggle-ruby-regex-type)
-(local-set-key (kbd "C-c t S") 'personal/toggle-ruby-string-and-symbol)
-(local-set-key (kbd "C-c t h") 'personal/toggle-ruby-hash-type)
+(local-set-key (kbd "C-l t t") 'personal/toggle-ruby-test)
+(local-set-key (kbd "C-l t b") 'personal/toggle-ruby-block-type)
+(local-set-key (kbd "C-l t r") 'personal/toggle-ruby-regex-type)
+(local-set-key (kbd "C-l t S") 'personal/toggle-ruby-string-and-symbol)
+(local-set-key (kbd "C-l t h") 'personal/toggle-ruby-hash-type)
 
-(local-set-key (kbd "C-c x") 'xmp)  ; (requires:  gem install rcodetools)
+(local-set-key (kbd "C-l x") 'xmp)  ; (requires:  gem install rcodetools)

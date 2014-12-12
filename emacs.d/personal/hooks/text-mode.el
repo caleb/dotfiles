@@ -1,4 +1,4 @@
 ;; check spelling (requires:  brew install aspell --lang=en)
 (flyspell-mode)
 
-(local-set-key (kbd "C-c v s") 'personal/toggle-spelling)
+(local-set-key (kbd "C-l b s") 'personal/toggle-spelling)

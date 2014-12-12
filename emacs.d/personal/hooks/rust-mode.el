@@ -3,7 +3,7 @@
 (setq fci-rule-column personal-wrap-limit)
 (fci-mode)
 
-(local-set-key (kbd "C-c v w") 'fci-mode)
+(local-set-key (kbd "C-l b w") 'fci-mode)
 
 ;; show junk whitespace
 (whitespace-mode)
@@ -20,7 +20,7 @@
 ;; do some spell checking (requires:  brew install aspell --lang=en)
 (flyspell-prog-mode)
 
-(local-set-key (kbd "C-c v s") 'personal/toggle-program-spelling)
+(local-set-key (kbd "C-l b s") 'personal/toggle-program-spelling)
 
 ;; configure compilation
 (set (make-local-variable 'compile-command)
@@ -29,11 +29,11 @@
      nil)
 
 ;; command shortcuts
-(local-set-key (kbd "C-c c") 'compile)
+(local-set-key (kbd "C-l c") 'compile)
 
 (local-set-key (kbd "C-M-n") 'personal/other-window-next-line)
 (local-set-key (kbd "C-M-p") 'personal/other-window-previous-line)
 
-(local-set-key (kbd "C-c =") 'personal/align=)
+(local-set-key (kbd "C-l =") 'personal/align=)
 
-(local-set-key (kbd "C-c t s") 'personal/toggle-string-type)
+(local-set-key (kbd "C-l t s") 'personal/toggle-string-type)
