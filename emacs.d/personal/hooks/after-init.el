@@ -1,6 +1,7 @@
 (global-unset-key (kbd "C-l"))
 (define-prefix-command 'personal-map)
 (global-set-key (kbd "C-l") 'personal-map)
+(global-set-key (kbd "C-l C-l") 'recenter-top-bottom)
 
 ;; frame and window management
 (global-set-key (kbd "C-l f c") 'make-frame-command)
@@ -39,7 +40,7 @@
 ;; unbind some keystrokes
 (global-unset-key (kbd "C-x C-u"))
 (global-unset-key (kbd "C-/"))
-(global-unset-key (kbd "C-x C-b"))
+;; (global-unset-key (kbd "C-x C-b"))
 
 ;; command shortcuts
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -59,7 +60,11 @@
 (global-set-key (kbd "C-l o e") 're-builder)
 
 
+(global-set-key (kbd "C-l -") (lambda ()
+                                (interactive)
+                                (dired (file-name-directory (buffer-file-name)))))
 
+(global-set-key (kbd "C-l .") 'repeat)
 
 (global-set-key (kbd "C-l v e") 'er/expand-region)
 (global-set-key (kbd "C-l v '") 'er/mark-inside-quotes)
@@ -94,3 +99,6 @@
 (global-set-key (kbd "C-l o c") 'calc)
 (global-set-key (kbd "C-l o l") 'ielm)
 (global-set-key (kbd "C-l o i") 'personal/erc-connect)
+
+;; Allow - to go up a directory in dired (like vim)
+(define-key dired-mode-map "-" 'dired-up-directory)

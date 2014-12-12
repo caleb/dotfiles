@@ -13,3 +13,6 @@
 (add-to-list 'auto-mode-alist '("\\.es6\\'"        . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'"        . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.browserify\\'" . js2-mode))
+
+;; CoffeeScript
+(add-to-list 'auto-mode-alist '("\\.cjsx\\'"       . coffee-mode))
