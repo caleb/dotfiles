@@ -62,7 +62,9 @@
 
 (global-set-key (kbd "C-l -") (lambda ()
                                 (interactive)
-                                (dired (file-name-directory (buffer-file-name)))))
+                                (if (buffer-file-name)
+                                    (dired (file-name-directory (buffer-file-name)))
+                                    (dired default-directory))))
 
 (global-set-key (kbd "C-l .") 'repeat)
 

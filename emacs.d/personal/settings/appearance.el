@@ -5,4 +5,4 @@
 (setq inhibit-splash-screen t)
 
 ;; load theme
-(load-theme 'sanityinc-tomorrow-bright t)
+(load-theme 'gruvbox t)
