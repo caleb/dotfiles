@@ -18,7 +18,7 @@
 (add-hook 'god-mode-disabled-hook 'personal/god-mode-cursor)
 
 ;; Use C-i to enter god-mode
-(global-set-key (kbd "C-l g") 'god-local-mode)
+(global-set-key (kbd "C-i") 'god-local-mode)
 ;; Use i to leave god mode
 (define-key god-local-mode-map (kbd "i") 'god-local-mode)
 (define-key god-local-mode-map (kbd ".") 'repeat)
