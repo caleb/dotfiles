@@ -1,6 +1,5 @@
 ;; use spaces instead of tabs
 (setq-default tab-width        2)
-(setq         c-basic-offset   2)
 (setq         tab-stop-list    (number-sequence 2 120 2))
 
 

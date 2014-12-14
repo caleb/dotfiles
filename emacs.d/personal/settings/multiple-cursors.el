@@ -25,6 +25,7 @@
         split-window-horizontally
         split-window-vertically
         mc/mark-next-lines
+        mc/mark-next-like-this
         undo-tree-visualizer-quit
         keyboard-escape-quit
         ))
