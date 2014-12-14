@@ -1,10 +1,7 @@
-(global-unset-key (kbd "C-l"))
-(define-prefix-command 'personal-map)
-(global-set-key (kbd "C-l") 'personal-map)
 (global-set-key (kbd "C-l C-l") 'recenter-top-bottom)
 
 ;; frame and window management
-(personal/bind-key "C-l" "f c" '.make-frame-command)
+(personal/bind-key "C-l" "f c" 'make-frame-command)
 (personal/bind-key "C-l" "f k" 'delete-frame)
 (personal/bind-key "C-l" "f f" (lambda ()
                                   (interactive)

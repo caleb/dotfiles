@@ -1,12 +1,4 @@
-;; Change the modeline in god mode
-(defun personal/god-mode-update-cursor ()
-  (let ((limited-colors-p (> 257 (length (defined-colors)))))
-    (cond (god-local-mode (progn
-                            (set-face-background 'mode-line (if limited-colors-p "white" "#e9e2cb"))
-                            (set-face-background 'mode-line-inactive (if limited-colors-p "white" "#e9e2cb"))))
-          (t (progn
-               (set-face-background 'mode-line (if limited-colors-p "black" "#0a2832"))
-               (set-face-background 'mode-line-inactive (if limited-colors-p "black" "#0a2832")))))))
+(require 'god-mode)
 
 ;; Change the cursor in god mode
 (defun personal/god-mode-cursor ()
@@ -18,7 +10,9 @@
 (add-hook 'god-mode-disabled-hook 'personal/god-mode-cursor)
 
 ;; Use C-i to enter god-mode
-(global-set-key (kbd "C-i") 'god-local-mode)
+(personal/bind-key "C-l" "i" 'god-local-mode)
+(global-set-key (kbd "<escape>") 'god-local-mode)
+
 ;; Use i to leave god mode
 (define-key god-local-mode-map (kbd "i") 'god-local-mode)
 (define-key god-local-mode-map (kbd ".") 'repeat)
