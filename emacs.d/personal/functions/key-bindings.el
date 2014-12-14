@@ -4,6 +4,5 @@
   (let* ((lst (split-string keys " "))
          (ctrl-keys (mapconcat (lambda (key) (concat "C-" key)) lst " ")))
     (global-set-key (kbd (concat prefix " " keys)) binding)
-    (print (concat prefix " " ctrl-keys))
     (global-set-key (kbd (concat prefix " " ctrl-keys)) binding)
    ))
