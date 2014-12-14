@@ -13,6 +13,7 @@
                             multiple-cursors
                             rhtml-mode
                             ruby-compilation
+                            smartrep
                             window-number
                             yagist
                             yasnippet))
@@ -20,3 +21,4 @@
 ;; vendored packages
 (personal/load-init-file "personal/vendor/rcodetools")
 (personal/load-init-file "personal/vendor/scad-mode")
+(personal/load-init-file "personal/vendor/smartrep")
