@@ -68,7 +68,10 @@
 
 (personal/bind-key "C-l" "v e" 'er/expand-region)
 (personal/bind-key "C-l" "v '" 'er/mark-inside-quotes)
-(personal/bind-key "C-l" "v p" 'er/mark-inside-pairs)
+(personal/bind-key "C-l" "v (" 'er/mark-inside-pairs)
+(personal/bind-key "C-l" "v )" 'er/mark-inside-pairs)
+(personal/bind-key "C-l" "v 9" 'er/mark-inside-pairs)
+(personal/bind-key "C-l" "v 0" 'er/mark-inside-pairs)
 (personal/bind-key "C-l" "v m" 'mc/edit-lines)
 
 (personal/bind-key "C-l" "s" 'idomenu)
