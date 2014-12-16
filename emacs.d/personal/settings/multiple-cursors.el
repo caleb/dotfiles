@@ -20,6 +20,7 @@
         (add-to-list 'mc/cmds-to-run-once cmd))
       '(
         god-mode
+        god-mode-all
         god-local-mode
         helm-confirm-and-exit-minibuffer
         split-window-horizontally
