@@ -16,4 +16,5 @@
       (define-key input-decode-map
         [?\e] `(menu-item "" ,esc-binding :filter personal/-tty-ESC-filter)))))
 
+(add-hook 'server-visit-hook 'personal/catch-tty-ESC)
 (personal/catch-tty-ESC)
