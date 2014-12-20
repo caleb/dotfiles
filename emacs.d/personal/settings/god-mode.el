@@ -16,3 +16,14 @@
 ;; Use i to leave god mode
 (define-key god-local-mode-map (kbd "i") 'god-mode-all)
 (define-key god-local-mode-map (kbd ".") 'repeat)
+
+;; Disable smartparens mode while god-mode is enabled (smartparens mode rebinds
+;; many keys to do its magic, including "n" which interferes with the use of
+;; god-mode)
+(add-hook 'god-mode-enabled-hook (lambda ()
+                                   (interactive)
+                                   (smartparens-mode -1)))
+
+(add-hook 'god-mode-disabled-hook (lambda ()
+                                    (interactive)
+                                    (smartparens-mode +1)))
