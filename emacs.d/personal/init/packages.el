@@ -1,4 +1,5 @@
 (prelude-require-packages '(ag
+                            aggressive-indent
                             helm-ag
                             color-theme-sanityinc-tomorrow
                             gruvbox-theme
