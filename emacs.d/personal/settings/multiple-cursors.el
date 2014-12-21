@@ -14,6 +14,7 @@
         (add-to-list 'mc/cmds-to-run-for-all cmd))
       '(
         sp--self-insert-command
+        god-mode-self-insert
         ))
 
 (mapc (lambda (cmd)
@@ -28,5 +29,6 @@
         mc/mark-next-lines
         mc/mark-next-like-this
         undo-tree-visualizer-quit
+        undo-tree-visualize
         keyboard-escape-quit
         ))
