@@ -15,6 +15,7 @@
       '(
         sp--self-insert-command
         god-mode-self-insert
+        prelude-move-beginning-of-line
         ))
 
 (mapc (lambda (cmd)
