@@ -9,7 +9,6 @@
         (add-to-list 'mc/cmds-to-run-for-all cmd))
       '(
         sp--self-insert-command
-        god-mode-self-insert
         prelude-move-beginning-of-line
         ))
 
@@ -19,6 +18,7 @@
         god-mode
         god-mode-all
         god-local-mode
+        god-mode-self-insert
         helm-confirm-and-exit-minibuffer
         split-window-horizontally
         split-window-vertically
