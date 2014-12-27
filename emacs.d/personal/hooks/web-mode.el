@@ -1,4 +1,6 @@
-(setq js2-basic-offset 2)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
 ;; show wrap guide
 (require 'fill-column-indicator)
@@ -23,11 +25,3 @@
 (local-set-key (kbd "C-l ;") 'personal/close-statement)
 
 (local-set-key (kbd "C-l t s") 'personal/toggle-string-type)
-
-;; Include node globals to prevent warnings about undeclared functions/variables
-;; (e.g. require/module)
-(setq js2-include-node-externs t)
-
-;; js2-refactor
-(require 'js2-refactor)
-(js2r-add-keybindings-with-prefix "C-l C-l r")

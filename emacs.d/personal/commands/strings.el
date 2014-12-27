@@ -6,11 +6,11 @@
                        "\"\\(?:\\\\\\\\\\|\\\\\.\\|[^\"\\]+\\)*\""
                        "\\|"
                        "'\\(?:\\\\\\\\\\|\\\\\.\\|[^'\\]+\\)*'"
-                       (if (not (eq major-mode 'js-mode))
-                           (concat
-                            "\\|"
-                            "%Q{.*}"  ; FIXME:  sometimes fails
-                            )
+                       (if (not (or (eq major-mode 'js-mode)
+                                    (eq major-mode 'js2-mode)))
+                           (concat "\\|"
+                                   "%Q{.*}"  ; FIXME:  sometimes fails
+                                   )
                          "")
                        "\\)\\'")))
     (while (or (not (region-active-p))
@@ -40,8 +40,8 @@
                  (let ((old_point (point)))
                    (insert (concat "'"
                                    (personal/regex-replace (substring matched 1 -1)
-                                                        "'"
-                                                        "\\\\'")
+                                                           "'"
+                                                           "\\\\'")
                                    "'"))
                    (goto-char (+ old_point 1))))
                 ((string= (substring matched 0 1) "'")
@@ -50,10 +50,10 @@
                    (insert (concat "\""
                                    (personal/regex-replace-all
                                     (personal/regex-replace-all (substring matched
-                                                                        1
-                                                                        -1)
-                                                             "\\\\\'"
-                                                             "'")
+                                                                           1
+                                                                           -1)
+                                                                "\\\\\'"
+                                                                "'")
                                     "\""
                                     "\\\\\"")
                                    "\""))
@@ -63,7 +63,7 @@
                  (let ((old_point (point)))
                    (insert (concat "'"
                                    (personal/regex-replace (substring matched 3 -1)
-                                                        "'"
-                                                        "\\\\'")
+                                                           "'"
+                                                           "\\\\'")
                                    "'"))
                    (goto-char (+ old_point 1)))))))))
