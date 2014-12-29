@@ -22,4 +22,4 @@
 ;; command shortcuts
 (local-set-key (kbd "C-l =") 'personal/align=)
 
-(local-set-key (kbd "C-l t s") 'personal/toggle-string-type)
+(local-set-key (kbd "C-l t s") 'toggle-quotes)

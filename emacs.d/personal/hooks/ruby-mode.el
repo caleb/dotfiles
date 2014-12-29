@@ -36,7 +36,7 @@
 
 (local-set-key (kbd "C-l =") 'personal/align=)
 
-(local-set-key (kbd "C-l t s") 'personal/toggle-string-type)
+(local-set-key (kbd "C-l t s") 'toggle-quotes)
 
 (local-set-key (kbd "C-l t t") 'personal/toggle-ruby-test)
 (local-set-key (kbd "C-l t b") 'personal/toggle-ruby-block-type)

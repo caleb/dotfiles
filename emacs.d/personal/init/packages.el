@@ -15,6 +15,7 @@
                             rhtml-mode
                             ruby-compilation
                             smartrep
+                            toggle-quotes
                             window-number
                             yagist
                             yasnippet))
