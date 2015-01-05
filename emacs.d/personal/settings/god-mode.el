@@ -27,3 +27,6 @@
 (add-hook 'god-mode-disabled-hook (lambda ()
                                     (interactive)
                                     (smartparens-mode +1)))
+
+; Enable God mode by default
+(god-mode-all)

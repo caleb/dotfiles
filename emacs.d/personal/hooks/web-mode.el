@@ -15,6 +15,18 @@
 ;; activate character pairing
 (smartparens-mode)
 
+(setq web-mode-enable-auto-pairing nil) ; Disable web-mode auto pairing
+
+; Set up smart parens auto pairing
+(defun sp-web-mode-is-code-context (id action context)
+  (when (and (eq action 'insert)
+             (not (or (get-text-property (point) 'part-side)
+                      (get-text-property (point) 'block-side))))
+
+    t))
+
+(sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
+
 ;; do some spell checking (requires:  brew install aspell --lang=en)
 (flyspell-prog-mode)
 
