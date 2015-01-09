@@ -15,9 +15,10 @@
 ;; activate character pairing
 (smartparens-mode)
 
-(setq web-mode-enable-auto-pairing nil) ; Disable web-mode auto pairing
+;; Disable web-mode auto pairing
+(setq web-mode-enable-auto-pairing nil)
 
-; Set up smart parens auto pairing
+;; Set up smart parens auto pairing
 (defun sp-web-mode-is-code-context (id action context)
   (when (and (eq action 'insert)
              (not (or (get-text-property (point) 'part-side)
