@@ -2,31 +2,21 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 
-;; show wrap guide
+;; show wrap guide (this causes problems with web-mode,
+;; so it's turned off by default)
 (require 'fill-column-indicator)
 (setq fci-rule-column personal-wrap-limit)
-(fci-mode)
+;; (fci-mode)
 
 (local-set-key (kbd "C-l b w") 'fci-mode)
 
+;; Emacs, by default, wraps lines. The fci-mode above unwraps lines, which is
+;; what we want, but since we can't use fci-mode we have to manually turn off
+;; wrapping
+(toggle-truncate-lines)
+
 ;; show junk whitespace
 (whitespace-mode)
-
-;; activate character pairing
-(smartparens-mode)
-
-;; Disable web-mode auto pairing
-(setq web-mode-enable-auto-pairing nil)
-
-;; Set up smart parens auto pairing
-(defun sp-web-mode-is-code-context (id action context)
-  (when (and (eq action 'insert)
-             (not (or (get-text-property (point) 'part-side)
-                      (get-text-property (point) 'block-side))))
-
-    t))
-
-(sp-local-pair 'web-mode "<" nil :when '(sp-web-mode-is-code-context))
 
 ;; do some spell checking (requires:  brew install aspell --lang=en)
 (flyspell-prog-mode)
