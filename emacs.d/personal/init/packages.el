@@ -4,6 +4,7 @@
                             color-theme-sanityinc-tomorrow
                             gruvbox-theme
                             solarized-theme
+                            monokai-theme
                             evil-args
                             evil-jumper
                             evil-matchit
