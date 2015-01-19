@@ -1,5 +1,7 @@
 (setq js2-basic-offset 2)
 
+(hs-minor-mode)
+
 ;; show wrap guide
 (require 'fill-column-indicator)
 (setq fci-rule-column personal-wrap-limit)

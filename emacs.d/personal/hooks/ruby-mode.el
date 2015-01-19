@@ -1,3 +1,10 @@
+(hs-minor-mode)
+
+(add-to-list 'hs-special-modes-alist
+             '(ruby-mode
+               "\\(def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+               (lambda (arg) (ruby-end-of-block)) nil))
+
 ;; show wrap guide
 (require 'fill-column-indicator)
 (setq fci-rule-column personal-wrap-limit)
