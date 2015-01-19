@@ -14,6 +14,7 @@
 (personal/bind-key "C-l" "f v" 'split-window-horizontally)
 (personal/bind-key "C-l" "f q" 'delete-window)
 (personal/bind-key "C-l" "f Q" 'kill-buffer-and-window)
+(personal/bind-key "C-l" "f 1" 'delete-other-windows)
 (personal/bind-key "C-l" "f o" (lambda ()
                                   (interactive)
                                   (other-window -1)))
@@ -100,6 +101,9 @@
 (personal/bind-key "C-l" "o c" 'calc)
 (personal/bind-key "C-l" "o l" 'ielm)
 (personal/bind-key "C-l" "o i" 'personal/erc-connect)
+
+;; Make some common actions easier to activate with god-mode
+(global-set-key (kbd "C-x C-1") #'delete-other-windows)
 
 ;; Allow - to go up a directory in dired (like vim)
 (define-key dired-mode-map "-" 'dired-up-directory)
