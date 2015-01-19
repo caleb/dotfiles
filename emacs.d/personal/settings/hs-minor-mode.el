@@ -1,5 +1,5 @@
-(personal/bind-key "C-l" "z C" 'hs-hide-all)
-(personal/bind-key "C-l" "z O" 'hs-show-all)
+(personal/bind-key "C-l" "z M-c" 'hs-hide-all)
+(personal/bind-key "C-l" "z M-o" 'hs-show-all)
 
 (personal/bind-key "C-l" "z c" 'hs-hide-block)
 (personal/bind-key "C-l" "z o" 'hs-show-block)
