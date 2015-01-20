@@ -86,6 +86,7 @@
 (personal/bind-key "C-l" "h" 'personal/htmlify-buffer-light)
 
 (personal/bind-key "C-l" "g g" 'magit-status)
+(personal/bind-key "C-l" "g l" 'magit-log)
 (personal/bind-key "C-l" "g b" 'vc-annotate)
 (personal/bind-key "C-l" "g p" 'yagist-region-or-buffer)
 
