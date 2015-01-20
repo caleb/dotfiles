@@ -13,12 +13,24 @@
 (display-time)
 
 ;; Setup Smart Mode Line
+(setq sml/no-confirm-load-theme t)
 (sml/setup)
 
 (setq rm-blacklist '(" ws" " Helm" " guru" " Fly" " company" " Pre" " SP/s" " SP"))
 
 (setq rm-text-properties
-      '(("\\` GOD \\'" 'face 'font-lock-warning-face)))
+      '(("\\`GOD\\'" 'face 'font-lock-keyword-face)))
+
+;; Change the mode-line in god mode
+(defun personal/god-mode-mode-line ()
+  "Set the mode line to indicate whether god-mode is enabled."
+  (if god-local-mode
+      (progn (set-face-background 'mode-line "black"))
+    (progn (set-face-background 'mode-line "#5f0000"))))
+
+(add-hook 'god-mode-enabled-hook 'personal/god-mode-mode-line)
+(add-hook 'god-mode-disabled-hook 'personal/god-mode-mode-line)
+
 
 ;; Clean up the projectile mode line
 (setq projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name))))
@@ -29,9 +41,9 @@
     (yas/minor-mode . " υ")
     (yas-minor-mode . " υ")
     (paredit-mode . " π")
-    (god-mode . " GOD ")
-    (god-mode-all . " GOD ")
-    (god-local-mode . " GOD ")
+    (god-mode . "GOD")
+    (god-mode-all . "GOD")
+    (god-local-mode . "GOD")
 
     ;; Major modes
     (lisp-interaction-mode . "λ")
