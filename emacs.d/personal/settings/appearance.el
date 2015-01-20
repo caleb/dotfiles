@@ -5,7 +5,7 @@
 (setq inhibit-splash-screen t)
 
 ;; load theme
-(load-theme 'gruvbox t)
+(load-theme 'monokai t)
 
 ;; Speed up the performance of the display engine.
 ;; See http://www.masteringemacs.org/article/improving-performance-emacs-display-engine

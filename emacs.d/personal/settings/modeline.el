@@ -4,7 +4,10 @@
       display-time-24hr-format  t)
 (display-time)
 
-;; Clean up the modeline a little bit
+;; Clean up the projectile mode line
+(setq projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name))))
+
+;; Clean up other mode line items
 (defvar personal/mode-line-cleaner-alist
   `((auto-complete-mode . " α")
     (yas/minor-mode . " υ")
@@ -34,7 +37,6 @@ When you add a new element to the alist, keep in mind that you
 must pass the correct minor/major mode symbol and a string you
 want to use in the modeline *in lieu of* the original.")
 
-
 (defun personal/clean-mode-line ()
   (interactive)
   (loop for cleaner in personal/mode-line-cleaner-alist
@@ -46,9 +48,6 @@ want to use in the modeline *in lieu of* the original.")
              ;; major mode
              (when (eq mode major-mode)
                (setq mode-name mode-str)))))
-
-;; Clean up the projectile mode line
-(setq projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name))))
 
 (add-hook 'after-change-major-mode-hook 'personal/clean-mode-line)
 
