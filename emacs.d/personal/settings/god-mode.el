@@ -33,7 +33,7 @@
         (set-face-attribute 'sml/filename nil :inherit 'sml/global :foreground "#eab700"  :weight 'bold)
         (set-face-attribute 'sml/prefix nil :inherit 'sml/global :foreground "#bf6000")
         (set-face-attribute 'sml/read-only nil :inherit 'sml/global :foreground "DeepSkyBlue")
-        ; (set-face-attribute 'persp-selected-face nil :foreground "ForestGreen" :inherit 'sml/filename)
+        ;; (set-face-attribute 'persp-selected-face nil :foreground "ForestGreen" :inherit 'sml/filename)
         (set-face-attribute 'helm-candidate-number nil :foreground nil :background nil :inherit 'sml/filename))
     (progn
       (set-face-attribute 'mode-line-buffer-id nil :inherit 'sml/filename :foreground nil :background nil)
