@@ -16,6 +16,8 @@
                             rhtml-mode
                             ruby-compilation
                             smartrep
+                            smart-mode-line
+                            smart-mode-line-powerline-theme
                             toggle-quotes
                             window-number
                             yagist

@@ -12,6 +12,14 @@
       display-time-24hr-format  t)
 (display-time)
 
+;; Setup Smart Mode Line
+(sml/setup)
+
+(setq rm-blacklist '(" ws" " Helm" " guru" " Fly" " company" " Pre" " SP/s" " SP"))
+
+(setq rm-text-properties
+      '(("\\` GOD \\'" 'face 'font-lock-warning-face)))
+
 ;; Clean up the projectile mode line
 (setq projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name))))
 
@@ -21,21 +29,12 @@
     (yas/minor-mode . " υ")
     (yas-minor-mode . " υ")
     (paredit-mode . " π")
-    (god-mode . " GOD")
-    (god-mode-all . " GOD")
-    (god-local-mode . " GOD")
-    (whitespace-mode . "")
-    (eldoc-mode . "")
-    (abbrev-mode . "")
-    (helm-mode . "")
-    (global-company-mode . "")
-    (company-mode . "")
-    (guru-mode . "")
-    (guru-global-mode . "")
+    (god-mode . " GOD ")
+    (god-mode-all . " GOD ")
+    (god-local-mode . " GOD ")
 
     ;; Major modes
     (lisp-interaction-mode . "λ")
-    (hi-lock-mode . "")
     (python-mode . "Py")
     (emacs-lisp-mode . "EL")
     (nxhtml-mode . "nx"))
@@ -75,4 +74,4 @@ want to use in the modeline *in lieu of* the original.")
     (setq flymake-mode-line mode-line)
     (force-mode-line-update)))
 
-;;; markdown.el ends here
+;;; modeline.el ends here
