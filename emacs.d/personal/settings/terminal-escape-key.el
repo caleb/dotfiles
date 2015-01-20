@@ -1,3 +1,11 @@
+;;; terminal-escape-key.el --- Sets up the escape key to work in bindings in terminal mode
+
+;;; Commentary:
+
+;; Sets up the escape key to work in bindings in terminal mode
+
+;;; Code:
+
 (defvar personal/fast-keyseq-timeout 200)
 
 (defun personal/-tty-ESC-filter (map)
@@ -18,3 +26,5 @@
 
 (add-hook 'server-visit-hook 'personal/catch-tty-ESC)
 (personal/catch-tty-ESC)
+
+;;; terminal-escape-key.el ends here

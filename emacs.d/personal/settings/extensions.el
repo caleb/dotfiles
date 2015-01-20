@@ -1,3 +1,11 @@
+;;; extensions.el --- Settings related to file extensions
+
+;;; Commentary:
+
+;; Settings related to file extensions
+
+;;; Code:
+
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.markdn\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.mdown\\'"  . markdown-mode))
@@ -10,3 +18,5 @@
 
 ;; CoffeeScript
 (add-to-list 'auto-mode-alist '("\\.cjsx\\'"       . coffee-mode))
+
+;;; extensions.el ends here

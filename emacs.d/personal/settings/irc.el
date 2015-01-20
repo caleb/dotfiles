@@ -1,3 +1,11 @@
+;;; irc.el --- Settings for irc
+
+;;; Commentary:
+
+;; Settings for irc
+
+;;; Code:
+
 ;; tracking exclusions
 (setq erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE"
                                 "324" "329" "332" "333" "353" "477"))
@@ -9,3 +17,5 @@
 (add-hook 'erc-insert-post-hook 'erc-truncate-buffer)
 
 (setq erc-truncate-buffer-on-save t)
+
+;;; irc.el ends here

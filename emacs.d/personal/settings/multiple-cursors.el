@@ -1,3 +1,11 @@
+;;; multiple-cursors.el --- Settings for multiple-cursors
+
+;;; Commentary:
+
+;; Settings for multiple-cursors
+
+;;; Code:
+
 (require 'multiple-cursors)
 
 (smartrep-define-key global-map "C-l v" '(("n" . 'mc/mark-next-lines)
@@ -28,3 +36,5 @@
         undo-tree-visualize
         keyboard-escape-quit
         ))
+
+;;; multiple-cursors.el ends here

@@ -1,7 +1,16 @@
+;;; god-mode.el --- Settings for god-mode
+
+;;; Commentary:
+
+;; Settings for god-mode
+
+;;; Code:
+
 (require 'god-mode)
 
 ;; Change the cursor in god mode
 (defun personal/god-mode-cursor ()
+  "Set the cursor type to indicate whether god-mode is enabled."
   (setq cursor-type (if (or god-local-mode buffer-read-only)
                         'box
                       'bar)))
@@ -30,3 +39,5 @@
 
 ; Enable God mode by default
 (god-mode-all)
+
+;;; god-mode.el ends here

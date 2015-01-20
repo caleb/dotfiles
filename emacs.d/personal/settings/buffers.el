@@ -1,3 +1,11 @@
+;;; buffers.el --- Settings related to buffers
+
+;;; Commentary:
+
+;; Settings related to buffers
+
+;;; Code:
+
 ;; shut off the scratch buffer (I use ielm when needed)
 (kill-buffer "*scratch*")
 
@@ -7,3 +15,5 @@
 ;; use the directory when buffer names clash
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+;;; buffers.el ends here

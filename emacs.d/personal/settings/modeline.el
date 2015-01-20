@@ -1,3 +1,11 @@
+;;; markdown.el --- Configures the modeline
+
+;;; Commentary:
+
+;; Configures the modeline
+
+;;; Code:
+
 (column-number-mode 1)
 
 (setq display-time-day-and-date t
@@ -66,3 +74,5 @@ want to use in the modeline *in lieu of* the original.")
     (setq mode-line (concat mode-line flymake-mode-line-status))
     (setq flymake-mode-line mode-line)
     (force-mode-line-update)))
+
+;;; markdown.el ends here

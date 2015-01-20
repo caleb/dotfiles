@@ -1,3 +1,11 @@
+;;; appearance.el --- Settings related to Emacs appearance
+
+;;; Commentary:
+
+;; Settings related to Emacs appearance
+
+;;; Code:
+
 ;; hide the menu bar
 (menu-bar-mode 0)
 
@@ -10,3 +18,5 @@
 ;; Speed up the performance of the display engine.
 ;; See http://www.masteringemacs.org/article/improving-performance-emacs-display-engine
 (setq redisplay-dont-pause t)
+
+;;; appearance.el ends here
