@@ -2,6 +2,10 @@
 
 (hs-minor-mode)
 
+(when (and (stringp buffer-file-name)
+           (string-match "\\.jsx\\'" buffer-file-name))
+  (aggressive-indent-mode -1))
+
 ;; show wrap guide
 (require 'fill-column-indicator)
 (setq fci-rule-column personal-wrap-limit)
