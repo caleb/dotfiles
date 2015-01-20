@@ -21,6 +21,7 @@
                                           ("S" . 'mc/skip-to-previous-like-this)
                                           ("*" . 'mc/mark-all-like-this)
                                           ("d" . 'mc/mark-all-like-this-dwim)
+                                          ("e" . 'mc/edit-lines)
                                           ("i" . 'mc/insert-numbers)
                                           ("o" . 'mc/sort-regions)
                                           ("O" . 'mc/reverse-regions)))
