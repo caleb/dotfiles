@@ -13,6 +13,8 @@
                             js2-refactor
                             paredit
                             multiple-cursors
+                            nlinum
+                            powerline
                             rhtml-mode
                             ruby-compilation
                             smartrep

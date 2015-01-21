@@ -96,7 +96,7 @@
 (personal/bind-key "C-l" "w w" 'fixup-whitespace)
 (personal/bind-key "C-l" "SPC" 'personal/fix-all-whitespace)
 
-(personal/bind-key "C-l" "b l" 'linum-mode)
+(personal/bind-key "C-l" "b l" 'nlinum-mode)
 
 (personal/bind-key "C-l" "o r" 'inf-ruby)
 (personal/bind-key "C-l" "o R" 'personal/rails-console)

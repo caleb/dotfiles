@@ -1,0 +1,1 @@
+(setq nlinum-format "%d ")

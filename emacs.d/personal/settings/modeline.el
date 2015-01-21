@@ -23,16 +23,6 @@
 (setq rm-text-properties
       '(("\\` GOD\\'" 'face 'font-lock-keyword-face)))
 
-;; Change the mode-line in god mode
-(defun personal/god-mode-mode-line ()
-  "Set the mode line to indicate whether god-mode is enabled."
-  (if god-local-mode
-      (progn (set-face-background 'mode-line "#1d2021"))
-    (progn (set-face-background 'mode-line "#5f0000"))))
-
-(add-hook 'god-mode-enabled-hook 'personal/god-mode-mode-line)
-(add-hook 'god-mode-disabled-hook 'personal/god-mode-mode-line)
-
 
 ;; Clean up the projectile mode line
 (setq projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name))))
