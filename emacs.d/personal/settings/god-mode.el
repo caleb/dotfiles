@@ -18,16 +18,6 @@
 (add-hook 'god-mode-enabled-hook 'personal/god-mode-cursor)
 (add-hook 'god-mode-disabled-hook 'personal/god-mode-cursor)
 
-;; Change the mode-line in god mode
-(defun personal/god-mode-mode-line ()
-  "Set the mode line to indicate whether god-mode is enabled."
-  (if god-local-mode
-      (progn (set-face-background 'mode-line "#1d2021"))
-    (progn (set-face-background 'mode-line "#5f0000"))))
-
-(add-hook 'god-mode-enabled-hook 'personal/god-mode-mode-line)
-(add-hook 'god-mode-disabled-hook 'personal/god-mode-mode-line)
-
 ;; Use C-i to enter god-mode
 (personal/bind-key "C-l" "i" 'god-mode-all)
 (global-set-key (kbd "<escape>") 'god-mode-all)
