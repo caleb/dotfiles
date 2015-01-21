@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-;; tracking exclusions
+(require 'nlinum)
 (setq nlinum-format " %d ")
 
 ;; Set the linum background color to be the same as the background in gruvbox
