@@ -17,6 +17,7 @@
                             rhtml-mode
                             ruby-compilation
                             smartrep
+                            nyan-mode
                             toggle-quotes
                             window-number
                             yagist
