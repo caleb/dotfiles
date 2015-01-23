@@ -1,29 +1,33 @@
-(prelude-require-packages '(ag
+(prelude-require-packages '(
+                            ag
                             aggressive-indent
-                            helm-ag
+                            chruby
                             color-theme-sanityinc-tomorrow
-                            gruvbox-theme
-                            solarized-theme
-                            monokai-theme
                             evil-args
                             evil-jumper
                             evil-matchit
                             evil-nerd-commenter
                             fill-column-indicator
+                            flycheck-rust
+                            gruvbox-theme
+                            helm-ag
                             js2-refactor
-                            paredit
+                            monokai-theme
                             multiple-cursors
                             nlinum
-                            rhtml-mode
-                            rust-mode
-                            flycheck-rust
-                            ruby-compilation
-                            smartrep
                             nyan-mode
+                            paredit
+                            projectile-rails
+                            rhtml-mode
+                            ruby-compilation
+                            rust-mode
+                            smartrep
+                            solarized-theme
                             toggle-quotes
                             window-number
                             yagist
-                            yasnippet))
+                            yasnippet
+                            ))
 
 ;; vendored packages
 (personal/load-init-file "personal/vendor/rcodetools")
