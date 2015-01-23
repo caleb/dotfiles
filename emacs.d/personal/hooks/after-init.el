@@ -108,6 +108,8 @@
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 (global-set-key (kbd "C-x C-k") #'ido-kill-buffer)
 
+(global-set-key (kbd "C-c C-d") #'prelude-duplicate-current-line-or-region)
+(global-set-key (kbd "C-x C-e") #'eval-last-sexp)
 
 ;; Allow - to go up a directory in dired (like vim)
 (define-key dired-mode-map "-" 'dired-up-directory)

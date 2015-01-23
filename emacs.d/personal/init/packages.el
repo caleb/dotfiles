@@ -15,6 +15,8 @@
                             multiple-cursors
                             nlinum
                             rhtml-mode
+                            rust-mode
+                            flycheck-rust
                             ruby-compilation
                             smartrep
                             nyan-mode
