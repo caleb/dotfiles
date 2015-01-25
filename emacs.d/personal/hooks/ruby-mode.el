@@ -18,6 +18,14 @@
 ;; activate character pairing
 (smartparens-mode)
 
+(add-to-list 'hs-special-modes-alist
+             '(ruby-mode
+               "\\(def\\|do\\)"
+               "end"
+               "#"
+               (lambda (arg) (ruby-end-of-block))
+               nil))
+
 (sp-with-modes (list major-mode)
   ; remove pairs I use snippets for
   (sp-local-pair "do"     nil :actions :rem)
