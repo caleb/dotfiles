@@ -36,4 +36,4 @@
 
 ;; js2-refactor
 (require 'js2-refactor)
-(js2r-add-keybindings-with-prefix "C-l C-l r")
+(js2r-add-keybindings-with-prefix "C-l C-r r")
