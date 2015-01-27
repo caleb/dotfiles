@@ -3,6 +3,7 @@
                             aggressive-indent
                             chruby
                             color-theme-sanityinc-tomorrow
+                            nginx-mode
                             evil-args
                             evil-jumper
                             evil-matchit
