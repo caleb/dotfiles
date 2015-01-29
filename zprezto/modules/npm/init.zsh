@@ -13,7 +13,10 @@ _npm_bin_path=$(which npm)
 _npm_bin_path="${${_npm_bin_path:h}:h}/share/npm/bin"
 
 if [[ ! -d $_npm_bin_path ]]; then
-  _npm_bin_path=`npm bin -g 2>/dev/null`
+  # Only add the npm bin path to the path if it isn't already in the path
+  if [[ -z "${(M)path:#${_npm_bin_path}}" ]]; then
+    _npm_bin_path=`npm bin -g 2>/dev/null`
+  fi
 fi
 
 path=($_npm_bin_path $path)
