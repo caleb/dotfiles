@@ -8,10 +8,13 @@ if (( ! $+commands[boot2docker] )); then
   return 1
 fi
 
-local status=$(boot2docker status)
-if [[ "${status}" = "running" ]]; then
+boot2docker_status=$(boot2docker status)
+
+if [[ "${boot2docker_status}" = "running" ]]; then
   $(boot2docker shellinit)
 fi
+
+unset boot2docker_status
 
 alias b2d=boot2docker
 alias dockit=docker run -it --rm
