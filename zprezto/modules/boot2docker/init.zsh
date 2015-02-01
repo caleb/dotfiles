@@ -17,4 +17,4 @@ fi
 unset boot2docker_status
 
 alias b2d=boot2docker
-alias dockit=docker run -it --rm
+alias dockit="docker run -it --rm"
