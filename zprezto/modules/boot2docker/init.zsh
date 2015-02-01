@@ -11,7 +11,7 @@ fi
 boot2docker_status=$(boot2docker status)
 
 if [[ "${boot2docker_status}" = "running" ]]; then
-  $(boot2docker shellinit)
+  $(boot2docker shellinit > /dev/null 2>&1)
 fi
 
 unset boot2docker_status
