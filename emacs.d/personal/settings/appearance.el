@@ -22,4 +22,7 @@
 ;; See http://www.masteringemacs.org/article/improving-performance-emacs-display-engine
 (setq redisplay-dont-pause t)
 
+(set-face-attribute 'default nil
+                    :family "Inconsolata" :height 160 :weight 'regular)
+
 ;;; appearance.el ends here
