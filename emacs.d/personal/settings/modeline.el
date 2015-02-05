@@ -193,14 +193,14 @@ want to use in the modeline *in lieu of* the original.")
                       :weight 'bold)
   (set-face-attribute 'mode-line-position-face nil
                       :inherit 'mode-line-face
-                      :family "Menlo" :height 100)
+                      :family "Menlo" :height 120)
   (set-face-attribute 'mode-line-mode-face nil
                       :inherit 'mode-line-face
                       :foreground "gray80")
   (set-face-attribute 'mode-line-minor-mode-face nil
                       :inherit 'mode-line-mode-face
                       :foreground "gray40"
-                      :height 110)
+                      :height 130)
   (set-face-attribute 'mode-line-process-face nil
                       :inherit 'mode-line-face
                       :foreground "#718c00")
