@@ -16,7 +16,14 @@
 (setq inhibit-splash-screen t)
 
 ;; load theme
-(load-theme 'gruvbox t)
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+                (load-theme 'gruvbox t)
+                (personal/reset-mode-line)))
+  (load-theme 'gruvbox t)
+  (personal/reset-mode-line))
 
 ;; Speed up the performance of the display engine.
 ;; See http://www.masteringemacs.org/article/improving-performance-emacs-display-engine
