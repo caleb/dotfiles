@@ -22,8 +22,7 @@
                 (select-frame frame)
                 (load-theme 'gruvbox t)
                 (personal/reset-mode-line)))
-  (load-theme 'gruvbox t)
-  (personal/reset-mode-line))
+  (load-theme 'gruvbox t))
 
 ;; Speed up the performance of the display engine.
 ;; See http://www.masteringemacs.org/article/improving-performance-emacs-display-engine
