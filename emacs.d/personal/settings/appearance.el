@@ -16,12 +16,16 @@
 (setq inhibit-splash-screen t)
 
 ;; load theme
+(setq personal/theme-loaded-p nil)
 (if (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)
-                (select-frame frame)
-                (load-theme 'gruvbox t)
-                (personal/reset-mode-line)))
+                (if (not personal/theme-loaded-p)
+                    (progn
+                      (setq personal/theme-loaded-p t)
+                      (select-frame frame)
+                      (load-theme 'gruvbox t)
+                      (personal/reset-mode-line)))))
   (load-theme 'gruvbox t))
 
 ;; Speed up the performance of the display engine.
