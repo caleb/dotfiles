@@ -27,5 +27,6 @@
 (local-set-key (kbd "C-l =") 'personal/align=)
 (local-set-key (kbd "C-l ;") 'personal/close-statement)
 (local-set-key (kbd "C-l /") 'web-mode-comment-or-uncomment)
+(local-set-key (kbd "C-l C-/") 'web-mode-comment-or-uncomment)
 
 (local-set-key (kbd "C-l t s") 'toggle-quotes)
