@@ -7,7 +7,6 @@
     (load file noerror)))
 
 ;; load configuration settings by type
-(personal/load-init-file "personal/init/freshen")
 (personal/load-init-file "personal/init/system")
 (personal/load-init-file "personal/init/autoloads")
 (personal/load-init-file "personal/init/packages")
