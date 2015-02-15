@@ -3,7 +3,8 @@
 
 (require 'find-lisp)
 
-(setq personal-autoload-file (concat user-emacs-directory "loaddefs.el"))
+(defvar personal-autoload-file nil)
+(setq personal-autoload-file (concat user-emacs-directory "personal" "/" "loaddefs.el"))
 
 (defun personal/autoload-directories (directories)
   "Regenerate the autoload definitions file if necessary and load it."
@@ -32,7 +33,7 @@
   (personal/autoload-directories
    (mapcar (lambda (directory) (concat user-emacs-directory directory "/"))
            '("personal/functions" "personal/commands")))
-  (add-to-list 'load-path user-emacs-directory t)
+  (add-to-list 'load-path (concat user-emacs-directory "personal" "/") t)
   (load personal-autoload-file))
 
 (personal/prepare-autoloads)

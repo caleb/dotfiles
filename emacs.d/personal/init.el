@@ -1,4 +1,4 @@
-;; JEG2's Emacs configuration
+;; Caleb's Emacs configuration
 
 (defun personal/load-init-file (path &optional noerror)
   "This loads a file from inside the the .emacs.d directory"
@@ -10,6 +10,5 @@
 (personal/load-init-file "personal/init/system")
 (personal/load-init-file "personal/init/autoloads")
 (personal/load-init-file "personal/init/packages")
-(personal/load-init-file "personal/init/compile")
 (personal/load-init-file "personal/init/autohooks")
 (personal/load-init-file "personal/init/settings")
