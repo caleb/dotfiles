@@ -1,4 +1,4 @@
-(global-set-key (kbd "C-l C-l") 'recenter-top-bottom)
+(personal/bind-key "C-l" "c" 'recenter-top-bottom)
 
 ;; frame and window management
 (personal/bind-key "C-l" "f c" 'make-frame-command)
@@ -22,6 +22,11 @@
 (personal/bind-key "C-l" "f o" (lambda ()
                                  (interactive)
                                  (other-window -1)))
+
+(smartrep-define-key global-map "C-l f w" '(("n" . 'window-jump-down)
+                                            ("p" . 'window-jump-up)
+                                            ("f" . 'window-jump-right)
+                                            ("b" . 'window-jump-left)))
 
 (global-set-key (kbd "C-M-n") 'personal/other-window-next-line)
 (global-set-key (kbd "C-M-p") 'personal/other-window-previous-line)

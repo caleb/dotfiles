@@ -9,6 +9,7 @@
                             evil-nerd-commenter
                             fill-column-indicator
                             flycheck-rust
+                            frame-cmds
                             gruvbox-theme
                             helm-ag
                             js2-refactor
@@ -26,6 +27,7 @@
                             smartrep
                             solarized-theme
                             toggle-quotes
+                            window-jump
                             window-number
                             yagist
                             yasnippet
@@ -34,4 +36,3 @@
 ;; vendored packages
 (personal/load-init-file "personal/vendor/rcodetools")
 (personal/load-init-file "personal/vendor/scad-mode")
-(personal/load-init-file "personal/vendor/smartrep")
