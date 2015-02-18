@@ -1,6 +1,7 @@
 (prelude-require-packages '(
                             ag
                             aggressive-indent
+                            bats-mode
                             chruby
                             color-theme-sanityinc-tomorrow
                             evil-args
