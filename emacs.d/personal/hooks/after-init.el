@@ -61,7 +61,7 @@
 (personal/bind-key "C-l" "r"   'replace-string)
 (personal/bind-key "C-l" "o e" 're-builder)
 
-
+;; Open a dired session in a file's directory
 (personal/bind-key "C-l" "-" (lambda ()
                                (interactive)
                                (if (buffer-file-name)
