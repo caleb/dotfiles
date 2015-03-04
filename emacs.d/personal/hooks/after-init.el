@@ -28,6 +28,11 @@
                                             ("f" . 'window-jump-right)
                                             ("b" . 'window-jump-left)))
 
+(smartrep-define-key global-map "C-l C-f C-w" '(("n" . 'window-jump-down)
+                                                ("p" . 'window-jump-up)
+                                                ("f" . 'window-jump-right)
+                                                ("b" . 'window-jump-left)))
+
 (global-set-key (kbd "C-M-n") 'personal/other-window-next-line)
 (global-set-key (kbd "C-M-p") 'personal/other-window-previous-line)
 
