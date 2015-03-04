@@ -8,6 +8,7 @@
                             evil-jumper
                             evil-matchit
                             evil-nerd-commenter
+                            evil-surround
                             fill-column-indicator
                             flycheck-rust
                             frame-cmds
@@ -25,7 +26,6 @@
                             rhtml-mode
                             ruby-compilation
                             rust-mode
-                            smartrep
                             solarized-theme
                             toggle-quotes
                             window-jump
