@@ -8,7 +8,7 @@
                             evil-jumper
                             evil-matchit
                             evil-nerd-commenter
-                            evil-surround
+                            evil-smartparens
                             fill-column-indicator
                             flycheck-rust
                             frame-cmds
@@ -27,6 +27,7 @@
                             ruby-compilation
                             rust-mode
                             solarized-theme
+                            smart-mode-line
                             toggle-quotes
                             window-jump
                             window-number
