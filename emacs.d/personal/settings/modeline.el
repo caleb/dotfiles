@@ -7,7 +7,7 @@
 ;;; Code:
 
 (column-number-mode 1)
-(size-indication-mode nil)
+(size-indication-mode -1)
 
 (setq display-time-day-and-date t
       display-time-24hr-format  t)
@@ -96,16 +96,19 @@ want to use in the modeline *in lieu of* the original.")
 ;; Mode Line Configuration
 ;;
 
+;; Extra mode line faces
+(make-face 'mode-line-80col-face)
+
 (make-face 'mode-line-evil-mode-insert)
 (make-face 'mode-line-evil-mode-emacs)
 (make-face 'mode-line-evil-mode-normal)
 
 (setq-default mode-line-format (list "%e"
-                                     'mode-line-front-space
-
                                      '(:eval (cond ((evil-insert-state-p) (propertize " INSERT " 'face 'mode-line-evil-mode-insert))
                                                    ((evil-emacs-state-p)  (propertize " EMACS  " 'face 'mode-line-evil-mode-emacs))
                                                    ((evil-normal-state-p) (propertize " NORMAL " 'face 'mode-line-evil-mode-normal))))
+
+                                     'mode-line-front-space
 
                                      'mode-line-mule-info
                                      'mode-line-client
@@ -122,9 +125,7 @@ want to use in the modeline *in lieu of* the original.")
                                      'mode-line-end-spaces))
 
 (sml/setup)
-
-;; Extra mode line faces
-(make-face 'mode-line-80col-face)
+(sml/apply-theme 'gruvbox)
 
 ;; (setq-default mode-line-format '(; Place the Evil mode indicator
 
@@ -170,73 +171,74 @@ want to use in the modeline *in lieu of* the original.")
 ;;                                  (:eval (when nyan-mode (list (nyan-create))))))
 
 ;; Reconfigure our faces
-(set-face-attribute 'mode-line nil
-                    :foreground "gray60" :background "gray20"
-                    :inverse-video nil
-                    :underline nil
-                    :box '(:line-width 6 :color "gray20" :style nil))
-(set-face-attribute 'mode-line-inactive nil
-                    :foreground "gray80" :background "gray30"
-                    :inverse-video nil
-                    :box '(:line-width 6 :color "gray30" :style nil))
+;; (set-face-attribute 'mode-line nil
+;;                     :foreground "gray60" :background "gray20"
+;;                     :inverse-video nil
+;;                     :underline nil
+;;                     :box '(:line-width 6 :color "gray20" :style nil))
 
-(set-face-attribute 'mode-line-evil-mode-insert nil
-                    :inherit 'mode-line-face
-                    :foreground (if (display-graphic-p) "#fabd2f" "#ffaf00")
-                    :box '(:line-width 2 :color "transparent"))
+;; (set-face-attribute 'mode-line-inactive nil
+;;                     :foreground "gray80" :background "gray30"
+;;                     :inverse-video nil
+;;                     :box '(:line-width 6 :color "gray30" :style nil))
 
-(set-face-attribute 'mode-line-evil-mode-emacs nil
-                    :inherit 'mode-line-face
-                    :foreground (if (display-graphic-p) "#fabd2f" "#ffaf00")
-                    :box '(:line-width 2 :color "transparent"))
+;; (set-face-attribute 'mode-line-evil-mode-insert nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground (if (display-graphic-p) "#fabd2f" "#ffaf00")
+;;                     :box '(:line-width 2 :color "transparent"))
 
-(set-face-attribute 'mode-line-evil-mode-normal nil
-                    :inherit 'mode-line-face
-                    :foreground (if (display-graphic-p) "#fabd2f" "#ffaf00")
-                    :box '(:line-width 2 :color "transparent"))
+;; (set-face-attribute 'mode-line-evil-mode-emacs nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground (if (display-graphic-p) "#fabd2f" "#ffaf00")
+;;                     :box '(:line-width 2 :color "transparent"))
 
-(set-face-attribute 'mode-line-god-mode-on nil
-                    :inherit 'mode-line-face
-                    :foreground (if (display-graphic-p) "#fabd2f" "#ffaf00")
-                    :box '(:line-width 2 :color "transparent"))
+;; (set-face-attribute 'mode-line-evil-mode-normal nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground (if (display-graphic-p) "#fa0000" "#ff0000")
+;;                     :box '(:line-width 2 :color "transparent"))
 
-(set-face-attribute 'mode-line-god-mode-off nil
-                    :inherit 'mode-line-face
-                    :foreground (if (display-graphic-p) "#ffffc8" "color-230")
-                    :background (if (display-graphic-p) "#9d0006" "color-88")
-                    :box '(:line-width 2 :color "#c82829"))
+;; (set-face-attribute 'mode-line-god-mode-on nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground (if (display-graphic-p) "#fabd2f" "#ffaf00")
+;;                     :box '(:line-width 2 :color "transparent"))
 
-(set-face-attribute 'mode-line-read-only-face nil
-                    :inherit 'mode-line-face
-                    :foreground (if (display-graphic-p) "#83a598" "#87afaf")
-                    :box '(:line-width 2 :color (if (display-graphic-p) "#83a598" "#87afaf")))
-(set-face-attribute 'mode-line-modified-face nil
-                    :inherit 'mode-line-face
-                    :foreground "#c82829"
-                    :background "#ffffff"
-                    :box '(:line-width 2 :color "#c82829"))
-(set-face-attribute 'mode-line-folder-face nil
-                    :inherit 'mode-line-face
-                    :foreground "gray60")
-(set-face-attribute 'mode-line-filename-face nil
-                    :inherit 'mode-line-face
-                    :foreground (if (display-graphic-p) "#fe8019" "#ff8700")
-                    :weight 'bold)
-(set-face-attribute 'mode-line-position-face nil
-                    :inherit 'mode-line-face
-                    :family "Menlo" :height 120)
-(set-face-attribute 'mode-line-mode-face nil
-                    :inherit 'mode-line-face
-                    :foreground "gray80")
-(set-face-attribute 'mode-line-minor-mode-face nil
-                    :inherit 'mode-line-mode-face
-                    :foreground "gray40"
-                    :height 130)
-(set-face-attribute 'mode-line-process-face nil
-                    :inherit 'mode-line-face
-                    :foreground "#718c00")
-(set-face-attribute 'mode-line-80col-face nil
-                    :inherit 'mode-line-position-face
-                    :foreground "black" :background "#eab700")
+;; (set-face-attribute 'mode-line-god-mode-off nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground (if (display-graphic-p) "#ffffc8" "color-230")
+;;                     :background (if (display-graphic-p) "#9d0006" "color-88")
+;;                     :box '(:line-width 2 :color "#c82829"))
+
+;; (set-face-attribute 'mode-line-read-only-face nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground (if (display-graphic-p) "#83a598" "#87afaf")
+;;                     :box '(:line-width 2 :color (if (display-graphic-p) "#83a598" "#87afaf")))
+;; (set-face-attribute 'mode-line-modified-face nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground "#c82829"
+;;                     :background "#ffffff"
+;;                     :box '(:line-width 2 :color "#c82829"))
+;; (set-face-attribute 'mode-line-folder-face nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground "gray60")
+;; (set-face-attribute 'mode-line-filename-face nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground (if (display-graphic-p) "#fe8019" "#ff8700")
+;;                     :weight 'bold)
+;; (set-face-attribute 'mode-line-position-face nil
+;;                     :inherit 'mode-line-face
+;;                     :family "Menlo" :height 120)
+;; (set-face-attribute 'mode-line-mode-face nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground "gray80")
+;; (set-face-attribute 'mode-line-minor-mode-face nil
+;;                     :inherit 'mode-line-mode-face
+;;                     :foreground "gray40"
+;;                     :height 130)
+;; (set-face-attribute 'mode-line-process-face nil
+;;                     :inherit 'mode-line-face
+;;                     :foreground "#718c00")
+;; (set-face-attribute 'mode-line-80col-face nil
+;;                     :inherit 'mode-line-position-face
+;;                     :foreground "black" :background "#eab700")
 
 ;;; modeline.el ends here

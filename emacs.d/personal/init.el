@@ -11,4 +11,5 @@
 (personal/load-init-file "personal/init/autoloads")
 (personal/load-init-file "personal/init/packages")
 (personal/load-init-file "personal/init/autohooks")
+(personal/load-init-file "personal/init/themes")
 (personal/load-init-file "personal/init/settings")
