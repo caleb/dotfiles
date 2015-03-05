@@ -29,16 +29,83 @@
 
 (custom-theme-set-faces
  'smart-mode-line-gruvbox
- '(mode-line-buffer-id ((t :inherit sml/filename :foreground nil :background nil)))
- '(mode-line-inactive ((t :foreground "gray60" :background "#404045" :inverse-video nil)))
- '(mode-line     ((t :foreground "gray60" :background "black" :inverse-video nil)))
- '(sml/global    ((t :foreground "gray50" :inverse-video nil)))
- '(sml/modes     ((t :inherit sml/global :foreground "White")))
- '(sml/filename  ((t :inherit sml/global :foreground "#eab700" :weight bold)))
- '(sml/prefix    ((t :inherit sml/global :foreground "#bf6000")))
- '(sml/read-only ((t :inherit sml/not-modified :foreground "DeepSkyBlue")))
- '(persp-selected-face ((t :foreground "ForestGreen" :inherit sml/filename)))
- '(helm-candidate-number ((t :foreground nil :background nil :inherit sml/filename))))
+ `(mode-line-buffer-id   ((t :inherit sml/filename
+                             :foreground nil
+                             :background nil)))
+
+ `(mode-line-inactive    ((t :foreground "gray80"
+                             :background "gray30"
+                             :inverse-video nil
+                             :box (:line-width 6 :color "gray30" :style nil))))
+
+ `(mode-line             ((t :foreground "gray60"
+                             :background "gray20"
+                             :inverse-video nil
+                             :underline nil
+                             :box (:line-width 6 :color "gray20" :style nil))))
+
+ `(sml/global            ((t :inverse-video nil)))
+
+ `(sml/modes             ((t :inherit sml/global
+                             :foreground "gray80")))
+
+ `(sml/minor-modes       ((t :inherit sml/global
+                             :foreground "gray40"
+                             :height 130)))
+
+ `(sml/line-number       ((t :height 120
+                             :family "Menlo")))
+
+ `(sml/col-number        ((t :height 120
+                             :family "Menlo")))
+
+ `(sml/folder            ((t :inherit sml/global
+                             :foreground "gray60")))
+
+ `(sml/filename          ((t :inherit sml/global
+                             :foreground ,(if (display-graphic-p) "#fe8019" "#ff8700")
+                             :weight bold)))
+
+ `(sml/prefix            ((t :inherit sml/global
+                             :foreground "#ffaf00")))
+
+ `(sml/process           ((t :inherit sml/proces
+                             :foreground "#718c00")))
+
+ `(sml/modified          ((t :inherit sml/not-modified
+                             :foreground "#c82829"
+                             :background "#ffffff"
+                             :box (:line-width 2 :color "#c82829"))))
+
+ `(sml/read-only         ((t :inherit sml/not-modified
+                             :foreground ,(if (display-graphic-p) "#83a598" "#87afaf")
+                             :box (:line-width 2 :color ,(if (display-graphic-p) "#83a598" "#87afaf")))))
+
+ `(personal/mode-line-evil-mode-normal ((t :inherit sml/global
+                                           :box (:line-width 2 :color "transparent"))))
+
+ `(personal/mode-line-evil-mode-visual ((t :inherit sml/global
+                                           :box (:line-width 2 :color "transparent"))))
+
+ `(personal/mode-line-evil-mode-none ((t :inherit sml/global
+                                         :box (:line-width 2 :color "transparent"))))
+
+ `(personal/mode-line-evil-mode-insert ((t :inherit sml/global
+                                           :foreground ,(if (display-graphic-p) "#ffffc8" "color-230")
+                                           :background ,(if (display-graphic-p) "#9d0006" "color-88")
+                                           :box (:line-width 2 :color "#c82829"))))
+
+ `(personal/mode-line-evil-mode-emacs  ((t :inherit sml/global
+                                           :foreground ,(if (display-graphic-p) "#9d0006" "color-88")
+                                           :background ,(if (display-graphic-p) "#ffffc8" "color-230")
+                                           :box (:line-width 2 :color "#c82829"))))
+
+ `(persp-selected-face   ((t :inherit sml/filename
+                             :foreground "ForestGreen")))
+
+ `(helm-candidate-number ((t :inherit sml/filename
+                             :foreground nil
+                             :background nil))))
 
 ;;;###autoload
 (when load-file-name

@@ -5,6 +5,7 @@
                             chruby
                             color-theme-sanityinc-tomorrow
                             evil-args
+                            evil-exchange
                             evil-jumper
                             evil-matchit
                             evil-nerd-commenter
