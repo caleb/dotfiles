@@ -112,7 +112,7 @@ want to use in the modeline *in lieu of* the original.")
                                            ((evil-emacs-state-p)  (propertize " EMACS  " 'face 'personal/mode-line-evil-mode-emacs))
                                            ((evil-visual-state-p) (propertize " VISUAL " 'face 'personal/mode-line-evil-mode-visual))
                                            ((evil-normal-state-p) (propertize " NORMAL " 'face 'personal/mode-line-evil-mode-normal))
-                                           (t                     (propertize "        " 'face 'personal/mode-line-evil-mode-none))))
+                                           (t                     (propertize " ------ " 'face 'personal/mode-line-evil-mode-none))))
 
                              'mode-line-front-space
 
