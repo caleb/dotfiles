@@ -28,7 +28,7 @@ zstyle ':prezto:load' pmodule \
   'npm' \
   'git' \
   'directory' \
-  'boot2docker' \
+  'docker' \
   'history-substring-search' \
   'rsync' \
   'gnu-utility' \
