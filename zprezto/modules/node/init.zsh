@@ -21,10 +21,9 @@ elif (( $+commands[brew] )) && [[ -d "$(brew --prefix nvm 2>/dev/null)" ]]; then
   if [[ -f "${HOME}/.node-version" ]]; then
     nvm use `cat "${HOME}/.node-version"` > /dev/null
   fi
-fi
 
 # Return if requirements are not found.
-if (( ! $+commands[node] )); then
+elif (( ! $+commands[node] )); then
   return 1
 fi
 
