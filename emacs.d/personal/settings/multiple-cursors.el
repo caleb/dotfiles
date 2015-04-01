@@ -46,10 +46,29 @@
 
 ;; When multiple cursors are enabled, prevent moving the cursor back when exiting
 ;; insert mode in evil-mode
+;;
+;; Also disable aggressive indent mode when multiple cursors are enabled since aggressive indent
+;; will make wonky things happen with mc
+(defvar-local personal/mc/aggressive-mode-state nil) ;; nil for not set, 0 for disabled and 1 for enabled
 (add-hook 'multiple-cursors-mode-enabled-hook (lambda ()
+                                                ;; this hook may be called multiple times when adding more cursors so make sure we only
+                                                ;; remember the state of aggressive indent mode when it's called the first time
+                                                ;; (that is, when the personal/mc/aggressive-mode-state variable is nil)
+                                                (unless (integerp personal/mc/aggressive-mode-state)
+                                                  (setq-local personal/mc/aggressive-mode-state
+                                                              (if (bound-and-true-p aggressive-indent-mode)
+                                                                  1
+                                                                0)))
+
+                                                ;; disable aggressive indent mode
+                                                (if (bound-and-true-p aggressive-indent-mode)
+                                                    (aggressive-indent-mode 0))
                                                 (setq evil-move-cursor-back nil)))
 
 (add-hook 'multiple-cursors-mode-disabled-hook (lambda ()
+                                                 (aggressive-indent-mode personal/mc/aggressive-mode-state)
+                                                 ;; Reset the aggressive mode state variable so we can remember it for next time
+                                                 (setq-local personal/mc/aggressive-mode-state nil)
                                                  (setq evil-move-cursor-back t)))
 
 
