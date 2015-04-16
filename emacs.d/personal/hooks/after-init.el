@@ -68,6 +68,12 @@
                                    (dired (file-name-directory (buffer-file-name)))
                                  (dired default-directory))))
 
+(define-key evil-normal-state-map (kbd "-") (lambda ()
+                                              (interactive)
+                                              (if (buffer-file-name)
+                                                  (dired (file-name-directory (buffer-file-name)))
+                                                (dired default-directory))))
+
 (personal/bind-key "C-l" "." 'repeat)
 
 (personal/bind-key "C-l" "v e" 'er/expand-region)
