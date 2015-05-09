@@ -4,6 +4,7 @@
                             bats-mode
                             chruby
                             color-theme-sanityinc-tomorrow
+                            editorconfig
                             evil-args
                             evil-exchange
                             evil-jumper
