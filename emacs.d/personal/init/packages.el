@@ -5,6 +5,7 @@
                             chruby
                             color-theme-sanityinc-tomorrow
                             editorconfig
+                            ember-mode
                             evil-args
                             evil-exchange
                             evil-jumper
@@ -15,6 +16,7 @@
                             flycheck-rust
                             frame-cmds
                             gruvbox-theme
+                            handlebars-mode
                             helm-ag
                             js2-refactor
                             monokai-theme
