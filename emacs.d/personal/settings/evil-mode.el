@@ -23,4 +23,8 @@
 ;; bind evil-jump-out-args
 (define-key evil-normal-state-map "K" 'evil-jump-out-args)
 
+;; Magit rebase mode should use emacs mode
+(setq evil-emacs-state-modes (append evil-emacs-state-modes
+                                     '(git-rebase-mode)))
+(evil-add-hjkl-bindings git-rebase-mode-map 'emacs)
 ;;; evil-mode.el ends here
