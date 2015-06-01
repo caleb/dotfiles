@@ -1,16 +1,5 @@
 ;;;###autoload
 (defun personal/bind-key (prefix keys binding)
   "Binds a command with a prefix to a non-controlled and controlled version this helps with god-mode"
-  (let* ((lst (split-string keys " "))
-         (ctrl-keys (mapconcat (lambda (key) (if (= (length key) 1)
-                                                 (concat "C-" key)
-                                               key)) lst " "))
-         (capital-meta-keys (mapconcat (lambda (key) (cond ((and (= (length key) 1)
-                                                                 (equal (upcase key) key))
-                                                            (concat "M-" (downcase key)))
-                                                           ((= (length key) 1)
-                                                            (concat "C-" key))
-                                                           (t key))) lst " ")))
-    (global-set-key (kbd (concat prefix " " keys)) binding)
-    (global-set-key (kbd (concat prefix " " ctrl-keys)) binding)
-    (global-set-key (kbd (concat prefix " " capital-meta-keys)) binding)))
+  (let* ((lst (split-string keys " ")))
+    (global-set-key (kbd (concat prefix " " keys)) binding)))
