@@ -8,6 +8,7 @@
 
 (require 'nlinum)
 (setq nlinum-format " %d ")
+(global-nlinum-mode 1)
 
 ;; Set the linum background color to be the same as the background in gruvbox
 (set-face-attribute 'linum nil :background (if (display-graphic-p) "#282828" "color-235"))
