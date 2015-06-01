@@ -1,3 +1,4 @@
+;;; enable the hide/show mode
 (hs-minor-mode)
 
 (add-to-list 'hs-special-modes-alist
@@ -18,16 +19,8 @@
 ;; activate character pairing
 (smartparens-mode)
 
-(add-to-list 'hs-special-modes-alist
-             '(ruby-mode
-               "\\(def\\|do\\)"
-               "end"
-               "#"
-               (lambda (arg) (ruby-end-of-block))
-               nil))
-
 (sp-with-modes (list major-mode)
-  ; remove pairs I use snippets for
+  ;; remove pairs I use snippets for
   (sp-local-pair "do"     nil :actions :rem)
   (sp-local-pair "begin"  nil :actions :rem)
   (sp-local-pair "def"    nil :actions :rem)

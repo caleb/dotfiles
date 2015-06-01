@@ -3,7 +3,6 @@
                             aggressive-indent
                             bats-mode
                             chruby
-                            color-theme-sanityinc-tomorrow
                             editorconfig
                             ember-mode
                             evil-args
@@ -19,18 +18,15 @@
                             handlebars-mode
                             helm-ag
                             js2-refactor
-                            monokai-theme
                             multiple-cursors
                             nginx-mode
                             nlinum
                             nyan-mode
                             paredit
-                            php-mode
                             projectile-rails
                             rhtml-mode
                             ruby-compilation
                             rust-mode
-                            solarized-theme
                             smart-mode-line
                             toggle-quotes
                             window-jump

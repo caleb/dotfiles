@@ -23,10 +23,10 @@
                                  (interactive)
                                  (other-window -1)))
 
-(smartrep-define-key global-map "C-l f w" '(("j" . 'window-jump-down)
-                                            ("k" . 'window-jump-up)
-                                            ("l" . 'window-jump-right)
-                                            ("h" . 'window-jump-left)))
+(smartrep-define-key global-map "C-l f w" '(("n" . 'window-jump-down)
+                                            ("p" . 'window-jump-up)
+                                            ("f" . 'window-jump-right)
+                                            ("b" . 'window-jump-left)))
 
 (global-set-key (kbd "C-M-n") 'personal/other-window-next-line)
 (global-set-key (kbd "C-M-p") 'personal/other-window-previous-line)
@@ -113,14 +113,6 @@
 (personal/bind-key "C-l" "o c" 'calc)
 (personal/bind-key "C-l" "o l" 'ielm)
 (personal/bind-key "C-l" "o i" 'personal/erc-connect)
-
-;; Make some common actions easier to activate with god-mode
-(global-set-key (kbd "C-x C-1") #'delete-other-windows)
-(global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-(global-set-key (kbd "C-x C-k") #'ido-kill-buffer)
-
-(global-set-key (kbd "C-c C-d") #'prelude-duplicate-current-line-or-region)
-(global-set-key (kbd "C-x C-e") #'eval-last-sexp)
 
 ;; Allow - to go up a directory in dired (like vim)
 (define-key dired-mode-map "-" 'dired-up-directory)
