@@ -10,7 +10,7 @@
 (size-indication-mode -1)
 
 (setq display-time-day-and-date t
-      display-time-24hr-format  t)
+      display-time-24hr-format  nil)
 (display-time)
 
 (defun personal/flycheck-mode-line-status-text (&optional status)
@@ -118,9 +118,13 @@ want to use in the modeline *in lieu of* the original.")
 
                              'mode-line-mule-info
                              'mode-line-client
+                             " "
                              'mode-line-modified
-                             'mode-line-remote
+                             ;; " "
+                             ;; 'mode-line-remote
+                             " "
                              'mode-line-frame-identification
+                             " "
                              'mode-line-buffer-identification
                              "   "
                              'mode-line-position
