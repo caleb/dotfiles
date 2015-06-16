@@ -1,0 +1,43 @@
+"*":
+  "exception-reporting":
+    userId: "7de0a1bb-a444-2642-c548-62589083ff9e"
+  "release-notes":
+    viewedVersion: "0.95.0"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "76ab4efbb4ecf4fe0181ed8343e8441379f7d671"
+  core:
+    themes: [
+      "one-dark-ui"
+      "gruvbox"
+    ]
+  editor:
+    invisibles: {}
+    zoomFontWhenCtrlScrolling: true
+    showInvisibles: true
+  "coffee-refactor": {}
+  react: {}
+  minimap:
+    plugins:
+      "git-diff": true
+      "find-and-replace": true
+      selection: true
+  "one-dark-ui": {}
+  linter: {}
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
+  "autocomplete-elixir":
+    elixrPath: "/usr/local/bin/elixir"
+  "autocomplete-erlang": {}
+  "disable-keybindings":
+    allCommunityPackages: true
+    exceptCommunityPackages: [
+      "vim-surround"
+      "vim-mode"
+      "automagit"
+      "jumpy"
+      "ex-mode"
+    ]
+  "vim-surround": {}
+  jumpy: {}
