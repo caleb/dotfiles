@@ -10,7 +10,7 @@
   core:
     themes: [
       "one-dark-ui"
-      "gruvbox"
+      "retro-gruvbox"
     ]
   editor:
     invisibles: {}
