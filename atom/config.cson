@@ -16,6 +16,7 @@
     invisibles: {}
     zoomFontWhenCtrlScrolling: true
     showInvisibles: true
+    showIndentGuide: true
   "coffee-refactor": {}
   react: {}
   minimap:
@@ -23,6 +24,7 @@
       "git-diff": true
       "find-and-replace": true
       selection: true
+      pigments: true
   "one-dark-ui": {}
   linter: {}
   "vim-mode":
@@ -41,3 +43,5 @@
     ]
   "vim-surround": {}
   jumpy: {}
+  jshint:
+    supportLintingJsx: true
