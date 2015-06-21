@@ -45,3 +45,5 @@
   jumpy: {}
   jshint:
     supportLintingJsx: true
+  "css-comb":
+    predef: "yandex"
