@@ -27,6 +27,8 @@ packages: [
   "linter"
   "linter-coffeescript"
   "linter-cpplint"
+  "linter-jsonlint"
+  "linter-scss-lint"
   "linter-csslint"
   "linter-doiuse"
   "linter-erb"
