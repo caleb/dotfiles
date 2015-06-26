@@ -4,6 +4,7 @@ packages: [
   "aligner-php"
   "aligner-ruby"
   "aligner-scss"
+  "atom-ternjs"
   "autocomplete-clang"
   "autocomplete-elixir"
   "autocomplete-paths"
