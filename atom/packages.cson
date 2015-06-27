@@ -23,7 +23,6 @@ packages: [
   "gruvbox"
   "jshint"
   "jumpy"
-  "language-chef"
   "language-diff"
   "language-docker"
   "language-elixir"
