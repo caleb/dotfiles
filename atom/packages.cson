@@ -55,6 +55,7 @@ packages: [
   "linter-tidy"
   "linter-xmllint"
   "linter"
+  "minimap-codeglance"
   "minimap-color-highlight"
   "minimap-find-and-replace"
   "minimap-git-diff"

@@ -28,6 +28,7 @@
       "find-and-replace": true
       selection: true
       pigments: true
+      codeglance: true
   "one-dark-ui": {}
   linter: {}
   "vim-mode":
@@ -54,3 +55,4 @@
   "git-log": {}
   "linter-rubocop": {}
   "atom-ternjs": {}
+  "minimap-codeglance": {}
