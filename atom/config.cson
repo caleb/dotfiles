@@ -10,7 +10,7 @@
   core:
     themes: [
       "one-dark-ui"
-      "retro-gruvbox"
+      "gruvbox"
     ]
     disabledPackages: [
       "autocomplete-elixir"

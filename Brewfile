@@ -1,2 +1,2 @@
-tap thoughtbot/rcm
+tap thoughtbot/homebrew-formulae
 install rcm
