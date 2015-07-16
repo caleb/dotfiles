@@ -29,6 +29,7 @@ if (( $+commands[docker-machine] )); then
 
   # Start the machine if it isn't running
   boot2docker_status="$(docker-machine ls | grep '^boot2docker' | awk '{ print $3 }')"
+
   if [[ "${boot2docker_status:l}" = "running" ]]; then
     eval "$(docker-machine env boot2docker)"
   fi
