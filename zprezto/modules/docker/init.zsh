@@ -11,7 +11,7 @@ fi
 
 if (( $+commands[boot2docker] )); then
   alias b2d="boot2docker"
-  alias b2di="$(boot2docker shellinit 2>/dev/null)"
+  alias b2di="\$(boot2docker shellinit 2>/dev/null)"
 
   # Start boot2docker if it isn't running
   boot2docker_status=$(boot2docker status)
@@ -25,7 +25,7 @@ fi
 
 if (( $+commands[docker-machine] )); then
   alias dm="docker-machine"
-  alias dmi="eval \"$(docker-machine env boot2docker)\""
+  alias dmi="eval \"\$(docker-machine env boot2docker)\""
 
   # Start the machine if it isn't running
   boot2docker_status="$(docker-machine ls | grep '^boot2docker' | awk '{ print $3 }')"
