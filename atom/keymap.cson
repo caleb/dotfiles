@@ -31,7 +31,7 @@
   'ctrl-c': 'vim-mode-visual-block:escape'
   'ctrl-v': 'vim-mode:activate-blockwise-visual-mode'
 
-'atom-text-editor.vim-mode.command-mode':
+'atom-text-editor.vim-mode.normal-mode':
   # Cursors
   'ctrl-n': 'editor:add-selection-below'
   'ctrl-p': 'editor:add-selection-above'
