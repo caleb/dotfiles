@@ -44,6 +44,7 @@
       "automagit"
       "jumpy"
       "ex-mode"
+      "vim-mode-visual-block"
     ]
   "vim-surround": {}
   jumpy: {}
