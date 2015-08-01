@@ -34,6 +34,7 @@ zstyle ':prezto:load' pmodule \
   'terminal' \
   'editor' \
   'history' \
+  'thefuck' \
   'directory' \
   'spectrum' \
   'utility' \
