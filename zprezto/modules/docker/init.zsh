@@ -25,13 +25,13 @@ fi
 
 if (( $+commands[docker-machine] )); then
   alias dm="docker-machine"
-  alias dmi="eval \"\$(docker-machine env docker)\""
+  alias dmi="eval \"\$(docker-machine env boot2docker)\""
 
   # Start the machine if it isn't running
-  boot2docker_status="$(docker-machine ls | grep '^docker' | awk '{ print $3 }')"
+  boot2docker_status="$(docker-machine ls | grep '^boot2docker' | awk '{ print $3 }')"
 
   if [[ "${boot2docker_status:l}" = "running" ]]; then
-    eval "$(docker-machine env docker)"
+    eval "$(docker-machine env boot2docker)"
   fi
 fi
 
