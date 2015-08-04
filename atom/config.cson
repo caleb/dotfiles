@@ -57,3 +57,4 @@
   "linter-rubocop": {}
   "atom-ternjs": {}
   "minimap-codeglance": {}
+  "rubocop-auto-correct": {}
