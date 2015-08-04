@@ -27,7 +27,6 @@
                             rhtml-mode
                             ruby-compilation
                             rust-mode
-                            smart-mode-line
                             toggle-quotes
                             window-jump
                             window-number
