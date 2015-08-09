@@ -13,7 +13,7 @@
       "gruvbox"
     ]
     disabledPackages: [
-      "autocomplete-elixir"
+      "linter-ruby"
     ]
   editor:
     invisibles: {}
@@ -58,3 +58,4 @@
   "atom-ternjs": {}
   "minimap-codeglance": {}
   "rubocop-auto-correct": {}
+  "linter-ruby": {}
