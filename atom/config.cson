@@ -34,7 +34,7 @@
   "vim-mode":
     useClipboardAsDefaultRegister: true
   "autocomplete-elixir":
-    elixrPath: "/usr/local/bin/elixir"
+    elixirPath: "/usr/local/bin/elixir"
   "autocomplete-erlang": {}
   "disable-keybindings":
     allCommunityPackages: true
