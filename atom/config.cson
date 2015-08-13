@@ -12,9 +12,6 @@
       "one-dark-ui"
       "gruvbox"
     ]
-    disabledPackages: [
-      "linter-ruby"
-    ]
   editor:
     invisibles: {}
     zoomFontWhenCtrlScrolling: true
