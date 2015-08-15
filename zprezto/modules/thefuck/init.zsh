@@ -4,8 +4,8 @@
 # Authors:
 #   Caleb Land <caleb@land.fm>
 #
-if (( ! $+commands[thefuck-alias] )); then
+if (( ! $+commands[thefuck] )); then
   return 1
 fi
 
-eval "$(thefuck-alias)"
+eval "$(thefuck --alias)"
