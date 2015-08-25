@@ -19,6 +19,7 @@ packages: [
   "ember-snippets"
   "emmet"
   "ex-mode"
+  "git-blame"
   "git-history"
   "gruvbox"
   "jshint"
