@@ -12,6 +12,9 @@
       "one-dark-ui"
       "gruvbox"
     ]
+    disabledPackages: [
+      "nuclide-file-tree"
+    ]
   editor:
     invisibles: {}
     zoomFontWhenCtrlScrolling: true
@@ -56,3 +59,7 @@
   "minimap-codeglance": {}
   "rubocop-auto-correct": {}
   "linter-ruby": {}
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
+  nuclide:
+    remoteProjectsConfig: []

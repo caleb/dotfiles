@@ -21,6 +21,7 @@ packages: [
   "ex-mode"
   "git-blame"
   "git-history"
+  "git-plus"
   "gruvbox"
   "jshint"
   "jumpy"
