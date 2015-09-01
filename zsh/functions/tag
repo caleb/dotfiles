@@ -19,10 +19,11 @@ if (( $+commands[ctags] )) && $(ctags --version > /dev/null 2>&1); then
   FILE="tags"
 
   # Filter out false matches from class method regex
-  sed -i '' -E '/^(if|switch|function|module\.exports|it|describe)    .+language:js$/d' $FILE
+  /usr/bin/sed -i '' -E '/^(if|switch|function|module\.exports|it|describe)    .+language:js$/d' $FILE
 
   # Filter out false matches from object definition regex
-  sed -i '' -E '/var[     ]+[a-zA-Z0-9_$]+[   ]+=[    ]+require\(.+language:js$/d' $FILE
+  /usr/bin/sed -i '' -E '/var[     ]+[a-zA-Z0-9_$]+[   ]+=[    ]+require\(.+language:js$/d' $FILE
+
 else
   echo "exuberant ctags is not installed (install from homebrew)"
 fi
