@@ -1,0 +1,17 @@
+#
+# Generates tags for a project
+#
+
+if (( $+commands[ripper-tags] )); then
+  echo "Generating ripper-tags"
+  ripper-tags -R .
+else
+  echo "ripper-tags not installed"
+fi
+
+# Make sure ctags is installed and it's exuberant ctags (bsd ctags fails on ctags --version)
+if (( $+commands[ctags] )) && $(ctags --version); then
+  ctags -a -R .
+else
+  echo "exuberant ctags is not installed (install from homebrew)"
+fi
