@@ -20,6 +20,7 @@
     zoomFontWhenCtrlScrolling: true
     showInvisibles: true
     showIndentGuide: true
+    fontFamily: "Hack"
   "coffee-refactor": {}
   react: {}
   minimap:
@@ -63,3 +64,4 @@
     promptWhenFileHasChangedOnDisk: false
   nuclide:
     remoteProjectsConfig: []
+  racer: {}
