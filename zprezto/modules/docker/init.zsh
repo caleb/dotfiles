@@ -27,12 +27,24 @@ if (( $+commands[docker-machine] )); then
   alias dm="docker-machine"
   alias dmi="eval \"\$(docker-machine env boot2docker)\""
 
-  # Start the machine if it isn't running
-  boot2docker_status="$(docker-machine ls | grep '^boot2docker' | awk '{ print $3 }')"
+  function {
+    setopt LOCAL_OPTIONS RE_MATCH_PCRE
 
-  if [[ "${boot2docker_status:l}" = "running" ]]; then
-    eval "$(docker-machine env boot2docker)"
-  fi
+    # Check to see if we had a dinghy docker-machine
+    local dm_status="$(docker-machine ls)"
+    local dinghy_dm="$(echo "${dm_status}" | grep '^dinghy\b')"
+    local b2d_dm="$(echo "${dm_status}" | grep '^boot2docker\b')"
+
+    if (( $+commands[dinghy] )) && [[ "${dinghy_dm}" =~ ^dinghy ]]; then
+      if [[ "${dinghy_dm:l}" =~ \\brunning\\b ]]; then
+        $(dinghy shellinit)
+      fi
+    elif [[  "${b2d_dm}" =~ ^boot2docker ]]; then
+      if [[ "${b2d_dm:l}" =~ \\brunning\\b ]]; then
+        eval "$(docker-machine env boot2docker)"
+      fi
+    fi
+  }
 fi
 
 if (( $+commands[docker-compose] )); then
