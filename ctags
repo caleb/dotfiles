@@ -2,6 +2,8 @@
 --exclude=.hg
 --exclude=log
 --exclude=tmp
+--exclude=bower_components
+--exclude=node_modules
 
 --langdef=Go
 --langmap=Go:.go
