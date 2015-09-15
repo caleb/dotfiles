@@ -1,3 +1,6 @@
+--languages=-ruby,sql
+--fields=+lKS
+
 --exclude=.git
 --exclude=.hg
 --exclude=log
@@ -11,7 +14,6 @@
 --regex-Go=/var[ \t]+([a-zA-Z_][a-zA-Z0-9_]+)/\1/v,var/
 --regex-Go=/type[ \t]+([a-zA-Z_][a-zA-Z0-9_]+)/\1/t,type/
 
---languages=-ruby,-javascript,sql
 
 --langdef=Clojure
 --langmap=Clojure:.clj
@@ -27,6 +29,7 @@
 --regex-Clojure=/\([ \t]*defstruct[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/s,struct/
 --regex-Clojure=/\([ \t]*intern[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/v,intern/
 --regex-Clojure=/\([ \t]*ns[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/n,namespace/
+
 
 --langdef=CoffeeScript
 --langmap=CoffeeScript:.coffee
@@ -50,28 +53,14 @@
 --regex-CoffeeScript=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/
 
 
---langdef=JavaScript
---langmap=JavaScript:.js
 --langmap=JavaScript:+.jsx
-
---regex-JavaScript=/[ \t.]([A-Z][A-Z0-9._$]+)[ \t]*[=:][ \t]*([0-9"'\[\{]|null)/\1/n,constant/
-
---regex-JavaScript=/\.([A-Za-z0-9._$]+)[ \t]*=[ \t]*\{/\1/o,object/
---regex-JavaScript=/['"]*([A-Za-z0-9_$]+)['"]*[ \t]*:[ \t]*\{/\1/o,object/
---regex-JavaScript=/([A-Za-z0-9._$]+)\[["']([A-Za-z0-9_$]+)["']\][ \t]*=[ \t]*\{/\1\.\2/o,object/
-
---regex-JavaScript=/([A-Za-z0-9._$]+)[ \t]*=[ \t]*\(function\(\)/\1/c,class/
---regex-JavaScript=/['"]*([A-Za-z0-9_$]+)['"]*:[ \t]*\(function\(\)/\1/c,class/
---regex-JavaScript=/class[ \t]+([A-Za-z0-9._$]+)[ \t]*/\1/c,class/
---regex-JavaScript=/([A-Za-z$][A-Za-z0-9_$()]+)[ \t]*=[ \t]*[Rr]eact.createClass[ \t]*\(/\1/c,class/
---regex-JavaScript=/([A-Z][A-Za-z0-9_$]+)[ \t]*=[ \t]*[A-Za-z0-9_$]*[ \t]*[{(]/\1/c,class/
---regex-JavaScript=/([A-Z][A-Za-z0-9_$]+)[ \t]*:[ \t]*[A-Za-z0-9_$]*[ \t]*[{(]/\1/c,class/
-
---regex-JavaScript=/([A-Za-z$][A-Za-z0-9_$]+)[ \t]*=[ \t]*function[ \t]*\(/\1/f,function/
-
---regex-JavaScript=/(function)*[ \t]*([A-Za-z$_][A-Za-z0-9_$]+)[ \t]*\([^)]*\)[ \t]*\{/\2/f,function/
---regex-JavaScript=/['"]*([A-Za-z$][A-Za-z0-9_$]+)['"]*:[ \t]*function[ \t]*\(/\1/m,method/
---regex-JavaScript=/([A-Za-z0-9_$]+)\[["']([A-Za-z0-9_$]+)["']\][ \t]*=[ \t]*function[ \t]*\(/\2/m,method/
+--regex-JavaScript=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]*\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*function[ \t]*\(/\5/,function/
+--regex-JavaScript=/function[ \t]+([A-Za-z0-9_$]+)[ \t]*\([^)]*\)/\1/,function/
+--regex-JavaScript=/class[ \t]+([A-Za-z0-9_$]+)[ \t]*/\1/,class/
+--regex-JavaScript=/(,|^|\*\/)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*function[ \t]*\(/\2/,function/
+--regex-JavaScript=/(,|^|\*\/)[ \t]*(while|if|for|function|switch|([A-Za-z_$][A-Za-z0-9_$]+))[ \t]*\([^)]*\)[ \t]*\{/\3/,function/
+--regex-JavaScript=/(,|^|\*\/)[ \t]*get[ \t]+([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*\([ \t]*\)[ \t]*\{/get \2/,function/
+--regex-JavaScript=/(,|^|\*\/)[ \t]*set[ \t]+([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*\([ \t]*([A-Za-z_$][A-Za-z0-9_$]+)?[ \t]*\)[ \t]*\{/set \2/,function/
 
 
 --langdef=Haskell
@@ -82,7 +71,9 @@
 --regex-Haskell=/^data[ \t]*([A-Z][a-zA-Z0-9'_]*)/\1/d,data/
 --regex-Haskell=/^([a-z_][a-zA-Z0-9'_]*).*=/\1/v,function/
 
+
 --langmap=C++:+.mm
+
 
 --langdef=Rust
 --langmap=Rust:.rs
