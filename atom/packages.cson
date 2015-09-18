@@ -35,6 +35,7 @@ packages: [
   "linter"
   "linter-bootlint"
   "linter-clang"
+  "linter-clojure"
   "linter-coffeescript"
   "linter-csslint"
   "linter-doiuse"
