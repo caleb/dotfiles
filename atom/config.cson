@@ -31,7 +31,8 @@
       pigments: true
       codeglance: true
   "one-dark-ui": {}
-  linter: {}
+  linter:
+    showErrorPanel: false
   "vim-mode":
     useClipboardAsDefaultRegister: true
   "autocomplete-elixir":
@@ -65,3 +66,4 @@
   nuclide:
     remoteProjectsConfig: []
   racer: {}
+  "language-elm": {}
