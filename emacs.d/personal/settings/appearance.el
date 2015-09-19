@@ -33,6 +33,6 @@
 (setq redisplay-dont-pause t)
 
 (set-face-attribute 'default nil
-                    :family "Inconsolata" :height 160 :weight 'regular)
+  :family "Hack" :height 150 :weight 'regular)
 
 ;;; appearance.el ends here
