@@ -46,6 +46,7 @@
       "jumpy"
       "ex-mode"
       "vim-mode-visual-block"
+      "atomatigit"
     ]
   "vim-surround": {}
   jumpy: {}
