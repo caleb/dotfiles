@@ -33,7 +33,3 @@
                             yagist
                             yasnippet
                             ))
-
-;; vendored packages
-(personal/load-init-file "personal/vendor/rcodetools")
-(personal/load-init-file "personal/vendor/scad-mode")
