@@ -65,3 +65,7 @@
   nuclide:
     remoteProjectsConfig: []
   racer: {}
+  "linter-clojure":
+    clojureExecutablePath: "/Users/caleb/.clojure/clojure-1.7.0.jar"
+    javaExecutablePath: "/usr/bin/java"
+  atomatigit: {}

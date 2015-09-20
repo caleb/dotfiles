@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 
-;; Some basic configuration for Elixir development.
+;; Some basic configuration for the hide-show mode.
 
 ;;; Code:
 
