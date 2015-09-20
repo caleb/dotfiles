@@ -38,24 +38,24 @@ nil."
 ;; Clean up other mode line items
 (defvar personal/mode-line-cleaner-alist
   `((auto-complete-mode . " α")
-    (yas/minor-mode . " υ")
-    (yas-minor-mode . " υ")
-    (paredit-mode . " π")
-    (god-mode . "")
-    (god-local-mode . "")
-    (guru-mode . "")
-    (guru-global-mode . "")
-    (whitespace-mode . "")
-    (helm-mode . "")
-    (global-company-mode . "")
-    (company-mode . "")
-    (prelude-mode . "")
+     (yas/minor-mode . " υ")
+     (yas-minor-mode . " υ")
+     (smartparens-mode . " π")
+     (god-mode . "")
+     (god-local-mode . "")
+     (guru-mode . "")
+     (guru-global-mode . "")
+     (whitespace-mode . "")
+     (helm-mode . "")
+     (global-company-mode . "")
+     (company-mode . "")
+     (prelude-mode . "")
 
-    ;; Major modes
-    (lisp-interaction-mode . "λ")
-    (python-mode . "Py")
-    (emacs-lisp-mode . "EL")
-    (nxhtml-mode . "nx"))
+     ;; Major modes
+     (lisp-interaction-mode . "λ")
+     (python-mode . "Py")
+     (emacs-lisp-mode . "EL")
+     (nxhtml-mode . "nx"))
   "Alist for `clean-mode-line'.
 
 When you add a new element to the alist, keep in mind that you

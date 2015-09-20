@@ -1,6 +1,2 @@
-;; configure sexp editor
-(require 'paredit)
-(paredit-mode)
-
-(local-set-key (kbd "C-c f") 'paredit-forward-slurp-sexp)
-(local-set-key (kbd "C-c F") 'paredit-forward-barf-sexp)
+(local-set-key (kbd "C-c f") 'sp-forward-slurp-sexp)
+(local-set-key (kbd "C-c F") 'sp-forward-barf-sexp)
