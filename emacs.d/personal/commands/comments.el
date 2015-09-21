@@ -1,81 +1,71 @@
 ;;;###autoload
-(defun personal/comment-or-uncomment-region-or-line ()
-  "Comments or uncomments the region or the current line with no active region."
-  (interactive)
-  (let ((beginning
-         (if (region-active-p) (region-beginning) (line-beginning-position)))
-        (end
-         (if (region-active-p) (region-end) (line-end-position))))
-    (comment-or-uncomment-region beginning end)))
-
-;;;###autoload
 (defun personal/insert-header-comment ()
   "Inserts a header wrapped in the appropriate comment characters."
   (interactive)
   (let ((header))
     (if (region-active-p)
-        (let ((start (region-beginning))
-              (end   (region-end)))
-          (goto-char start)
-          (setq header (buffer-substring start end))
-          (message header)
-          (delete-region start end))
+      (let ((start (region-beginning))
+             (end   (region-end)))
+        (goto-char start)
+        (setq header (buffer-substring start end))
+        (message header)
+        (delete-region start end))
       (setq header (read-from-minibuffer "Header: ")))
     (let* ((ender (personal/string-trim (or comment-end "")))
-           (starter (personal/string-trim (or comment-start "#")))
-           (starter-tail (string-to-char (substring starter -1)))
-           (indent-size (length
-                         (personal/regex-replace
-                          starter
-                          (concat "\\(" (regexp-quote
-                                         (char-to-string starter-tail))
-                                  "\\)+$") "")))
-           (outdent-size (length (personal/regex-replace
-                                  ender
-                                  (concat "^\\("
-                                          (regexp-quote
-                                           (char-to-string starter-tail))
-                                          "\\)+") ""))))
+            (starter (personal/string-trim (or comment-start "#")))
+            (starter-tail (string-to-char (substring starter -1)))
+            (indent-size (length
+                           (personal/regex-replace
+                             starter
+                             (concat "\\(" (regexp-quote
+                                             (char-to-string starter-tail))
+                               "\\)+$") "")))
+            (outdent-size (length (personal/regex-replace
+                                    ender
+                                    (concat "^\\("
+                                      (regexp-quote
+                                        (char-to-string starter-tail))
+                                      "\\)+") ""))))
       (if (let ((case-fold-search)) (string-match "^[a-z]" header))
-          (progn
-            ;; first line
-            (insert (concat
-                     starter
-                     (make-string (- (length header)
-                                     (length starter)) starter-tail)))
-            (newline)
-            ;; middle line
-            (insert header)
-            (indent-for-tab-command)
-            (newline)
-            ;; last line
-            (insert (concat
-                     (make-string (- (length header)
-                                     (length ender))
-                                  (string-to-char (substring starter -1)))
-                     ender))
-            (indent-for-tab-command))
         (progn
           ;; first line
           (insert (concat
-                   starter
-                   (make-string (- (+ (length header) 8)
-                                   (length starter) outdent-size)
-                                starter-tail)))
+                    starter
+                    (make-string (- (length header)
+                                   (length starter)) starter-tail)))
           (newline)
           ;; middle line
-          (insert (concat
-                   (make-string (- 3 indent-size) starter-tail)
-                   " "
-                   header
-                   " "
-                   (make-string (- 3 outdent-size) starter-tail)))
+          (insert header)
           (indent-for-tab-command)
           (newline)
           ;; last line
           (insert (concat
-                   (make-string (- (+ (length header) 8)
+                    (make-string (- (length header)
+                                   (length ender))
+                      (string-to-char (substring starter -1)))
+                    ender))
+          (indent-for-tab-command))
+        (progn
+          ;; first line
+          (insert (concat
+                    starter
+                    (make-string (- (+ (length header) 8)
+                                   (length starter) outdent-size)
+                      starter-tail)))
+          (newline)
+          ;; middle line
+          (insert (concat
+                    (make-string (- 3 indent-size) starter-tail)
+                    " "
+                    header
+                    " "
+                    (make-string (- 3 outdent-size) starter-tail)))
+          (indent-for-tab-command)
+          (newline)
+          ;; last line
+          (insert (concat
+                    (make-string (- (+ (length header) 8)
                                    indent-size (length ender))
-                                (string-to-char (substring starter -1)))
-                   ender))
+                      (string-to-char (substring starter -1)))
+                    ender))
           (indent-for-tab-command))))))

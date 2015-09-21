@@ -49,8 +49,6 @@
 ;; command shortcuts
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(personal/bind-key "C-l" "/" 'personal/comment-or-uncomment-region-or-line)
-
 (personal/bind-key "C-l" "L"   'personal/newline-above)
 (personal/bind-key "C-l" "l"   'personal/newline-below)
 (personal/bind-key "C-l" "RET" 'personal/newline-between)

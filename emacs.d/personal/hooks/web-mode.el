@@ -24,7 +24,6 @@
 (local-set-key (kbd "C-l b s") 'personal/toggle-program-spelling)
 
 ;; command shortcuts
-(local-set-key (kbd "C-l =") 'personal/align=)
 (local-set-key (kbd "C-l ;") 'personal/close-statement)
 (local-set-key (kbd "C-l /") 'web-mode-comment-or-uncomment)
 (local-set-key (kbd "C-l C-/") 'web-mode-comment-or-uncomment)

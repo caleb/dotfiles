@@ -17,7 +17,6 @@
 (local-set-key (kbd "C-l b s") 'personal/toggle-program-spelling)
 
 ;; command shortcuts
-(local-set-key (kbd "C-l =") 'personal/align=)
 (local-set-key (kbd "C-l ;") 'personal/close-statement)
 
 (local-set-key (kbd "C-l o p") 'personal/scad-preview)

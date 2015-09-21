@@ -36,6 +36,4 @@
 (local-set-key (kbd "C-M-n") 'personal/other-window-next-line)
 (local-set-key (kbd "C-M-p") 'personal/other-window-previous-line)
 
-(local-set-key (kbd "C-l =") 'personal/align=)
-
 (local-set-key (kbd "C-l t s") 'toggle-quotes)
