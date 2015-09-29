@@ -1,0 +1,2 @@
+Host *.docker
+StrictHostKeyChecking no
