@@ -1,2 +1,2 @@
 Host *.docker
-StrictHostKeyChecking no
+  StrictHostKeyChecking no
