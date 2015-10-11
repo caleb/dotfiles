@@ -3,7 +3,7 @@
 (defun personal/load-init-file (path &optional noerror)
   "This loads a file from inside the the .emacs.d directory"
   (let ((file (file-name-sans-extension
-               (expand-file-name path user-emacs-directory))))
+                (expand-file-name path user-emacs-directory))))
     (load file noerror)))
 
 ;; load configuration settings by type
