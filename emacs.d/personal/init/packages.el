@@ -17,10 +17,10 @@
                              gruvbox-theme
                              handlebars-mode
                              helm-ag
+                             hlinum
                              js2-refactor
                              multiple-cursors
                              nginx-mode
-                             nlinum
                              nyan-mode
                              projectile-rails
                              rhtml-mode
