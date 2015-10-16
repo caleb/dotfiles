@@ -9,7 +9,12 @@
 (require 'hlinum)
 (hlinum-activate)
 
-(setq linum-format " %d ")
+;; Align line numbers to the right with some padding around them
+(defun linum-format-func (line)
+  (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
+    (propertize (format (format " %%%dd " w) line) 'face 'linum)))
+(setq linum-format 'linum-format-func)
+
 (global-linum-mode 1)
 
 ;; Set the linum background color to be the same as the background in gruvbox

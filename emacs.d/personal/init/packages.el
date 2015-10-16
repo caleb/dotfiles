@@ -11,7 +11,7 @@
                              evil-matchit
                              evil-nerd-commenter
                              evil-smartparens
-			     evil-vimish-fold
+                             evil-vimish-fold
                              fill-column-indicator
                              flycheck-rust
                              frame-cmds
