@@ -6,6 +6,9 @@
 
 ;;; Code:
 
+(require 'flycheck)
+(require 'smart-mode-line)
+
 (column-number-mode 1)
 (size-indication-mode -1)
 
