@@ -10,10 +10,18 @@
 (hlinum-activate)
 
 ;; Align line numbers to the right with some padding around them
-(defun linum-format-func (line)
-  (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
-    (propertize (format (format " %%%dd " w) line) 'face 'linum)))
-(setq linum-format 'linum-format-func)
+(add-hook 'linum-before-numbering-hook
+  (lambda ()
+    (setq-local linum-format-fmt
+      (let ((w (length (number-to-string
+                         (count-lines (point-min) (point-max))))))
+        (concat "%" (number-to-string w) "d")))))
+(defun personal/linum-format-func (line)
+  (concat
+    " "
+    (propertize (format linum-format-fmt line) 'face 'linum)
+    " "))
+(setq linum-format 'personal/linum-format-func)
 
 (global-linum-mode 1)
 
