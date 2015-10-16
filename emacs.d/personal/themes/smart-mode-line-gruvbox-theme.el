@@ -21,97 +21,94 @@
 ;; GNU General Public License for more details.
 ;;
 
+;;; Commentary:
+
 ;;; Change Log:
 ;; 0.1a - 2014/05/14 - Created File.
 ;;; Code:
 
-(deftheme smart-mode-line-gruvbox "Gruvbox theme for smart-mode-line.")
-
 (custom-theme-set-faces
- 'smart-mode-line-gruvbox
- `(mode-line-buffer-id   ((t :inherit sml/filename
+  'gruvbox
+  `(which-func ((t :inherit sml/filename)))
+
+  `(mode-line-buffer-id   ((t :inherit sml/filename
                              :foreground nil
                              :background nil)))
 
- `(mode-line-inactive    ((t :foreground "gray80"
+  `(mode-line-inactive    ((t :foreground "gray80"
                              :background "gray30"
                              :inverse-video nil
                              :box (:line-width 6 :color "gray30" :style nil))))
 
- `(mode-line             ((t :foreground "gray60"
+  `(mode-line             ((t :foreground "gray60"
                              :background "gray20"
                              :inverse-video nil
                              :underline nil
                              :box (:line-width 6 :color "gray20" :style nil))))
 
- `(sml/global            ((t :inverse-video nil)))
+  `(sml/global            ((t :inverse-video nil)))
 
- `(sml/modes             ((t :inherit sml/global
+  `(sml/modes             ((t :inherit sml/global
                              :foreground "gray80")))
 
- `(sml/minor-modes       ((t :inherit sml/global
+  `(sml/minor-modes       ((t :inherit sml/global
                              :foreground "gray40"
                              :height 130)))
 
- `(sml/line-number       ((t :height 120
+  `(sml/line-number       ((t :height 120
                              :family "Menlo")))
 
- `(sml/col-number        ((t :height 120
+  `(sml/col-number        ((t :height 120
                              :family "Menlo")))
 
- `(sml/folder            ((t :inherit sml/global
+  `(sml/folder            ((t :inherit sml/global
                              :foreground "gray60")))
 
- `(sml/filename          ((t :inherit sml/global
+  `(sml/filename          ((t :inherit sml/global
                              :foreground ,(if (display-graphic-p) "#fe8019" "#ff8700")
                              :weight bold)))
 
- `(sml/prefix            ((t :inherit sml/global
+  `(sml/prefix            ((t :inherit sml/global
                              :foreground "#ffaf00")))
 
- `(sml/process           ((t :inherit sml/proces
+  `(sml/process           ((t :inherit sml/proces
                              :foreground "#718c00")))
 
- `(sml/modified          ((t :inherit sml/not-modified
+  `(sml/modified          ((t :inherit sml/not-modified
                              :foreground "#c82829"
                              :background "#ffffff"
                              :box (:line-width 2 :color "#c82829"))))
 
- `(sml/read-only         ((t :inherit sml/not-modified
+  `(sml/read-only         ((t :inherit sml/not-modified
                              :foreground ,(if (display-graphic-p) "#83a598" "#87afaf")
                              :box (:line-width 2 :color ,(if (display-graphic-p) "#83a598" "#87afaf")))))
 
- `(personal/mode-line-evil-mode-normal ((t :inherit sml/global
+  `(personal/mode-line-evil-mode-normal ((t :inherit sml/global
                                            :box (:line-width 2 :color "transparent"))))
 
- `(personal/mode-line-evil-mode-visual ((t :inherit sml/global
+  `(personal/mode-line-evil-mode-visual ((t :inherit sml/global
                                            :box (:line-width 2 :color "transparent"))))
 
- `(personal/mode-line-evil-mode-none ((t :inherit sml/global
+  `(personal/mode-line-evil-mode-none ((t :inherit sml/global
                                          :box (:line-width 2 :color "transparent"))))
 
- `(personal/mode-line-evil-mode-insert ((t :inherit sml/global
+  `(personal/mode-line-evil-mode-insert ((t :inherit sml/global
                                            :foreground ,(if (display-graphic-p) "#ffffc8" "color-230")
                                            :background ,(if (display-graphic-p) "#9d0006" "color-88")
                                            :box (:line-width 2 :color "#c82829"))))
 
- `(personal/mode-line-evil-mode-emacs  ((t :inherit sml/global
+  `(personal/mode-line-evil-mode-emacs  ((t :inherit sml/global
                                            :foreground ,(if (display-graphic-p) "#9d0006" "color-88")
                                            :background ,(if (display-graphic-p) "#ffffc8" "color-230")
                                            :box (:line-width 2 :color "#c82829"))))
 
- `(persp-selected-face   ((t :inherit sml/filename
+  `(persp-selected-face   ((t :inherit sml/filename
                              :foreground "ForestGreen")))
 
- `(helm-candidate-number ((t :inherit sml/filename
+  `(helm-candidate-number ((t :inherit sml/filename
                              :foreground nil
                              :background nil))))
 
-;;;###autoload
-(when load-file-name
-  (add-to-list 'custom-theme-load-path
-               (file-name-as-directory (file-name-directory load-file-name))))
+(provide 'smart-mode-line-gruvbox-theme)
 
-(provide-theme 'smart-mode-line-gruvbox)
-
-;;; smart-mode-line-gruvbox-theme.el ends here.
+;;; smart-mode-line-gruvbox-theme.el ends here

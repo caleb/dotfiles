@@ -108,33 +108,30 @@ want to use in the modeline *in lieu of* the original.")
 (defface personal/mode-line-evil-mode-none   '((t :inverse-video nil)) "Face for evil none mode" :group 'personal/faces)
 
 (setq mode-line-format (list "%e"
-                             '(:eval (cond ((evil-insert-state-p) (propertize " INSERT " 'face 'personal/mode-line-evil-mode-insert))
-                                           ((evil-emacs-state-p)  (propertize " EMACS  " 'face 'personal/mode-line-evil-mode-emacs))
-                                           ((evil-visual-state-p) (propertize " VISUAL " 'face 'personal/mode-line-evil-mode-visual))
-                                           ((evil-normal-state-p) (propertize " NORMAL " 'face 'personal/mode-line-evil-mode-normal))
-                                           (t                     (propertize " ------ " 'face 'personal/mode-line-evil-mode-none))))
+                         '(:eval (cond ((evil-insert-state-p) (propertize " INSERT " 'face 'personal/mode-line-evil-mode-insert))
+                                   ((evil-emacs-state-p)  (propertize " EMACS  " 'face 'personal/mode-line-evil-mode-emacs))
+                                   ((evil-visual-state-p) (propertize " VISUAL " 'face 'personal/mode-line-evil-mode-visual))
+                                   ((evil-normal-state-p) (propertize " NORMAL " 'face 'personal/mode-line-evil-mode-normal))
+                                   (t                     (propertize " ------ " 'face 'personal/mode-line-evil-mode-none))))
 
-                             'mode-line-front-space
+                         'mode-line-front-space
 
-                             'mode-line-mule-info
-                             'mode-line-client
-                             " "
-                             'mode-line-modified
-                             ;; " "
-                             ;; 'mode-line-remote
-                             " "
-                             'mode-line-frame-identification
-                             " "
-                             'mode-line-buffer-identification
-                             "   "
-                             'mode-line-position
-                             '(vc-mode vc-mode)
-                             "  "
-                             'mode-line-modes
-                             'mode-line-misc-info
-                             'mode-line-end-spaces))
-
-(setq sml/theme 'gruvbox)
-(sml/setup)
+                         'mode-line-mule-info
+                         'mode-line-client
+                         " "
+                         'mode-line-modified
+                         ;; " "
+                         ;; 'mode-line-remote
+                         " "
+                         'mode-line-frame-identification
+                         " "
+                         'mode-line-buffer-identification
+                         "   "
+                         'mode-line-position
+                         '(vc-mode vc-mode)
+                         "  "
+                         'mode-line-modes
+                         'mode-line-misc-info
+                         'mode-line-end-spaces))
 
 ;;; modeline.el ends here
