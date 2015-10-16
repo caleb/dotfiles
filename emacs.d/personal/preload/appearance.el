@@ -11,7 +11,8 @@
 
 ;; Speed up the performance of the display engine.
 ;; See http://www.masteringemacs.org/article/improving-performance-emacs-display-engine
-(setq redisplay-dont-pause t)
+(when (version<= "24.4" emacs-version)
+  (setq redisplay-dont-pause t))
 
 ;; set our font
 (set-face-attribute 'default nil
