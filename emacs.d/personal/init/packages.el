@@ -6,6 +6,7 @@
                              editorconfig
                              ember-mode
                              evil-args
+                             evil-cleverparens
                              evil-exchange
                              evil-jumper
                              evil-matchit
