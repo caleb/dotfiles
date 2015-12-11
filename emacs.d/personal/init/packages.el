@@ -3,6 +3,7 @@
                              aggressive-indent
                              bats-mode
                              chruby
+                             clj-refactor
                              editorconfig
                              ember-mode
                              evil-args
@@ -27,6 +28,7 @@
                              projectile-rails
                              rhtml-mode
                              ruby-compilation
+                             ruby-refactor
                              rust-mode
                              toggle-quotes
                              window-jump
