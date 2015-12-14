@@ -19,6 +19,8 @@
   :family "Hack" :height 150 :weight 'regular)
 
 ;; tell Prelude what theme to use
-(setq prelude-theme 'gruvbox)
+(when (require 'gruvbox-theme nil 'noerror)
+    (setq prelude-theme 'gruvbox))
+
 
 ;;; appearance.el ends here
