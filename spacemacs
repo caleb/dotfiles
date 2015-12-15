@@ -27,6 +27,7 @@ values."
      better-defaults
      c-c++
      clojure
+     colors
      dash
      dockerfile
      elixir
