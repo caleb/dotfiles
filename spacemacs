@@ -35,6 +35,7 @@ values."
      emacs-lisp
      evil-commentary
      evil-snipe
+     eyebrowse
      git
      github
      go
