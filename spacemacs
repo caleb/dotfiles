@@ -46,7 +46,6 @@ values."
      org
      osx
      php
-     php
      python
      react
      ruby
@@ -60,8 +59,8 @@ values."
      spell-checking
      sql
      syntax-checking
-     theming
      themes-megapack
+     theming
      typescript
      unimpaired
      version-control
