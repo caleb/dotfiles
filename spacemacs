@@ -60,6 +60,7 @@ values."
      spell-checking
      sql
      syntax-checking
+     theming
      themes-megapack
      typescript
      unimpaired
