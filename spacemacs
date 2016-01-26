@@ -56,6 +56,7 @@ values."
              shell-default-position 'bottom)
      search-engine
      shell-scripts
+     spacemacs-ivy
      spacemacs-layouts
      spell-checking
      sql
