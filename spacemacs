@@ -234,8 +234,9 @@ user code."
 layers configuration. You are free to put any user code."
   (spacemacs/toggle-line-numbers-on)
   (spacemacs/toggle-syntax-checking-on)
+  (spacemacs/toggle-aggressive-indent-globally-on)
   (linum-relative-global-mode)
-)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
