@@ -237,6 +237,11 @@ layers configuration. You are free to put any user code."
   (spacemacs/toggle-aggressive-indent-globally-on)
   (linum-relative-global-mode)
   (editorconfig-mode 1)
+
+  ;; Add some extra indentation variables for editorconfig to set
+  (add-to-list 'editorconfig-indentation-alist '(rust-mode rust-indent-offset))
+  (add-to-list 'editorconfig-indentation-alist '(swift-mode swift-indent-offset))
+  (add-to-list 'editorconfig-indentation-alist '(evil-mode evil-shift-width))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
