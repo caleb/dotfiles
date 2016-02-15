@@ -236,6 +236,7 @@ layers configuration. You are free to put any user code."
   (spacemacs/toggle-syntax-checking-on)
   (spacemacs/toggle-aggressive-indent-globally-on)
   (linum-relative-global-mode)
+  (editorconfig-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
