@@ -25,23 +25,22 @@ fi
 
 if (( $+commands[docker-machine] )); then
   alias dm="docker-machine"
-  alias dmi="eval \"\$(docker-machine env boot2docker)\""
 
   function {
     setopt LOCAL_OPTIONS RE_MATCH_PCRE
 
-    # Check to see if we had a dinghy docker-machine
-    local dm_status="$(docker-machine ls)"
-    local dinghy_dm="$(echo "${dm_status}" | grep '^dinghy\b')"
-    local b2d_dm="$(echo "${dm_status}" | grep '^boot2docker\b')"
+    if (( $+commands[dinghy] )); then
+      $(dinghy shellinit)
+    else
+      local dm_status="$(docker-machine ls)"
+      local b2d_dm="$(echo "${dm_status}" | grep '^boot2docker\b')"
 
-    if (( $+commands[dinghy] )) && [[ "${dinghy_dm}" =~ ^dinghy ]]; then
-      if [[ "${dinghy_dm:l}" =~ \\brunning\\b ]]; then
-        $(dinghy shellinit)
-      fi
-    elif [[  "${b2d_dm}" =~ ^boot2docker ]]; then
-      if [[ "${b2d_dm:l}" =~ \\brunning\\b ]]; then
-        eval "$(docker-machine env boot2docker)"
+      if [[  "${b2d_dm}" =~ ^boot2docker ]]; then
+        alias dmi="eval \"\$(docker-machine env boot2docker)\""
+
+        if [[ "${b2d_dm:l}" =~ \\brunning\\b ]]; then
+            eval "$(docker-machine env boot2docker)"
+        fi
       fi
     fi
   }

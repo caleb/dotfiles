@@ -21,6 +21,7 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'terminal' \
   'ruby' \
+  'rust' \
   'rails' \
   'python' \
   'homebrew' \
