@@ -6,3 +6,6 @@
 #
 
 path=($HOME/.cargo/bin $path)
+
+# set the environment variable for the rust source path
+export RUST_SRC_PATH="${HOME}/src/rust/src"
