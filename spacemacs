@@ -242,6 +242,9 @@ layers configuration. You are free to put any user code."
   (add-to-list 'editorconfig-indentation-alist '(rust-mode rust-indent-offset))
   (add-to-list 'editorconfig-indentation-alist '(swift-mode swift-indent-offset))
   (add-to-list 'editorconfig-indentation-alist '(evil-mode evil-shift-width))
+
+  ;; Show .mo files in dired
+  (delete ".mo" dired-omit-extensions)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
