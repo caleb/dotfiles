@@ -5,7 +5,11 @@
 # Authors: Caleb Land <caleb@land.fm>
 #
 
-path=($HOME/.cargo/bin $path)
+if (( $+commands[multirust] )); then
+  path=($HOME/.multirust/toolchains/stable/cargo/bin $path)
+else
+  path=($HOME/.cargo/bin $path)
+fi
 
 # set the environment variable for the rust source path
 export RUST_SRC_PATH="${HOME}/src/rust/src"
