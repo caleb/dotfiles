@@ -246,6 +246,8 @@ layers configuration. You are free to put any user code."
   (add-to-list 'editorconfig-indentation-alist '(evil-mode evil-shift-width))
 
   ;; Show .mo files in dired
+  (if (not (boundp 'dired-omit-extensions))
+    (require 'dired-x))
   (setq dired-omit-extensions (remove ".mo" dired-omit-extensions))
   )
 
