@@ -17,35 +17,36 @@ fi
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
-  'environment' \
-  'archive' \
-  'terminal' \
-  'ruby' \
-  'rust' \
-  'rails' \
-  'python' \
-  'homebrew' \
-  'node' \
-  'git' \
-  'directory' \
-  'docker' \
-  'history-substring-search' \
-  'rsync' \
-  'gnu-utility' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'thefuck' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'ssh' \
-  'osx' \
-  'completion' \
-  'fasd' \
-  'tmux' \
-  'go' \
-  'prompt'
+       'autosuggestions' \
+       'environment' \
+       'archive' \
+       'terminal' \
+       'ruby' \
+       'rust' \
+       'rails' \
+       'python' \
+       'homebrew' \
+       'node' \
+       'git' \
+       'directory' \
+       'docker' \
+       'history-substring-search' \
+       'rsync' \
+       'gnu-utility' \
+       'terminal' \
+       'editor' \
+       'history' \
+       'thefuck' \
+       'directory' \
+       'spectrum' \
+       'utility' \
+       'ssh' \
+       'osx' \
+       'completion' \
+       'fasd' \
+       'tmux' \
+       'go' \
+       'prompt'
 
 #
 # Go

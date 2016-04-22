@@ -42,16 +42,35 @@ Usage
 
         rm -f ~/.zcompdump; compinit
 
+#### oh-my-zsh
+
+If you use [oh-my-zsh][] then just clone the repository inside your oh-my-zsh repo:
+
+```Shell
+git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+```
+
+and enable it in your `.zshrc`:
+
+```zsh
+plugins+=(zsh-completions)
+autoload -U compinit && compinit
+```
+
+[oh-my-zsh]: http://github.com/robbyrussell/oh-my-zsh
+
 Contributing
 ------------
 
 Contributions are welcome, just make sure you follow the guidelines:
 
+ * Completions are not accepted when already available in zsh.
  * Completions are not accepted when already available in their original project.
  * Please do not just copy/paste someone else completion, ask before.
  * Completions only partially implemented are not accepted.
  * Please add a header containing authors, license info, status and origin of the script (example [here](src/_ack)).
  * Please try to follow [Zsh completion style guide](https://github.com/zsh-users/zsh/blob/master/Etc/completion-style-guide).
+ * Please send one separate pull request per file.
  * Send a pull request or ask for committer access.
 
 
