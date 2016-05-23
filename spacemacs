@@ -41,6 +41,7 @@ values."
        github
        go
        html
+       ivy
        java
        javascript
        markdown
@@ -49,6 +50,7 @@ values."
        php
        python
        react
+       rebox
        ruby
        ruby-on-rails
        rust
@@ -57,7 +59,6 @@ values."
          shell-default-position 'bottom)
        search-engine
        shell-scripts
-       spacemacs-ivy
        spacemacs-layouts
        spell-checking
        sql
