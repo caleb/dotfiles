@@ -28,6 +28,7 @@ zstyle ':prezto:load' pmodule \
        'homebrew' \
        'node' \
        'git' \
+       'gpg' \
        'directory' \
        'docker' \
        'history-substring-search' \
