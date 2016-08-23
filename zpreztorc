@@ -17,7 +17,6 @@ fi
 # Set the Prezto modules to load (browse modules).
 # The order matters.
 zstyle ':prezto:load' pmodule \
-       'autosuggestions' \
        'environment' \
        'archive' \
        'terminal' \
@@ -26,7 +25,6 @@ zstyle ':prezto:load' pmodule \
        'rails' \
        'python' \
        'homebrew' \
-       'node' \
        'git' \
        'gpg' \
        'directory' \
