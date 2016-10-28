@@ -241,6 +241,8 @@ layers configuration. You are free to put any user code."
   (linum-relative-global-mode)
   (editorconfig-mode 1)
 
+  (setq elm-indent-offset 2)
+
   ;; Add some extra indentation variables for editorconfig to set
   (add-to-list 'editorconfig-indentation-alist '(rust-mode rust-indent-offset))
   (add-to-list 'editorconfig-indentation-alist '(swift-mode swift-indent-offset))
