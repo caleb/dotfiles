@@ -25,13 +25,16 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     c-c++
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
      clojure
      colors
      dash
      docker
      elixir
-     elm
+     (elm :variables
+          elm-format-command "elm-format-0.17"
+          elm-indent-offset 2)
      emacs-lisp
      evil-commentary
      evil-cleverparens
@@ -241,15 +244,12 @@ layers configuration. You are free to put any user code."
   (linum-relative-global-mode)
   (editorconfig-mode 1)
 
-  (setq elm-indent-offset 2)
+  (add-to-list 'spacemacs-indent-sensitive-modes '(elm-mode))
 
   ;; Add some extra indentation variables for editorconfig to set
   (add-to-list 'editorconfig-indentation-alist '(rust-mode rust-indent-offset))
   (add-to-list 'editorconfig-indentation-alist '(swift-mode swift-indent-offset))
   (add-to-list 'editorconfig-indentation-alist '(evil-mode evil-shift-width))
-
-  (setq-default dotspacemacs-configuration-layers
-    '((c-c++ :variables c-c++-enable-clang-support t)))
 
   ;; Bind clang-format-buffer to tab on the c++-mode and c-mode only:
   (add-hook 'c++-mode-hook 'clang-format-bindings)
