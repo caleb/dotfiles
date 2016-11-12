@@ -1,2 +1,6 @@
-Host *.docker
+# Settings for all hosts
+PubkeyAcceptedKeyTypes=+ssh-dss
+KexAlgorithms +diffie-hellman-group1-sha1
+
+Host *.dev
   StrictHostKeyChecking no
