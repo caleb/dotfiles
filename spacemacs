@@ -65,7 +65,7 @@ values."
      spell-checking
      sql
      semantic
-     spacemacs-purpose
+     ;; spacemacs-purpose
      syntax-checking
      themes-megapack
      theming
@@ -117,22 +117,22 @@ values."
     ;; Press <SPC> T n to cycle to the next theme in the list (works great
     ;; with 2 themes variants, one dark and one light)
     dotspacemacs-themes '(gruvbox
-                           spacemacs-dark
-                           spacemacs-light
-                           solarized-light
-                           solarized-dark
-                           leuven
-                           monokai
-                           zenburn)
+                          spacemacs-dark
+                          spacemacs-light
+                          solarized-light
+                          solarized-dark
+                          leuven
+                          monokai
+                          zenburn)
     ;; If non nil the cursor color matches the state color.
     dotspacemacs-colorize-cursor-according-to-state t
     ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
     ;; size to make separators look not too crappy.
     dotspacemacs-default-font '("Hack"
-                                 :size 13
-                                 :weight normal
-                                 :width normal
-                                 :powerline-scale 1.1)
+                                :size 13
+                                :weight normal
+                                :width normal
+                                :powerline-scale 1.1)
     ;; The leader key
     dotspacemacs-leader-key "SPC"
     ;; The leader key accessible in `emacs state' and `insert state'
