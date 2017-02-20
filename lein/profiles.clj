@@ -1,10 +1,10 @@
 {:user
- {:plugins      [[venantius/ultra "0.4.1"]
+ {:plugins      [[venantius/ultra "0.5.1"]
                  [refactor-nrepl "2.2.0"]
-                 [cider/cider-nrepl "0.11.0"]]
-  :dependencies [[spyscope "0.1.4"]
+                 [cider/cider-nrepl "0.14.0"]]
+  :dependencies [[spyscope "0.1.6"]
                  [org.clojure/tools.namespace "0.2.11"]
-                 [io.aviso/pretty "0.1.26"]
+                 [io.aviso/pretty "0.1.33"]
                  [im.chit/vinyasa "0.4.7"]]
   :injections
   [(require 'spyscope.core)
