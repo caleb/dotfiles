@@ -39,15 +39,15 @@ values."
       auto-completion
       better-defaults
       (c-c++ :variables
-        c-c++-enable-clang-support t)
+       c-c++-enable-clang-support t)
       clojure
       colors
       dash
       docker
       elixir
       (elm :variables
-        elm-format-command "elm-format-0.17"
-        elm-indent-offset 2)
+       elm-format-command "elm-format-0.17"
+       elm-indent-offset 2)
       emacs-lisp
       evil-commentary
       evil-cleverparens
@@ -70,8 +70,8 @@ values."
       ruby-on-rails
       rust
       (shell :variables
-        shell-default-height 30
-        shell-default-position 'bottom)
+       shell-default-height 30
+       shell-default-position 'bottom)
       search-engine
       shell-scripts
       spacemacs-layouts
