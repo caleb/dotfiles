@@ -1,0 +1,4 @@
+Rust
+====
+
+Some Rust configuration
