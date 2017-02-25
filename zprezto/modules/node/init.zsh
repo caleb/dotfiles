@@ -18,13 +18,14 @@ elif (( $+commands[brew] )) && [[ -d "$(brew --prefix nvm 2>/dev/null)" ]]; then
   fi
   source $(brew --prefix nvm)/nvm.sh
 
-  if [[ -f "${HOME}/.node-version" ]]; then
-    nvm use `cat "${HOME}/.node-version"` > /dev/null
-  fi
-
 # Return if requirements are not found.
 elif (( ! $+commands[node] )); then
   return 1
+fi
+
+# Load the default version of node
+if [[ -f "${HOME}/.node-version" ]]; then
+  nvm use `cat "${HOME}/.node-version"` > /dev/null
 fi
 
 # Load NPM completion.

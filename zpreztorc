@@ -22,6 +22,7 @@ zstyle ':prezto:load' pmodule \
        'terminal' \
        'ruby' \
        'rust' \
+       'elixir' \
        'rails' \
        'python' \
        'homebrew' \
