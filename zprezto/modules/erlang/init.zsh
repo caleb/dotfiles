@@ -18,7 +18,13 @@ fi
 
 # Some defaults
 export KERL_DEFAULT_INSTALL_DIR="${HOME}/.kerl/versions"
+if [[ -d "${HOME}/.kerl/openssl" ]]; then
+  # Use our custom openssl
+  export KERL_CONFIGURE_OPTIONS="--with-ssl=${HOME}/.kerl/openssl"
+fi
 
 if [[ -f "${HOME}/.erlang-version" ]]; then
-  . "${HOME}/.kerl/versions/$(cat ${HOME}/.erlang-version)/activate"
+  if [[ -f  "${HOME}/.kerl/versions/$(cat ${HOME}/.erlang-version)/activate" ]]; then
+    . "${HOME}/.kerl/versions/$(cat ${HOME}/.erlang-version)/activate"
+  fi
 fi

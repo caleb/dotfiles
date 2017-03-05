@@ -1,0 +1,8 @@
+mkdir -p "${HOME}/.kerl"
+cd "${HOME}/.kerl"
+curl -O https://www.openssl.org/source/openssl-1.0.2k.tar.gz
+tar xzf openssl-1.0.2k.tar.gz
+cd openssl-1.0.2k
+./config shared --prefix="${HOME}/.kerl/openssl"
+make
+make install
