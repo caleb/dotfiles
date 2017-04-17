@@ -10,8 +10,9 @@
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   source "$HOME/.nvm/nvm.sh"
 elif [[ -s "/usr/share/nvm/nvm.sh" ]]; then
+  export NVM_DIR=~/.nvm
   source "/usr/share/nvm/nvm.sh"
-# Load package manager installed NVM into the shell session.
+  # Load package manager installed NVM into the shell session.
 elif (( $+commands[brew] )) && [[ -d "$(brew --prefix nvm 2>/dev/null)" ]]; then
   export NVM_DIR=~/.nvm
   if [[ ! -d "${NVM_DIR}" ]]; then
