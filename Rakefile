@@ -38,6 +38,9 @@ task :setup do
     github_username = ask "#{HighLine.color("GitHub username", HighLine::BOLD)}: "
     rcm_excludes    = ask "#{HighLine.color("dotfiles/globs to exclude from your home directory separated by spaces (e.x. vim*)", HighLine::BOLD)}: "
 
+    debian_full_name   = ask "#{HighLine.color("Full name used for debian packaging", HighLine::BOLD)}: "
+    debian_email       = ask "#{HighLine.color("Email address used for debian packaging", HighLine::BOLD)}: "
+
     File.open settings_file, 'w+', 0644 do |f|
       f.write <<-EOF
 ---
@@ -50,24 +53,32 @@ rcm_excludes: #{rcm_excludes}
       # force a re-read of the configuration file
       @settings = nil
     end
-  end
 
-  rcrc_file = File.join ENV['HOME'], '.rcrc'
-  skip_files = SKIP_FILES + (settings[:rcm_excludes].nil? ? [] : settings[:rcm_excludes].split(/\s+/))
+    File.open File.join(ENV['HOME'], '.zshenv.local'), 'w+', 0644 do |f|
+      f.write <<-EOF
+DEBEMAIL="#{debian_email}"
+DEBFULLNAME="#{debian_full_name}"
+export DEBEMAIL DEBFULLNAME
+      EOF
+    end
 
-  File.open rcrc_file, 'w+', 0644 do |f|
-    f.write <<-EOF
+    rcrc_file = File.join ENV['HOME'], '.rcrc'
+    skip_files = SKIP_FILES + (settings[:rcm_excludes].nil? ? [] : settings[:rcm_excludes].split(/\s+/))
+
+    File.open rcrc_file, 'w+', 0644 do |f|
+      f.write <<-EOF
 EXCLUDES="#{skip_files.join(' ')}"
 DOTFILES_DIRS="#{dotfile_dir}"
-    EOF
-  end
+      EOF
+    end
 
-  Dir.chdir File.dirname(__FILE__) do
-    Dir['*.mustache'].each do |file|
-      output_file = file.gsub /\.mustache$/, ''
-      rendered = Mustache.render(open(file).read, settings)
-      File.open output_file, 'w+' do |f|
-        f << rendered
+    Dir.chdir File.dirname(__FILE__) do
+      Dir['*.mustache'].each do |file|
+        output_file = file.gsub /\.mustache$/, ''
+        rendered = Mustache.render(open(file).read, settings)
+        File.open output_file, 'w+' do |f|
+          f << rendered
+        end
       end
     end
   end
