@@ -12,16 +12,19 @@ if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
 elif [[ -s "/usr/share/nvm/nvm.sh" ]]; then
   export NVM_DIR=~/.nvm
   source "/usr/share/nvm/nvm.sh"
-  # Load package manager installed NVM into the shell session.
+elif [[ -s "/usr/local/share/nvm/nvm.sh" ]]; then
+  export NVM_DIR=~/.nvm
+  source "/usr/local/share/nvm/nvm.sh"
 elif (( $+commands[brew] )) && [[ -d "$(brew --prefix nvm 2>/dev/null)" ]]; then
+  # Load package manager installed NVM into the shell session.
   export NVM_DIR=~/.nvm
   if [[ ! -d "${NVM_DIR}" ]]; then
     mkdir -p "${NVM_DIR}"
   fi
   source $(brew --prefix nvm)/nvm.sh
 
-# Return if requirements are not found.
 elif (( ! $+commands[node] )); then
+  # Return if requirements are not found.
   return 1
 fi
 
