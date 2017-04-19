@@ -363,9 +363,7 @@ you should place your code here."
   (add-to-list 'spacemacs-indent-sensitive-modes '(elm-mode))
 
   ;; Add some extra indentation variables for editorconfig to set
-  (add-to-list 'editorconfig-indentation-alist '(rust-mode rust-indent-offset))
   (add-to-list 'editorconfig-indentation-alist '(swift-mode swift-indent-offset))
-  (add-to-list 'editorconfig-indentation-alist '(evil-mode evil-shift-width))
 
   ;; Bind clang-format-buffer to tab on the c++-mode and c-mode only:
   (add-hook 'c++-mode-hook 'clang-format-bindings)
