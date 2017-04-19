@@ -7,10 +7,10 @@
 # Load php-version into the shell session.
 if [[ -s "$HOME/.php-version/php-version.sh" ]]; then
   source "$HOME/.php-version/php-version.sh"
-elif [[ -s "/usr/share/php-vesrion/php-version.sh" ]]; then
-  source "/usr/share/php-vesrion/php-version.sh"
-elif [[ -s "/usr/local/share/php-vesrion/php-version.sh" ]]; then
-  source "/usr/local/share/php-vesrion/php-version.sh"
+elif [[ -s "/usr/share/php-version/php-version.sh" ]]; then
+  source "/usr/share/php-version/php-version.sh"
+elif [[ -s "/usr/local/share/php-version/php-version.sh" ]]; then
+  source "/usr/local/share/php-version/php-version.sh"
 fi
 
 # Return if requirements are not found.
