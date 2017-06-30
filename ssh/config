@@ -1,7 +1,6 @@
 # Settings for all hosts
 PubkeyAcceptedKeyTypes=+ssh-dss
 KexAlgorithms +diffie-hellman-group1-sha1
-UseKeychain yes
 AddKeysToAgent yes
 
 Host *.dev
