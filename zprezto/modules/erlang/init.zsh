@@ -18,6 +18,7 @@ fi
 
 # Some defaults
 export KERL_DEFAULT_INSTALL_DIR="${HOME}/.kerl/versions"
+export KERL_BUILD_DOCS=yes
 if [[ -d "${HOME}/.kerl/openssl" ]]; then
   # Use our custom openssl
   export KERL_CONFIGURE_OPTIONS="--with-ssl=${HOME}/.kerl/openssl"
