@@ -46,7 +46,7 @@ values."
       docker
       elixir
       (elm :variables
-       elm-format-command "elm-format-0.17"
+       elm-format-command "elm-format-0.18"
        elm-indent-offset 2)
       emacs-lisp
       evil-commentary
@@ -91,7 +91,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(chruby nginx-mode editorconfig nasm-mode doom-themes)
+   dotspacemacs-additional-packages '(chruby nginx-mode editorconfig nasm-mode doom-themes exec-path-from-shell)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -353,6 +353,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+
   (setq powerline-default-separator 'utf-8)
 
   (spacemacs/toggle-evil-cleverparens-on)
