@@ -20,7 +20,8 @@ zstyle ':prezto:load' pmodule \
        'environment' \
        'archive' \
        'terminal' \
-	   'asdf' \
+       'completion' \
+       'asdf' \
        'ruby' \
        'php' \
        'rust' \
@@ -46,7 +47,6 @@ zstyle ':prezto:load' pmodule \
        'utility' \
        'ssh' \
        'osx' \
-       'completion' \
        'fasd' \
        'tmux' \
        'go' \
