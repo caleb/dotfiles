@@ -55,6 +55,7 @@ values."
       git
       github
       go
+      haskell
       html
       ivy
       java
