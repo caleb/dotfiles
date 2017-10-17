@@ -62,13 +62,14 @@ path=(
   $path
 )
 
+# add ~/.local/bin for local installs
+if [[ -d ~/.local/bin ]]; then
+  path=(~/.local/bin $path)
+fi
+
 # ~/bin overrides everything
 if [[ -d ~/bin ]]; then
   path=(~/bin $path)
-fi
-
-if [[ -d ~/.local/bin ]]; then
-  path=(~/.local/bin $path)
 fi
 
 # remove duplicate entries
