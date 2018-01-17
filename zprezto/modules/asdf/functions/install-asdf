@@ -1,4 +1,4 @@
 local ASDF_DIR="${1:-"${HOME}/.asdf"}"
-local BRANCH="${2:-v0.3.0}"
+local BRANCH="${2:-v0.4.1}"
 
 git clone https://github.com/asdf-vm/asdf.git "${ASDF_DIR}" --branch "${BRANCH}"
