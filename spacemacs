@@ -358,8 +358,9 @@ you should place your code here."
     (exec-path-from-shell-initialize))
 
   (setq powerline-default-separator 'utf-8)
-
-  (spacemacs/toggle-evil-cleverparens-on)
+  toggle-evil-cleverparens-ontoggle-evil-cleverparens-ontoggle-evil-cleverparens-on
+  ;; In Spacemacs develop branch this is not defined
+  ;; (spacemacs/toggle-evil-cleverparens-on)
   (spacemacs/toggle-syntax-checking-on)
   (spacemacs/toggle-aggressive-indent-globally-on)
   (editorconfig-mode 1)
