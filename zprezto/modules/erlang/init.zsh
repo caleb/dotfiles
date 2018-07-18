@@ -22,10 +22,10 @@ export KERL_BUILD_DOCS=yes
 if [[ -d "${HOME}/.kerl/openssl" ]]; then
   # Use our custom openssl
   export KERL_CONFIGURE_OPTIONS="--with-ssl=${HOME}/.kerl/openssl"
-elif [[ -d "/usr/local/opt/openssl@1.1" ]] && [[ "$OSTYPE" != darwin* ]]; then
+elif [[ -d "/usr/local/opt/openssl@1.1" ]] && [[ "$OSTYPE" = darwin* ]]; then
   # Use our custom openssl
   export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl@1.1"
-elif [[ -d "/usr/local/opt/openssl" ]] && [[ "$OSTYPE" != darwin* ]]; then
+elif [[ -d "/usr/local/opt/openssl" ]] && [[ "$OSTYPE" = darwin* ]]; then
   # Use our custom openssl
   export KERL_CONFIGURE_OPTIONS="--with-ssl=/usr/local/opt/openssl"
 fi
