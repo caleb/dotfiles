@@ -1,8 +1,0 @@
-mkdir -p "${HOME}/.rubies"
-cd "${HOME}/.rubies"
-curl -O https://www.openssl.org/source/openssl-1.0.2k.tar.gz
-tar xzf openssl-1.0.2k.tar.gz
-cd openssl-1.0.2k
-./config shared --prefix="${HOME}/.rubies/openssl"
-make
-make install

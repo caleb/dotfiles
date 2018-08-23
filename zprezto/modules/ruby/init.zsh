@@ -17,31 +17,21 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
 # Load manually installed rbenv into the shell session.
 elif [[ -s "$HOME/.rbenv/bin/rbenv" ]]; then
   path=("$HOME/.rbenv/bin" $path)
-  remove-rbenv-shims-path
   eval "$(rbenv init - --no-rehash zsh)"
 
 # Load package manager installed rbenv into the shell session.
 elif (( $+commands[rbenv] )); then
-  remove-rbenv-shims-path
   eval "$(rbenv init - --no-rehash zsh)"
 
 # Load package manager installed chruby into the shell session.
 elif (( $+commands[chruby-exec] )); then
-  source "${commands[chruby-exec]:h:h}/share/chruby/chruby.sh"
-  if zstyle -t ':prezto:module:ruby:chruby' auto-switch; then
-    source "${commands[chruby-exec]:h:h}/share/chruby/auto.sh"
+  if (( ! $+functions[chruby] )); then
+    source "${commands[chruby-exec]:h:h}/share/chruby/chruby.sh"
+  fi
 
-    # Workaround for postmodern/chruby#191 in interactive mode
-    #
-    # precmd_functions are executed before the prompt is printed, whereas
-    # preexec_functions are executed before a command is executed.
-    # chruby_auto uses preexec_functions which causes the prompt to be
-    # displayed incorrectly when first `cd`ing to a directory with a
-    # .ruby-version file (the correct ruby version is selected when a
-    # command is executed, but just after `cd`ing the ruby isnt' changed)
-    if [[ $PS1 ]]; then
-      precmd_functions+=("chruby_auto")
-      preexec_functions=${preexec_functions:#"chruby_auto"}
+  if zstyle -t ':prezto:module:ruby:chruby' auto-switch; then
+    if (( ! $+functions[chruby_auto] )); then
+      source "${commands[chruby-exec]:h:h}/share/chruby/auto.sh"
     fi
 
     # If a default Ruby is set, switch to it.
