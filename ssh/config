@@ -5,3 +5,13 @@ AddKeysToAgent yes
 
 Host *.dev
   StrictHostKeyChecking no
+
+Host development-vm.local
+  User caleb
+  HostName development-vm.local
+  ForwardAgent yes
+
+Host tools.mojoyourfranchise.com
+  User root
+  HostName tools.mojoyourfranchise.com
+  ForwardAgent yes
