@@ -15,3 +15,8 @@ Host tools.mojoyourfranchise.com
   User root
   HostName tools.mojoyourfranchise.com
   ForwardAgent yes
+
+Host bdccreditreporter.com
+  User root
+  HostName bdccreditreporter.com
+  ForwardAgent yes
