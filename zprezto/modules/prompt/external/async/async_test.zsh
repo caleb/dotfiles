@@ -7,8 +7,8 @@ test__async_job_print_hi() {
 	local line
 	local -a out
 	line=$(_async_job print hi)
-	# Remove trailing null, parse, unquote and interpret as array.
-	line=$line[1,$#line-1]
+	# Remove leading/trailing null, parse, unquote and interpret as array.
+	line=$line[2,$#line-1]
 	out=("${(@Q)${(z)line}}")
 
 	coproc exit
@@ -396,8 +396,10 @@ test_async_flush_jobs() {
 	# TODO: Confirm that they no longer exist in the process tree.
 	local output
 	output="${(Q)$(ASYNC_DEBUG=1 async_flush_jobs test)}"
-	[[ $output = *'print_four 0 4'* ]] || {
-		t_error "want discarded output 'print_four 0 4' when ASYNC_DEBUG=1, got ${(Vq-)output}"
+	# NOTE(mafredri): First 'p' in print_four is lost when null-prefixing
+	# _async_job output.
+	[[ $output = *'rint_four 0 4'* ]] || {
+		t_error "want discarded output 'rint_four 0 4' when ASYNC_DEBUG=1, got ${(Vq-)output}"
 	}
 
 	# Check that the killed job did not produce output.
@@ -428,6 +430,35 @@ test_async_worker_survives_termination_of_other_worker() {
 	done
 
 	(( $#result == 6 )) || t_error "wanted a result, got (${(@Vq)result})"
+}
+
+test_async_worker_update_pwd() {
+	local -a result
+	local eval_out
+	cb() {
+		if [[ $1 == '[async/eval]' ]]; then
+			eval_out="$3"
+		else
+			result+=("$3")
+		fi
+	}
+
+	async_start_worker test1
+	t_defer async_stop_worker test1
+
+	async_job test1 'print $PWD'
+	async_worker_eval test1 'print -n foo; cd ..; print -n bar; print -n -u2 baz'
+	async_job test1 'print $PWD'
+
+	start=$EPOCHREALTIME
+	while (( EPOCHREALTIME - start < 2.0 && $#result < 3 )); do
+		async_process_results test1 cb
+	done
+
+	(( $#result == 2 )) || t_error "wanted 2 results, got ${#result}"
+	[[ $eval_out = foobarbaz ]] || t_error "wanted async_worker_eval to output foobarbaz, got ${(q)eval_out}"
+	[[ -n $result[2] ]] || t_error "wanted second pwd to be non-empty"
+	[[ $result[1] != $result[2] ]] || t_error "wanted worker to change pwd, was ${(q)result[1]}, got ${(q)result[2]}"
 }
 
 setopt_helper() {

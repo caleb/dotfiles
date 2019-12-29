@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.5.2
+- Allow disabling automatic widget re-binding for better performance (#418)
+- Fix async suggestions when `SH_WORD_SPLIT` is set
+- Refactor async mode to use process substitution instead of zpty (#417)
+
+## v0.5.1
+- Speed up widget rebinding (#413)
+- Clean up global variable creations (#403)
+- Respect user's set options when running original widget (#402)
+
+## v0.5.0
+- Don't overwrite config with default values (#335)
+- Support fallback strategies by supplying array to suggestion config var
+- Rename "default" suggestion strategy to "history" to name it based on what it actually does
+- Reset opts in some functions affected by `GLOB_SUBST` (#334)
+- Support widgets starting with dashes (ex: `-a-widget`) (#337)
+- Skip async tests in zsh versions less than 5.0.8 because of reliability issues
+- Fix handling of newline + carriage return in async pty (#333)
+
+
 ## v0.4.3
 - Avoid bell when accepting suggestions with `autosuggest-accept` (#228)
 - Don't fetch suggestions after [up,down]-line-or-beginning-search (#227, #241)

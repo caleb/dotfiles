@@ -111,45 +111,54 @@ CURRENT_BG='NONE'
 set_default last_left_element_index 1
 set_default POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS " "
 left_prompt_segment() {
+  local segment_name="${1}"
   local current_index=$2
   # Check if the segment should be joined with the previous one
   local joined
   segmentShouldBeJoined $current_index $last_left_element_index "$POWERLEVEL9K_LEFT_PROMPT_ELEMENTS" && joined=true || joined=false
 
+  # Colors
+  local backgroundColor="${3}"
+  local foregroundColor="${4}"
+
   # Overwrite given background-color by user defined variable for this segment.
-  local BACKGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)1#prompt_}_BACKGROUND
+  local BACKGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)${segment_name}#prompt_}_BACKGROUND
   local BG_COLOR_MODIFIER=${(P)BACKGROUND_USER_VARIABLE}
-  [[ -n $BG_COLOR_MODIFIER ]] && 3="$BG_COLOR_MODIFIER"
+  [[ -n $BG_COLOR_MODIFIER ]] && backgroundColor="$BG_COLOR_MODIFIER"
 
   # Overwrite given foreground-color by user defined variable for this segment.
-  local FOREGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)1#prompt_}_FOREGROUND
+  local FOREGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)${segment_name}#prompt_}_FOREGROUND
   local FG_COLOR_MODIFIER=${(P)FOREGROUND_USER_VARIABLE}
-  [[ -n $FG_COLOR_MODIFIER ]] && 4="$FG_COLOR_MODIFIER"
+  [[ -n $FG_COLOR_MODIFIER ]] && foregroundColor="$FG_COLOR_MODIFIER"
 
-  local bg fg
-  [[ -n "$3" ]] && bg="$(backgroundColor $3)" || bg="$(backgroundColor)"
-  [[ -n "$4" ]] && fg="$(foregroundColor $4)" || fg="$(foregroundColor)"
+  # Get color codes here to save some calls later on
+  backgroundColor="$(getColorCode ${backgroundColor})"
+  foregroundColor="$(getColorCode ${foregroundColor})"
 
-  if [[ $CURRENT_BG != 'NONE' ]] && ! isSameColor "$3" "$CURRENT_BG"; then
-    echo -n "$bg%F{$CURRENT_BG}"
+  local background foreground
+  [[ -n "${backgroundColor}" ]] && background="$(backgroundColor ${backgroundColor})" || background="%k"
+  [[ -n "${foregroundColor}" ]] && foreground="$(foregroundColor ${foregroundColor})" || foreground="%f"
+
+  if [[ $CURRENT_BG != 'NONE' ]] && ! isSameColor "${backgroundColor}" "$CURRENT_BG"; then
+    echo -n "${background}%F{$CURRENT_BG}"
     if [[ $joined == false ]]; then
       # Middle segment
       echo -n "$(print_icon 'LEFT_SEGMENT_SEPARATOR')$POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS"
     fi
-  elif isSameColor "$CURRENT_BG" "$3"; then
+  elif isSameColor "$CURRENT_BG" "${backgroundColor}"; then
     # Middle segment with same color as previous segment
     # We take the current foreground color as color for our
     # subsegment (or the default color). This should have
     # enough contrast.
     local complement
-    [[ -n "$4" ]] && complement="$fg" || complement="$(foregroundColor $DEFAULT_COLOR)"
-    echo -n "${bg}${complement}"
+    [[ -n "${foregroundColor}" ]] && complement="${foreground}" || complement="$(foregroundColor $DEFAULT_COLOR)"
+    echo -n "${background}${complement}"
     if [[ $joined == false ]]; then
       echo -n "$(print_icon 'LEFT_SUBSEGMENT_SEPARATOR')$POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS"
     fi
   else
     # First segment
-    echo -n "${bg}$POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS"
+    echo -n "${background}$POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS"
   fi
 
   local visual_identifier
@@ -161,26 +170,26 @@ left_prompt_segment() {
       # we need to color both the visual identifier and the whitespace.
       [[ -n "$5" ]] && visual_identifier="$visual_identifier "
       # Allow users to overwrite the color for the visual identifier only.
-      local visual_identifier_color_variable=POWERLEVEL9K_${(U)1#prompt_}_VISUAL_IDENTIFIER_COLOR
-      set_default $visual_identifier_color_variable $4
-      visual_identifier="%F{${(P)visual_identifier_color_variable}%}$visual_identifier%f"
+      local visual_identifier_color_variable=POWERLEVEL9K_${(U)${segment_name}#prompt_}_VISUAL_IDENTIFIER_COLOR
+      set_default $visual_identifier_color_variable "${foregroundColor}"
+      visual_identifier="$(foregroundColor ${(P)visual_identifier_color_variable})${visual_identifier}%f"
     fi
   fi
 
   # Print the visual identifier
   echo -n "${visual_identifier}"
   # Print the content of the segment, if there is any
-  [[ -n "$5" ]] && echo -n "${fg}${5}"
+  [[ -n "$5" ]] && echo -n "${foreground}${5}"
   echo -n "${POWERLEVEL9K_WHITESPACE_BETWEEN_LEFT_SEGMENTS}"
 
-  CURRENT_BG=$3
+  CURRENT_BG="${backgroundColor}"
   last_left_element_index=$current_index
 }
 
 # End the left prompt, closes the final segment.
 left_prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
-    echo -n "%k%F{$CURRENT_BG}$(print_icon 'LEFT_SEGMENT_SEPARATOR')"
+    echo -n "%k$(foregroundColor ${CURRENT_BG})$(print_icon 'LEFT_SEGMENT_SEPARATOR')"
   else
     echo -n "%k"
   fi
@@ -203,25 +212,34 @@ CURRENT_RIGHT_BG='NONE'
 set_default last_right_element_index 1
 set_default POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS " "
 right_prompt_segment() {
+  local segment_name="${1}"
   local current_index=$2
 
   # Check if the segment should be joined with the previous one
   local joined
   segmentShouldBeJoined $current_index $last_right_element_index "$POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS" && joined=true || joined=false
 
+  # Colors
+  local backgroundColor="${3}"
+  local foregroundColor="${4}"
+
   # Overwrite given background-color by user defined variable for this segment.
-  local BACKGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)1#prompt_}_BACKGROUND
+  local BACKGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)${segment_name}#prompt_}_BACKGROUND
   local BG_COLOR_MODIFIER=${(P)BACKGROUND_USER_VARIABLE}
-  [[ -n $BG_COLOR_MODIFIER ]] && 3="$BG_COLOR_MODIFIER"
+  [[ -n $BG_COLOR_MODIFIER ]] && backgroundColor="$BG_COLOR_MODIFIER"
 
   # Overwrite given foreground-color by user defined variable for this segment.
-  local FOREGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)1#prompt_}_FOREGROUND
+  local FOREGROUND_USER_VARIABLE=POWERLEVEL9K_${(U)${segment_name}#prompt_}_FOREGROUND
   local FG_COLOR_MODIFIER=${(P)FOREGROUND_USER_VARIABLE}
-  [[ -n $FG_COLOR_MODIFIER ]] && 4="$FG_COLOR_MODIFIER"
+  [[ -n $FG_COLOR_MODIFIER ]] && foregroundColor="$FG_COLOR_MODIFIER"
 
-  local bg fg
-  [[ -n "$3" ]] && bg="$(backgroundColor $3)" || bg="$(backgroundColor)"
-  [[ -n "$4" ]] && fg="$(foregroundColor $4)" || fg="$(foregroundColor)"
+  # Get color codes here to save some calls later on
+  backgroundColor="$(getColorCode ${backgroundColor})"
+  foregroundColor="$(getColorCode ${foregroundColor})"
+
+  local background foreground
+  [[ -n "${backgroundColor}" ]] && background="$(backgroundColor ${backgroundColor})" || background="%k"
+  [[ -n "${foregroundColor}" ]] && foreground="$(foregroundColor ${foregroundColor})" || foreground="%f"
 
   # If CURRENT_RIGHT_BG is "NONE", we are the first right segment.
 
@@ -231,17 +249,17 @@ right_prompt_segment() {
   fi
 
   if [[ $joined == false ]] || [[ "$CURRENT_RIGHT_BG" == "NONE" ]]; then
-    if isSameColor "$CURRENT_RIGHT_BG" "$3"; then
+    if isSameColor "$CURRENT_RIGHT_BG" "${backgroundColor}"; then
       # Middle segment with same color as previous segment
       # We take the current foreground color as color for our
       # subsegment (or the default color). This should have
       # enough contrast.
       local complement
-      [[ -n "$4" ]] && complement="$fg" || complement="$(foregroundColor $DEFAULT_COLOR)"
+      [[ -n "${foregroundColor}" ]] && complement="${foreground}" || complement="$(foregroundColor $DEFAULT_COLOR)"
       echo -n "$complement$(print_icon 'RIGHT_SUBSEGMENT_SEPARATOR')%f"
     else
-      # Use the new BG color for the foreground with separator
-      echo -n "$(foregroundColor $3)$(print_icon 'RIGHT_SEGMENT_SEPARATOR')%f"
+      # Use the new Background Color as the foreground of the segment separator
+      echo -n "$(foregroundColor ${backgroundColor})$(print_icon 'RIGHT_SEGMENT_SEPARATOR')%f"
     fi
   fi
 
@@ -254,13 +272,13 @@ right_prompt_segment() {
       # we need to color both the visual identifier and the whitespace.
       [[ -n "$5" ]] && visual_identifier=" $visual_identifier"
       # Allow users to overwrite the color for the visual identifier only.
-      local visual_identifier_color_variable=POWERLEVEL9K_${(U)1#prompt_}_VISUAL_IDENTIFIER_COLOR
-      set_default $visual_identifier_color_variable $4
-      visual_identifier="%F{${(P)visual_identifier_color_variable}%}$visual_identifier%f"
+      local visual_identifier_color_variable=POWERLEVEL9K_${(U)${segment_name}#prompt_}_VISUAL_IDENTIFIER_COLOR
+      set_default $visual_identifier_color_variable "${foregroundColor}"
+      visual_identifier="$(foregroundColor ${(P)visual_identifier_color_variable})${visual_identifier}%f"
     fi
   fi
 
-  echo -n "${bg}${fg}"
+  echo -n "${background}${foreground}"
 
   # Print whitespace only if segment is not joined or first right segment
   [[ $joined == false ]] || [[ "$CURRENT_RIGHT_BG" == "NONE" ]] && echo -n "${POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS}"
@@ -270,18 +288,13 @@ right_prompt_segment() {
   # Print the visual identifier
   echo -n "${visual_identifier}"
 
-  CURRENT_RIGHT_BG=$3
+  CURRENT_RIGHT_BG="${backgroundColor}"
   last_right_element_index=$current_index
 }
 
 ################################################################
 # Prompt Segment Definitions
 ################################################################
-
-# The `CURRENT_BG` variable is used to remember what the last BG color used was
-# when building the left-hand prompt. Because the RPROMPT is created from
-# right-left but reads the opposite, this isn't necessary for the other side.
-CURRENT_BG='NONE'
 
 ################################################################
 # Anaconda Environment
@@ -409,12 +422,13 @@ prompt_battery() {
     'charged'       'green'
     'disconnected'  "$DEFAULT_COLOR_INVERTED"
   )
+  local ROOT_PREFIX="${4}"
   # Set default values if the user did not configure them
   set_default POWERLEVEL9K_BATTERY_LOW_THRESHOLD  10
 
-  if [[ $OS =~ OSX && -f /usr/bin/pmset && -x /usr/bin/pmset ]]; then
+  if [[ $OS =~ OSX && -f "${ROOT_PREFIX}"/usr/bin/pmset && -x "${ROOT_PREFIX}"/usr/bin/pmset ]]; then
     # obtain battery information from system
-    local raw_data="$(pmset -g batt | awk 'FNR==2{print}')"
+    local raw_data="$(${ROOT_PREFIX}/usr/bin/pmset -g batt | awk 'FNR==2{print}')"
     # return if there is no battery on system
     [[ -z $(echo $raw_data | grep "InternalBattery") ]] && return
 
@@ -446,7 +460,7 @@ prompt_battery() {
   fi
 
   if [[ "$OS" == 'Linux' ]] || [[ "$OS" == 'Android' ]]; then
-    local sysp="/sys/class/power_supply"
+    local sysp="${ROOT_PREFIX}/sys/class/power_supply"
 
     # Reported BAT0 or BAT1 depending on kernel version
     [[ -a $sysp/BAT0 ]] && local bat=$sysp/BAT0
@@ -468,8 +482,8 @@ prompt_battery() {
       [[ $bat_percent =~ 100 ]] && current_state="charged"
       [[ $bat_percent -lt 100 ]] && current_state="charging"
     fi
-    if [[ -f /usr/bin/acpi ]]; then
-      local time_remaining=$(acpi | awk '{ print $5 }')
+    if [[ -f ${ROOT_PREFIX}/usr/bin/acpi ]]; then
+      local time_remaining=$(${ROOT_PREFIX}/usr/bin/acpi | awk '{ print $5 }')
       if [[ $time_remaining =~ rate ]]; then
         local tstring="..."
       elif [[ $time_remaining =~ "[[:digit:]]+" ]]; then
@@ -498,7 +512,7 @@ prompt_battery() {
     fi
   fi
   # return if POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD is set and the battery percentage is greater or equal
-  if [[ -v "POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD" && "${bat_percent}" -ge $POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD ]]; then
+  if defined POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD && [[ "${bat_percent}" -ge $POWERLEVEL9K_BATTERY_HIDE_ABOVE_THRESHOLD ]]; then
     return
   fi
 
@@ -623,12 +637,12 @@ prompt_context() {
   if [[ $(print -P "%#") == '#' ]]; then
     current_state="ROOT"
   elif [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
-    if sudo -n true 2>/dev/null; then
+    if [[ -n "$SUDO_COMMAND" ]]; then
       current_state="REMOTE_SUDO"
     else
       current_state="REMOTE"
     fi
-  elif sudo -n true 2>/dev/null; then
+  elif [[ -n "$SUDO_COMMAND" ]]; then
     current_state="SUDO"
   fi
 
@@ -651,7 +665,7 @@ prompt_user() {
         "FOREGROUND_COLOR"    "yellow"
         "VISUAL_IDENTIFIER"   "ROOT_ICON"
       )
-    elif sudo -n true 2>/dev/null; then
+    elif [[ -n "$SUDO_COMMAND" ]]; then
       user_state=(
         "STATE"               "SUDO"
         "CONTENT"             "${POWERLEVEL9K_USER_TEMPLATE}"
@@ -702,11 +716,13 @@ prompt_host() {
 # The 'custom` prompt provides a way for users to invoke commands and display
 # the output in a segment.
 prompt_custom() {
-  local command=POWERLEVEL9K_CUSTOM_$3:u
+  local segment_name="${3:u}"
+  # Get content of custom segment
+  local command="POWERLEVEL9K_CUSTOM_${segment_name}"
   local segment_content="$(eval ${(P)command})"
 
   if [[ -n $segment_content ]]; then
-    "$1_prompt_segment" "${0}_${3:u}" "$2" $DEFAULT_COLOR_INVERTED $DEFAULT_COLOR "$segment_content"
+    "$1_prompt_segment" "${0}_${3:u}" "$2" $DEFAULT_COLOR_INVERTED $DEFAULT_COLOR "$segment_content" "CUSTOM_${segment_name}_ICON"
   fi
 }
 
@@ -745,6 +761,31 @@ prompt_command_execution_time() {
 }
 
 ################################################################
+# Determine the unique path - this is needed for the
+# truncate_to_unique strategy.
+#
+function getUniqueFolder() {
+  local trunc_path directory test_dir test_dir_length
+  local -a matching
+  local -a paths
+  local cur_path='/'
+  paths=(${(s:/:)1})
+  for directory in ${paths[@]}; do
+    test_dir=''
+    for (( i=0; i < ${#directory}; i++ )); do
+      test_dir+="${directory:$i:1}"
+      matching=("$cur_path"/"$test_dir"*/)
+      if [[ ${#matching[@]} -eq 1 ]]; then
+        break
+      fi
+    done
+    trunc_path+="$test_dir/"
+    cur_path+="$directory/"
+  done
+  echo "${trunc_path: : -1}"
+}
+
+################################################################
 # Dir: current working directory
 # Parameters:
 #   * $1 Alignment: string - left|right
@@ -762,7 +803,7 @@ prompt_dir() {
   # if we are not in "~" or "/", split the paths into an array and exclude "~"
   (( ${#current_path} > 1 )) && paths=(${(s:/:)${current_path//"~\/"/}}) || paths=()
   # only run the code if SHORTEN_DIR_LENGTH is set, or we are using the two strategies that don't rely on it.
-  if [[ -n "$POWERLEVEL9K_SHORTEN_DIR_LENGTH" || "$POWERLEVEL9K_SHORTEN_STRATEGY" == "truncate_with_folder_marker" || "$POWERLEVEL9K_SHORTEN_STRATEGY" == "truncate_to_last" ]]; then
+  if [[ -n "$POWERLEVEL9K_SHORTEN_DIR_LENGTH" || "$POWERLEVEL9K_SHORTEN_STRATEGY" == "truncate_with_folder_marker" || "$POWERLEVEL9K_SHORTEN_STRATEGY" == "truncate_to_last" || "$POWERLEVEL9K_SHORTEN_STRATEGY" == "truncate_with_package_name" ]]; then
     set_default POWERLEVEL9K_SHORTEN_DELIMITER "\u2026"
     # convert delimiter from unicode to literal character, so that we can get the correct length later
     local delim=$(echo -n $POWERLEVEL9K_SHORTEN_DELIMITER)
@@ -811,23 +852,10 @@ prompt_dir() {
         # for each parent path component find the shortest unique beginning
         # characters sequence. Source: https://stackoverflow.com/a/45336078
         if (( ${#current_path} > 1 )); then # root and home are exceptions and won't have paths
-          local matching
-          local cur_path='/'
-          [[ $current_path != "~"* ]] && trunc_path='/' || trunc_path=''
-          for directory in ${paths[@]}; do
-            test_dir=''
-            for (( i=0; i<${#directory}; i++ )); do
-              test_dir+="${directory:$i:1}"
-              matching=("$cur_path"/"$test_dir"*/)
-              if [[ ${#matching[@]} -eq 1 ]]; then
-                break
-              fi
-            done
-            trunc_path+="$test_dir/"
-            cur_path+="$directory/"
-          done
-          [[ $current_path == "~"* ]] && trunc_path="~/$trunc_path"
-          current_path="${trunc_path: : -1}"
+          # cheating here to retain ~ as home folder
+          local home_path="$(getUniqueFolder $HOME)"
+          trunc_path="$(getUniqueFolder $PWD)"
+          [[ $current_path == "~"* ]] && current_path="~${trunc_path//${home_path}/}" || current_path="/${trunc_path}"
         fi
       ;;
       truncate_with_folder_marker)
@@ -1043,18 +1071,14 @@ prompt_history() {
 ################################################################
 # Detection for virtualization (systemd based systems only)
 prompt_detect_virt() {
-  if ! command -v systemd-detect-virt > /dev/null; then
-    return
-  fi
-  local virt=$(systemd-detect-virt)
+  local virt=$(systemd-detect-virt 2> /dev/null)
   if [[ "$virt" == "none" ]]; then
     if [[ "$(ls -di / | grep -o 2)" != "2" ]]; then
       virt="chroot"
-      "$1_prompt_segment" "$0" "$2" "$DEFAULT_COLOR" "yellow" "$virt"
-    else
-      ;
     fi
-  else
+  fi
+
+  if [[ -n "${virt}" ]]; then
     "$1_prompt_segment" "$0" "$2" "$DEFAULT_COLOR" "yellow" "$virt"
   fi
 }
@@ -1089,18 +1113,20 @@ prompt_ip() {
   else
     if defined POWERLEVEL9K_IP_INTERFACE; then
       # Get the IP address of the specified interface.
-      ip=$(ip -4 a show "$POWERLEVEL9K_IP_INTERFACE" | grep -o "inet\s*[0-9.]*" | grep -o "[0-9.]*")
+      ip=$(ip -4 a show "$POWERLEVEL9K_IP_INTERFACE" | grep -o "inet\s*[0-9.]*" | grep -o -E "[0-9.]+")
     else
       local interfaces callback
       # Get all network interface names that are up
-      interfaces=$(ip link ls up | grep -o -E ":\s+[a-z0-9]+:" | grep -v "lo" | grep -o "[a-z0-9]*")
-      callback='ip -4 a show $item | grep -o "inet\s*[0-9.]*" | grep -o "[0-9.]*"'
+      interfaces=$(ip link ls up | grep -o -E ":\s+[a-z0-9]+:" | grep -v "lo" | grep -o -E "[a-z0-9]+")
+      callback='ip -4 a show $item | grep -o "inet\s*[0-9.]*" | grep -o -E "[0-9.]+"'
 
       ip=$(getRelevantItem "$interfaces" "$callback")
     fi
   fi
 
-  "$1_prompt_segment" "$0" "$2" "cyan" "$DEFAULT_COLOR" "$ip" 'NETWORK_ICON'
+  if [[ -n "$ip" ]]; then
+    "$1_prompt_segment" "$0" "$2" "cyan" "$DEFAULT_COLOR" "$ip" 'NETWORK_ICON'
+  fi
 }
 
 ################################################################
@@ -1108,7 +1134,7 @@ prompt_ip() {
 set_default POWERLEVEL9K_VPN_IP_INTERFACE "tun"
 # prompt if vpn active
 prompt_vpn_ip() {
-  for vpn_iface in $(/sbin/ifconfig | grep -e ^"$POWERLEVEL9K_VPN_IP_INTERFACE" | cut -d":" -f1)
+  for vpn_iface in $(/sbin/ifconfig | grep -e "^${POWERLEVEL9K_VPN_IP_INTERFACE}" | cut -d":" -f1)
   do
     ip=$(/sbin/ifconfig "$vpn_iface" | grep -o "inet\s.*" | cut -d' ' -f2)
     "$1_prompt_segment" "$0" "$2" "cyan" "$DEFAULT_COLOR" "$ip" 'VPN_ICON'
@@ -1118,11 +1144,10 @@ prompt_vpn_ip() {
 ################################################################
 # Segment to display laravel version
 prompt_laravel_version() {
-  local laravel_version="$(php artisan --version 2>/dev/null)"
-  if [[ -n "${laravel_version}" ]]; then
-    # Remove unrelevant infos
-    laravel_version="${laravel_version//Laravel Framework version /}"
-
+  local laravel_version="$(php artisan --version 2> /dev/null)"
+  if [[ -n "${laravel_version}" && "${laravel_version}" =~ "Laravel Framework" ]]; then
+    # Strip out everything but the version
+    laravel_version="${laravel_version//Laravel Framework /}"
     "$1_prompt_segment" "$0" "$2" "maroon" "white" "${laravel_version}" 'LARAVEL_ICON'
   fi
 }
@@ -1131,6 +1156,7 @@ prompt_laravel_version() {
 # Segment to display load
 set_default POWERLEVEL9K_LOAD_WHICH 5
 prompt_load() {
+  local ROOT_PREFIX="${4}"
   # The load segment can have three different states
   local current_state="unknown"
   local load_select=2
@@ -1166,7 +1192,7 @@ prompt_load() {
       fi
       ;;
     *)
-      load_avg=$(cut -d" " -f${load_select} /proc/loadavg)
+      load_avg=$(cut -d" " -f${load_select} ${ROOT_PREFIX}/proc/loadavg)
       cores=$(nproc)
   esac
 
@@ -1239,6 +1265,7 @@ prompt_php_version() {
 ################################################################
 # Segment to display free RAM and used Swap
 prompt_ram() {
+  local ROOT_PREFIX="${4}"
   local base=''
   local ramfree=0
   if [[ "$OS" == "OSX" ]]; then
@@ -1250,9 +1277,9 @@ prompt_ram() {
     ramfree=$(( ramfree * 4096 ))
   else
     if [[ "$OS" == "BSD" ]]; then
-      ramfree=$(grep 'avail memory' /var/run/dmesg.boot | awk '{print $4}')
+      ramfree=$(grep 'avail memory' ${ROOT_PREFIX}/var/run/dmesg.boot | awk '{print $4}')
     else
-      ramfree=$(grep -o -E "MemAvailable:\s+[0-9]+" /proc/meminfo | grep -o "[0-9]*")
+      ramfree=$(grep -o -E "MemAvailable:\s+[0-9]+" ${ROOT_PREFIX}/proc/meminfo | grep -o -E "[0-9]+")
       base='K'
     fi
   fi
@@ -1260,21 +1287,19 @@ prompt_ram() {
   "$1_prompt_segment" "$0" "$2" "yellow" "$DEFAULT_COLOR" "$(printSizeHumanReadable "$ramfree" $base)" 'RAM_ICON'
 }
 
-
+################################################################
+# Segment to display rbenv information
+# https://github.com/rbenv/rbenv#choosing-the-ruby-version
 set_default POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW false
-# rbenv information
 prompt_rbenv() {
-  if command which rbenv 2>/dev/null >&2; then
+  if [[ -n "$RBENV_VERSION" ]]; then
+    "$1_prompt_segment" "$0" "$2" "red" "$DEFAULT_COLOR" "$RBENV_VERSION" 'RUBY_ICON'
+  elif [ $commands[rbenv] ]; then
     local rbenv_version_name="$(rbenv version-name)"
     local rbenv_global="$(rbenv global)"
-
-    # Don't show anything if the current Ruby is the same as the global Ruby
-    # unless `POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW` is set.
-    if [[ $rbenv_version_name == $rbenv_global && "$POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW" = false ]]; then
-      return
+    if [[ "${rbenv_version_name}" != "${rbenv_global}" || "${POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW}" == "true" ]]; then
+      "$1_prompt_segment" "$0" "$2" "red" "$DEFAULT_COLOR" "$rbenv_version_name" 'RUBY_ICON'
     fi
-
-    "$1_prompt_segment" "$0" "$2" "red" "$DEFAULT_COLOR" "$rbenv_version_name" 'RUBY_ICON'
   fi
 }
 
@@ -1419,6 +1444,7 @@ prompt_status() {
 ################################################################
 # Segment to display Swap information
 prompt_swap() {
+  local ROOT_PREFIX="${4}"
   local swap_used=0
   local base=''
 
@@ -1433,8 +1459,8 @@ prompt_swap() {
 
     base=$(echo "$raw_swap_used" | grep -o "[A-Z]*$")
   else
-    swap_total=$(grep -o -E "SwapTotal:\s+[0-9]+" /proc/meminfo | grep -o "[0-9]*")
-    swap_free=$(grep -o -E "SwapFree:\s+[0-9]+" /proc/meminfo | grep -o "[0-9]*")
+    swap_total=$(grep -o -E "SwapTotal:\s+[0-9]+" ${ROOT_PREFIX}/proc/meminfo | grep -o -E "[0-9]+")
+    swap_free=$(grep -o -E "SwapFree:\s+[0-9]+" ${ROOT_PREFIX}/proc/meminfo | grep -o -E "[0-9]+")
     swap_used=$(( swap_total - swap_free ))
     base='K'
   fi
@@ -1607,7 +1633,7 @@ set_default POWERLEVEL9K_VI_COMMAND_MODE_STRING "NORMAL"
 prompt_vi_mode() {
   case ${KEYMAP} in
     vicmd)
-      "$1_prompt_segment" "$0_NORMAL" "$2" "$DEFAULT_COLOR" "default" "$POWERLEVEL9K_VI_COMMAND_MODE_STRING"
+      "$1_prompt_segment" "$0_NORMAL" "$2" "$DEFAULT_COLOR" "white" "$POWERLEVEL9K_VI_COMMAND_MODE_STRING"
     ;;
     main|viins|*)
       if [[ -z $POWERLEVEL9K_VI_INSERT_MODE_STRING ]]; then return; fi
@@ -1622,17 +1648,28 @@ prompt_vi_mode() {
 # https://virtualenv.pypa.io/en/latest/
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
-  if [[ -n "$virtualenv_path" && "$VIRTUAL_ENV_DISABLE_PROMPT" != true ]]; then
+  if [[ -n "$virtualenv_path" && -z "$VIRTUAL_ENV_DISABLE_PROMPT" ]]; then
     "$1_prompt_segment" "$0" "$2" "blue" "$DEFAULT_COLOR" "$(basename "$virtualenv_path")" 'PYTHON_ICON'
   fi
 }
 
 ################################################################
-# pyenv: current active python version (with restrictions)
+# Segment to display pyenv information
 # https://github.com/pyenv/pyenv#choosing-the-python-version
+set_default POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW false
 prompt_pyenv() {
   if [[ -n "$PYENV_VERSION" ]]; then
     "$1_prompt_segment" "$0" "$2" "blue" "$DEFAULT_COLOR" "$PYENV_VERSION" 'PYTHON_ICON'
+  elif [ $commands[pyenv] ]; then
+    local pyenv_version_name="$(pyenv version-name)"
+    local pyenv_global="system"
+    local pyenv_root="$(pyenv root)"
+    if [[ -f "${pyenv_root}/version" ]]; then
+      pyenv_global="$(pyenv version-file-read ${pyenv_root}/version)"
+    fi
+    if [[ "${pyenv_version_name}" != "${pyenv_global}" || "${POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW}" == "true" ]]; then
+      "$1_prompt_segment" "$0" "$2" "blue" "$DEFAULT_COLOR" "$pyenv_version_name" 'PYTHON_ICON'
+    fi
   fi
 }
 
@@ -1779,10 +1816,16 @@ powerlevel9k_preexec() {
 
 set_default POWERLEVEL9K_PROMPT_ADD_NEWLINE false
 powerlevel9k_prepare_prompts() {
-  local RETVAL RPROMPT_PREFIX RPROMPT_SUFFIX
+  # Return values. These need to be global, because
+  # they are used in prompt_status. Also, we need
+  # to get the return value of the last command at
+  # very first in this function. Do not move the
+  # lines down, otherwise the last command is not
+  # what you expected it to be.
   RETVAL=$?
   RETVALS=( "$pipestatus[@]" )
 
+  local RPROMPT_SUFFIX RPROMPT_PREFIX
   _P9K_COMMAND_DURATION=$((EPOCHREALTIME - _P9K_TIMER_START))
 
   # Reset start time
@@ -1868,7 +1911,7 @@ prompt_powerlevel9k_setup() {
       fi
   fi
 
-  defined POWERLEVEL9K_LEFT_PROMPT_ELEMENTS || POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+  defined POWERLEVEL9K_LEFT_PROMPT_ELEMENTS || POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
   defined POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS || POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
   # Display a warning if deprecated segments are in use.

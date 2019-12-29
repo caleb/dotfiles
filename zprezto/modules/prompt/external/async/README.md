@@ -60,9 +60,17 @@ Simply stops a worker and all active jobs will be terminated immediately.
 
 Start a new asynchronous job on specified worker, assumes the worker is running.
 
+#### `async_worker_eval <worker_name> <my_function> [<function_params>]`
+
+Evaluate a command (like async_job) inside the async worker, then worker environment can be manipulated. For example, issuing a cd command will change the PWD of the worker which will then be inherited by all future async jobs.
+
+Output will be returned via callback, job name will be [async/eval].
+
 #### `async_process_results <worker_name> <callback_function>`
 
 Get results from finished jobs and pass it to the to callback function. This is the only way to reliably return the job name, return code, output and execution time and with minimal effort.
+
+If the async process buffer becomes corrupt, the callback will be invoked with the first argument being `[async]` (job name), non-zero return code and fifth argument describing the error (stderr).
 
 The `callback_function` is called with the following parameters:
 

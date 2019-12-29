@@ -27,13 +27,19 @@ context 'with asynchronous suggestions enabled' do
     end
   end
 
-  describe 'exiting a subshell' do
-    it 'should not cause error messages to be printed' do
-      session.run_command('$(exit)')
+  describe 'pressing ^C after fetching a suggestion' do
+    before do
+      skip 'Workaround does not work below v5.0.8' if session.zsh_version < Gem::Version.new('5.0.8')
+    end
 
-      sleep 1
+    it 'terminates the prompt and begins a new one' do
+      session.send_keys('e')
+      sleep 0.1
+      session.send_keys('C-c')
+      sleep 0.1
+      session.send_keys('echo')
 
-      expect(session.content).to eq('$(exit)')
+      wait_for { session.content }.to eq("e\necho")
     end
   end
 end
