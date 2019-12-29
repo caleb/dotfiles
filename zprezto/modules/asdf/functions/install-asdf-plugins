@@ -18,6 +18,7 @@ plugins[ocaml]=""
 plugins[swift]=""
 plugins[scala]=""
 plugins[python]=""
+plugins[sbcl]="https://github.com/smashedtoatoms/asdf-sbcl.git"
 
 for i in "${(@k)plugins}"; do
   url="${plugins[$i]}"
