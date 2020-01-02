@@ -47,6 +47,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      erlang
      git
+     haskell
      helm
      html
      java
