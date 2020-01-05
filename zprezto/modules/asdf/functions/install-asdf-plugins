@@ -19,6 +19,7 @@ plugins[swift]=""
 plugins[scala]=""
 plugins[python]=""
 plugins[sbcl]="https://github.com/smashedtoatoms/asdf-sbcl.git"
+plugins[graalvm]="https://github.com/vic/asdf-graalvm.git"
 
 for i in "${(@k)plugins}"; do
   url="${plugins[$i]}"
