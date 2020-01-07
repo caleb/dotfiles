@@ -42,6 +42,7 @@ This function should only modify configuration layer settings."
      better-defaults
      c-c++
     (clojure :variables
+       clojure-enable-fancify-symbols t
        clojure-enable-clj-refactor t)
      common-lisp
      elixir
@@ -486,7 +487,12 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  )
+  (custom-set-variables
+    ;; custom-set-variables was added by Custom.
+    ;; If you edit it by hand, you could mess it up, so be careful.
+    ;; Your init file should contain only one such instance.
+    ;; If there is more than one, they won't work right.
+    '(cljr-eagerly-build-asts-on-startup t)))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
