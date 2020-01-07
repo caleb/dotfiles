@@ -76,7 +76,15 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'powerlevel10k'
+if [[ "$TERM" == 'eterm-color' ]]; then
+  zstyle ':prezto:module:prompt' theme 'minimal'
+elif [[ "$TERM" == 'dumb' ]]; then
+  # Disable color and theme in dumb terminals.
+  zstyle ':prezto:*:*' color 'no'
+  zstyle ':prezto:module:prompt' theme 'off'
+else
+  zstyle ':prezto:module:prompt' theme 'powerlevel10k'
+fi
 
 #
 # Terminal
