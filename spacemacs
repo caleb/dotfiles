@@ -41,7 +41,8 @@ This function should only modify configuration layer settings."
      auto-completion
      better-defaults
      c-c++
-     clojure
+    (clojure :variables
+       clojure-enable-clj-refactor t)
      common-lisp
      elixir
      emacs-lisp
