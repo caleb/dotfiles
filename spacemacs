@@ -49,6 +49,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      erlang
      git
+     go
      haskell
      helm
      html
@@ -502,16 +503,20 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cljr-eagerly-build-asts-on-startup t)
- '(safe-local-variable-values
-   (quote
-    ((cider-ns-refresh-after-fn . "dev/start*")
-     (cider-ns-refresh-before-fn . "dev/stop*")
-     (typescript-backend . tide)
-     (typescript-backend . lsp)
-     (javascript-backend . tern)
-     (javascript-backend . lsp)
-     (elixir-enable-compilation-checking . t)
-     (elixir-enable-compilation-checking)))))
+ '(cljr-warn-on-eval nil)
+  '(package-selected-packages
+     (quote
+       (helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-golangci-lint counsel-gtags counsel swiper ivy company-go go-mode yasnippet-snippets yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-magit treemacs-evil toml-mode toc-org tide terminal-here tagedit symon symbol-overlay string-inflection spaceline-all-the-icons smeargle slime-company slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocopfmt rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters racket-mode racer pug-mode prettier-js popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain open-junk-file ob-elixir nodejs-repl nameless mwim mvn multi-term move-text mmm-mode minitest meghanada maven-test-mode markdown-toc magit-svn magit-gitflow lsp-ui lsp-treemacs lsp-java lsp-haskell lorem-ipsum livid-mode link-hint json-navigator json-mode js2-refactor js-doc intero indent-guide impatient-mode hybrid-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-hoogle helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme groovy-mode groovy-imports gradle-mode google-translate google-c-style golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md geiser geben fuzzy font-lock+ flyspell-correct-helm flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-mix flycheck-haskell flycheck-elsa flycheck-credo flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dotenv-mode doom-modeline disaster diminish devdocs define-word dante cquery cpp-auto-include company-ycmd company-web company-tern company-statistics company-rtags company-phpactor company-php company-lsp company-ghci company-ghc company-cabal company-c-headers common-lisp-snippets column-enforce-mode cmm-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby centered-cursor-mode ccls cargo bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile attrap alchemist aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+  '(safe-local-variable-values
+     (quote
+       ((cider-ns-refresh-after-fn . "dev/start*")
+         (cider-ns-refresh-before-fn . "dev/stop*")
+         (typescript-backend . tide)
+         (typescript-backend . lsp)
+         (javascript-backend . tern)
+         (javascript-backend . lsp)
+         (elixir-enable-compilation-checking . t)
+         (elixir-enable-compilation-checking)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
