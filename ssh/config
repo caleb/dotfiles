@@ -6,11 +6,26 @@ AddKeysToAgent yes
 Host *.dev
   StrictHostKeyChecking no
 
+#
+# Local machines
+#
+Host *.home.land.fm
+  ForwardAgent yes
+
+Host massive
+  ForwardAgent yes
+
+Host gitea
+  ForwardAgent yes
+
 Host development-vm.local
   User caleb
   HostName development-vm.local
   ForwardAgent yes
 
+#
+# Clients
+#
 Host tools.mojoyourfranchise.com
   User root
   HostName tools.mojoyourfranchise.com
