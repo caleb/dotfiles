@@ -6,6 +6,14 @@ AddKeysToAgent yes
 Host *.dev
   StrictHostKeyChecking no
 
+# Access home.land.fm from the outside
+Host bastion.home.land.fm
+  ForwardAgent yes
+  Port 2222
+Host bastion
+  ForwardAgent yes
+  Port 2222
+
 #
 # Local machines
 #
