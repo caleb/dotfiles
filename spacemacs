@@ -61,7 +61,7 @@ This function should only modify configuration layer settings."
      multiple-cursors
      php
      racket
-     ruby
+     (ruby :variables ruby-backend 'lsp)
      rust
      org
      scheme
