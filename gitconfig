@@ -49,6 +49,7 @@
   path = ~/.gitconfig.local
 [commit]
   template = ~/.gitmessage
+	gpgSign = false
 [filter "media"]
 	required = true
 	clean = git media clean %f
@@ -64,3 +65,4 @@
 [user]
   name = Caleb Land
   email = caleb@land.fm
+	signingKey = E5278A2BF4A0C592928F2D369C401EC045F83855
